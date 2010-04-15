@@ -159,7 +159,7 @@ cmap w!! w !sudo tee % >/dev/null
 " some tips:
 " increment/decrement a number: <c-a>/<c-x>
 " capitalize: gU
-"             so to capitalize a character: vgU
+"             so to toggle a character's case: ~
 "             to capitalize a word: wgU
 "             to lower-case a word: wgu
 " to format a long line into an organized paragraph: gql
