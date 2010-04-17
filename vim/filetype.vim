@@ -3,5 +3,5 @@ if exists("did_load_filetypes")
   finish
 endif
 augroup filetypedetect
-  au! BufRead,BufNewFile *.note   setfiletype note
+  au! BufRead,BufNewFile *.note.txt   setfiletype note
 augroup END
