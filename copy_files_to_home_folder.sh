@@ -8,6 +8,10 @@ ln -s $(pwd)/$(dirname $0)/bashrc $HOME/.bashrc
 [ -h $HOME/.vimrc ] && rm $HOME/.vimrc
 ln -s $(pwd)/$(dirname $0)/vimrc $HOME/.vimrc
 
+[ -f $HOME/.gvimrc ] && rm $HOME/.gvimrc
+[ -h $HOME/.gvimrc ] && rm $HOME/.gvimrc
+ln -s $(pwd)/$(dirname $0)/gvimrc $HOME/.gvimrc
+
 [ -f $HOME/.vim ] && rm $HOME/.vim
 [ -d $HOME/.vim ] && rm -rf $HOME/.vim
 [ -h $HOME/.vim ] && rm -rf $HOME/.vim
