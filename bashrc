@@ -20,6 +20,12 @@ if [[ `uname` == "Darwin" && `whoami` == "aaronj1335" ]]; then
 
   export PATH="${PATH}:/usr/local/mysql/bin"
 
+  if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+    export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
+  fi
+
+  [ -d $HOME/.cabal/bin ] && export PATH="${PATH}:$HOME/.cabal/bin"
+
 fi
 
 [ -n "$SSH_CLIENT" ] && . $HOME/.ssh-agent
