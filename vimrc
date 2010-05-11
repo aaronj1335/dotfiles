@@ -156,6 +156,11 @@ au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 " Save file as 'sudo'
 cmap w!! w !sudo tee % >/dev/null
 
+"if has("python")
+"  autocmd FileType html map ,b :python makeBold()
+"  pyfile .vimpythonrc
+"end
+
 " some tips:
 " increment/decrement a number: <c-a>/<c-x>
 " capitalize: gU
