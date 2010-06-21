@@ -28,7 +28,9 @@ if [[ `uname` == "Darwin" && `whoami` == "aaronj1335" ]]; then
 
 fi
 
-[ -n "$SSH_CLIENT" ] && . $HOME/.ssh-agent
+[ -f "$HOME/.ssh-agent" ] && . $HOME/.ssh-agent
+
+[ -d $HOME/downfrom-jmake/bin ] && export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
 alias ll='lhs -aF'
 alias l='ls '
