@@ -4,6 +4,10 @@
 [ -h $HOME/.bashrc ] && rm $HOME/.bashrc
 ln -s $(pwd)/$(dirname $0)/bashrc $HOME/.bashrc
 
+[ -f $HOME/.git-completion.sh ] && rm $HOME/.git-completion.sh
+[ -h $HOME/.git-completion.sh ] && rm $HOME/.git-completion.sh
+ln -s $(pwd)/$(dirname $0)/git-completion.sh $HOME/.git-completion.sh
+
 [ -f $HOME/.vimrc ] && rm $HOME/.vimrc
 [ -h $HOME/.vimrc ] && rm $HOME/.vimrc
 ln -s $(pwd)/$(dirname $0)/vimrc $HOME/.vimrc
@@ -24,3 +28,4 @@ ln -s $(pwd)/$(dirname $0)/pythonrc $HOME/.pythonrc
 [ -f $HOME/.ssh/id_rsa.pub ] && rm $HOME/.ssh/id_rsa.pub
 [ -h $HOME/.ssh/id_rsa.pub ] && rm $HOME/.ssh/id_rsa.pub
 cp $(pwd)/$(dirname $0)/id_rsa.pub $HOME/.ssh/
+
