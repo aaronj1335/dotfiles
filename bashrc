@@ -86,6 +86,10 @@ if [ -f ~/.pythonrc ]; then
   export PYTHONSTARTUP="$HOME/.pythonrc"
 fi
 
+if [ -f $HOME/.git-completion.sh ]; then
+  source $HOME/.git-completion.sh
+fi
+
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
