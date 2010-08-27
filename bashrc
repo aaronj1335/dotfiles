@@ -86,6 +86,10 @@ if [ -f ~/.pythonrc ]; then
   export PYTHONSTARTUP="$HOME/.pythonrc"
 fi
 
+# check if we're on a UT CS machine
+if [ -d $HOME/CS395T/bin ]; then
+  export PATH=$HOME/CS395T/bin:$PATH
+fi
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
