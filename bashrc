@@ -95,6 +95,9 @@ if [ -d $HOME/CS395T/bin ]; then
   export PATH=$HOME/CS395T/bin:$PATH
 fi
 
+if which bochs; then
+  alias bochs="bochs -q"
+
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
