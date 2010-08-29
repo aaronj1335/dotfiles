@@ -171,6 +171,7 @@ cmap w!! w !sudo tee % >/dev/null
 " to re-format windows newlines to *nix: :%s/<c-v><c-m>/\r\n/gc
 " to do a command w/o exiting insert mode: <c-o>
 " to pull a word into :ex mode (like for a search and replace): <c-r><c-w>
+"                        for the entire word (like capital 'W': <c-r><c-a>
 " show current file: <c-g>
 " get the name of the current file :! echo %
 " execute a command and paste the output into vim :r ! ls -la
