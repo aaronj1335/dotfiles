@@ -97,6 +97,7 @@ fi
 
 if which bochs; then
   alias bochs="bochs -q"
+fi
 
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
