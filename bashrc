@@ -100,10 +100,6 @@ if [ -d $HOME/local/bin ]; then
   export PATH=$hOME/local/bin:$PATH
 fi
 
-if which bochs>/dev/null; then
-  alias bochs="bochs -q"
-fi
-
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
