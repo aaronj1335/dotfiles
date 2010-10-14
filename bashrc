@@ -95,8 +95,9 @@ if [ -d $HOME/CS395T/bin ]; then
   export PATH=$HOME/CS395T/bin:$PATH
 fi
 
-if which bochs>/dev/null; then
-  alias bochs="bochs -q"
+# add my own local directory if needed
+if [ -d $HOME/local/bin ]; then
+  export PATH=$HOME/local/bin:$PATH
 fi
 
 ########################################################################
