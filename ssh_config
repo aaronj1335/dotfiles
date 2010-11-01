@@ -12,7 +12,7 @@ Host ut2
   User astacy
   ForwardX11 yes
 
-Host ut2
+Host ut3
   HostName mondello.cs.utexas.edu
   User astacy
   ForwardX11 yes
