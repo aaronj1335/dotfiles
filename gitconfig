@@ -15,3 +15,6 @@
 [alias]
   lg = log --graph --decorate --pretty=oneline --abbrev-commit
   lga = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[user]
+	name = Aaron Stacy
+	email = aaron.r.stacy@gmail.com
