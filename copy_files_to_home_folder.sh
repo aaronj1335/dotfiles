@@ -25,7 +25,7 @@ ln -s $(pwd)/$(dirname $0)/vim $HOME/.vim
 [ -h $HOME/.pythonrc ] && rm $HOME/.pythonrc
 ln -s $(pwd)/$(dirname $0)/pythonrc $HOME/.pythonrc
 
-[ -f $HOME/.ssh/id_rsa.pub ] && rm $HOME/.ssh/id_rsa.pub
-[ -h $HOME/.ssh/id_rsa.pub ] && rm $HOME/.ssh/id_rsa.pub
-cp $(pwd)/$(dirname $0)/id_rsa.pub $HOME/.ssh/
+[ -f $HOME/.ssh/config ] && rm $HOME/.ssh/config
+[ -h $HOME/.ssh/config ] && rm $HOME/.ssh/config
+cp $(pwd)/$(dirname $0)/ssh_config $HOME/.ssh/config
 

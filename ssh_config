@@ -1,0 +1,23 @@
+Host sl
+  HostName staceserve.dyndns.org
+  User astacy
+
+Host ut1
+  HostName submerged-arc.cs.utexas.edu
+  User astacy
+  ForwardX11 yes
+
+Host ut2
+  HostName tatarigami.cs.utexas.edu
+  User astacy
+  ForwardX11 yes
+
+Host ut3
+  HostName mondello.cs.utexas.edu
+  User astacy
+  ForwardX11 yes
+
+Host ashly
+  HostName mrs-stacys-macbook.local
+  User "Ashly Stacy"
+  ForwardX11 yes
