@@ -156,6 +156,10 @@ au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 " Save file as 'sudo'
 cmap w!! w !sudo tee % >/dev/null
 
+if filereadable("snippets.vim")
+  source snippets.vim
+end
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
