@@ -29,3 +29,7 @@ ln -s $(pwd)/$(dirname $0)/pythonrc $HOME/.pythonrc
 [ -h $HOME/.ssh/config ] && rm $HOME/.ssh/config
 cp $(pwd)/$(dirname $0)/ssh_config $HOME/.ssh/config
 
+[ -f $HOME/.gitconfig ] && rm $HOME/.gitconfig
+[ -h $HOME/.gitconfig ] && rm $HOME/.gitconfig
+ln -s $(pwd)/$(dirname $0)/gitconfig $HOME/.gitconfig
+

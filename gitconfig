@@ -1,0 +1,17 @@
+[color]
+  ui = auto
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[alias]
+  lg = log --graph --decorate --pretty=oneline --abbrev-commit
+  lga = log --graph --decorate --pretty=oneline --abbrev-commit --all
