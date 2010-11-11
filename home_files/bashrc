@@ -24,10 +24,8 @@ alias l='ls '
 alias ll='ls -l '
 alias grep="grep --color"
 
-if [ `uname` == "Darwin" ]; then
 # to get rid of self-assigned ip:
 # sudo ipfw -q flush
-fi
 
 export TERM="xterm-color"
 
