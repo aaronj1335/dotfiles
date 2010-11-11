@@ -71,7 +71,11 @@ export PS1="
 >>\[\e[0m\] "
 export SHELL=${SHELL:-${BASH:-/bin/bash}}
 export EDITOR=vim
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+if [ -f "$HOME/home/conditional_pager.py" ]; then
+  export PAGER="$HOME/home/conditional_pager.py"
+else
+  export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+fi
 
 # 1. directories are bold cyan
 # 5. executables are red
