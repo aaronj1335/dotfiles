@@ -160,6 +160,12 @@ if filereadable("snippets.vim")
   source snippets.vim
 end
 
+if finddir("~/.vim_undo") != finddir("~/") . ".vim_undo"
+  call mkdir($HOME . "/.vim_undo", "", 0700)
+end
+set undofile
+set undodir=~/.vim_undo
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
