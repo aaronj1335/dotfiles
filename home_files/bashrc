@@ -2,27 +2,15 @@ alias yo="echo 'screw you i am not a morning person'"
 if [[ `uname` == "Darwin" && `whoami` == "aaronj1335" ]]; then
 
   # Aliases
-  alias vip='ssh astacy@msee140lnx10.ecn.purdue.edu'
-  alias sftpvip='sftp astacy@msee140lnx10.ecn.purdue.edu'
-
-  alias ashly='ssh ashlystacy@ashly-stacys-macbook.local'
-  alias ashlyx='ssh -Y ashlystacy@ashly-stacys-macbook.local'
-  alias sftpashly='sftp ashlystacy@ashly-stacys-macbook.local'
-
-  alias arl='ssh stageweb.arlut.utexas.edu'
-
-# this is for ssh-agent authentication
   #alias keyon="ssh-add -t 30800"
   #alias keyon="ssh-add"
   #alias keyoff='ssh-add -D'
   #alias keylist='ssh-add -l'
   #alias pp='ps -jAc'
 
-  export PATH="${PATH}:/usr/local/mysql/bin"
-
-  if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
-    export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
-  fi
+  #if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+  #  export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
+  #fi
 
   [ -d $HOME/.cabal/bin ] && export PATH="${PATH}:$HOME/.cabal/bin"
 
@@ -32,38 +20,20 @@ fi
 
 [ -d $HOME/downfrom-jmake/bin ] && export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
-alias ll='lhs -aF'
 alias l='ls '
-
-alias gccc='gcc -Wall -ansi'
-if [ `uname` == "Linux" ]; then
-  export TERM="xterm-color"
-  alias ls='ls --color=always'
-  alias ll='ls -l '
-  alias pp='ps -aux'
-fi
-if [ `uname` == "SunOS" ]; then
-  export TERM="dtterm"
-  alias ll='ls -l '
-  alias pp='ps -a'
-fi
-
+alias ll='ls -l '
 alias grep="grep --color"
 
 if [ `uname` == "Darwin" ]; then
-  export TERM="xterm-color"
-  alias ll='ls -l '
-
 # to get rid of self-assigned ip:
 # sudo ipfw -q flush
 fi
 
-if [ "`uname -n`" == "staceserve" ]; then
-  export TERM="xterm-color"
-  alias ll='ls -l '
-fi
+export TERM="xterm-color"
 
-alias lp2="lp -o sides=two-sided-long-edge"
+if [ `uname` == "SunOS" ]; then
+  export TERM="dtterm"
+fi
 
 # Environment Variables
 export PS1="
@@ -71,8 +41,8 @@ export PS1="
 >>\[\e[0m\] "
 export SHELL=${SHELL:-${BASH:-/bin/bash}}
 export EDITOR=vim
-if [ -f "$HOME/home/conditional_pager.py" ]; then
-  export PAGER="$HOME/home/conditional_pager.py"
+if [ -f "$HOME/bin/conditional_pager.py" ]; then
+  export PAGER="$HOME/bin/conditional_pager.py"
 else
   export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 fi
@@ -90,9 +60,9 @@ if [ -f ~/.pythonrc ]; then
   export PYTHONSTARTUP="$HOME/.pythonrc"
 fi
 
-if [ -f $HOME/.git-completion.sh ]; then
-  source $HOME/.git-completion.sh
-fi
+[ -f "$HOME/bin/git-completion.sh" ] && source "$HOME/bin/git-completion.sh"
+
+[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 
 # check if we're on a UT CS machine
 if [ -d $HOME/CS395T/bin ]; then

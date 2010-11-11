@@ -21,3 +21,7 @@ Host ashly
   HostName mrs-stacys-macbook.local
   User "Ashly Stacy"
   ForwardX11 yes
+
+Host msee140
+  HostName msee140lnx10.ecn.purdue.edu
+  User astacy
