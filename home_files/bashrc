@@ -21,7 +21,7 @@ fi
 [ -d $HOME/downfrom-jmake/bin ] && export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
 alias l='ls '
-alias ll='ls -l '
+alias ll='ls -l --color=auto'
 alias grep="grep --color"
 
 # to get rid of self-assigned ip:
@@ -50,6 +50,9 @@ fi
 # 10. and 11. directories that are writable to others are still bolyd cyan,
 #             but they have a red background
 export LSCOLORS="GxfxcxdxBxegedfbfgGbGb"
+#if [ `uname` = "Linux" ]; then
+#  eval "`dircolors -p`"
+#fi
 export CLICOLOR="true"
 
 set -o emacs
