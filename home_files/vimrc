@@ -22,11 +22,6 @@ set expandtab
 " Press space to clear search highlighting and any message already displayed.
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
 
-" set tab to auto-complete and shift tab to omni-complete (intelligent, knows
-" the default functions in certain languages)
-inoremap <tab> <C-P>
-"autocmd BufNewFile,BufRead *.php,*.html,*.css,*.js,*.sql,*.py,*.c inoremap <s-tab> <C-X><C-O>
-
 " set F5 to insert date/time stamp in regular mode or insert mode
 noremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
@@ -99,49 +94,13 @@ else
 
 endif " has("autocmd")
 
-" Enable CTRL+aarow to switch between split windows
+" Enable CTRL+direction to switch between split windows
 map <C-J> <C-W>j<C-W>_ 
 map <C-K> <C-W>k<C-W>_ 
 
-"" Set handy commenting feature
-"" Perl, Python and shell scripts
-"autocmd BufNewFile,BufRead *.py,*.pl,*.sh vmap u :-1/^#/s///<CR><Space>
-"autocmd BufNewFile,BufRead *.py,*.pl,*.sh vmap c :-1/^/s//#/<CR><Space>
-"" PHP
-"autocmd BufNewFile,BufRead *.php vmap u :-1/^#/s///<CR><Space>
-"autocmd BufNewFile,BufRead *.php vmap c :-1/^/s//#/<CR><Space>
-"" Matlab
-"autocmd BufNewFile,BufRead *.m,*.tex vmap u :-1/^%/s///<CR><Space>
-"autocmd BufNewFile,BufRead *.m,*.tex vmap c :-1/^/s//%/<CR><Space>
-"" Scheme
-"autocmd BufNewFile,BufRead *.sc vmap u :-1/^;/s///<CR><Space>
-"autocmd BufNewFile,BufRead *.sc vmap s :-1/^/s//;/<CR><Space>
-"" C, C++
-"autocmd BufNewFile,BufRead *.h,*.c,*.cpp vmap u :-1/^\/\//s///<CR><Space>
-"autocmd BufNewFile,BufRead *.h,*.c,*.cpp vmap c :-1/^/s//\/\//<CR><Space>
-
-" here's the new way to comment using NERD_commenter
-vmap <space> ,c<space>
+" comment using NERD_commenter
 vmap c ,cl
 vmap u ,cu
-
-" the following allows the user to type :mksession in a directory,
-" then when you return to the directory, all you have to do is open 
-" vim and hit <F3> and vim will re-open all of your tabs
-nmap <F3> <ESC>:call LoadSession()<CR>
-let s:sessionloaded = 0
-function LoadSession()
-  source Session.vim
-  let s:sessionloaded = 1
-endfunction
-function SaveSession()
-  if s:sessionloaded == 1
-    mksession!
-  end
-endfunction
-autocmd VimLeave * call SaveSession()
-
-let $PAGER=''
 
 set mousemodel=extend
 
@@ -155,10 +114,6 @@ au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 
 " Save file as 'sudo'
 cmap w!! w !sudo tee % >/dev/null
-
-if filereadable("snippets.vim")
-  source snippets.vim
-end
 
 if finddir("~/.vim_undo") != finddir("~/") . ".vim_undo"
   call mkdir($HOME . "/.vim_undo", "", 0700)
