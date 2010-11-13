@@ -123,6 +123,10 @@ if exists("*undofile")
   set undodir=~/.vim_undo
 end
 
+if filereadable("remaps.vim")
+  source remaps.vim
+end
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
