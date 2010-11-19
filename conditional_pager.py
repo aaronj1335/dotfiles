@@ -10,7 +10,7 @@ from subprocess import Popen, PIPE
 if __name__ == '__main__':
     l = sys.stdin.readline()
 
-    if 'diff --git' in l:
+    if 'diff --git' in l or len(l) == 0:
         sys.stdout.write(l)
         for l in sys.stdin:
             sys.stdout.write(l)
