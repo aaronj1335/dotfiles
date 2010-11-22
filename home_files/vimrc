@@ -107,7 +107,7 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
         \ | wincmd p | diffthis
 
 " if the file starts w/ "#!" and "/bin/", automatically make it executable
-au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile>
+au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile>
 
 " Save file as 'sudo'
 cmap w!! w !sudo tee % >/dev/null
