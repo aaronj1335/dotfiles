@@ -26,9 +26,6 @@ nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
 noremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
 
-" for .note files, map shift-x to insert a new note
-noremap <S-X> gg:insert<CR>==================================================================================================<CR><Space><Space><Bar><Space><Space><C-R>=strftime("%c")<CR><Space><Space><Bar><Space><Space><CR>--------------------------------------------------------------------------------------------------<CR><CR>--------------------------------------------------------------------------------------------------<CR><CR><ESC><DEL>kkki
-
 " set tabs to normal for Makefiles
 au Filetype make set tabstop=4
 au Filetype make inoremap <tab> <tab>
