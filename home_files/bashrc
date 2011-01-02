@@ -20,6 +20,9 @@ fi
 
 [ -d $HOME/downfrom-jmake/bin ] && export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
+[ -d /usr/local/mysql/bin ] && export PATH="$PATH:/usr/local/mysql/bin"
+export PATH="/System/Library/Frameworks/Python.framework/Versions/2.6/bin:$PATH"
+
 alias l='ls '
 alias ll='ls -l'
 alias grep="grep --color"
