@@ -1,4 +1,5 @@
 import sys, os, atexit, rlcompleter, readline
+from pprint import pprint
 
 readline.parse_and_bind('tab: complete')
 historyPath = os.path.expanduser('~/.python_history')
