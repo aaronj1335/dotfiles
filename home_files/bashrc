@@ -22,6 +22,8 @@ fi
 
 [ -d /usr/local/mysql/bin ] && export PATH="$PATH:/usr/local/mysql/bin"
 
+export PATH="/System/Library/Frameworks/Python.framework/Versions/2.6/bin:$PATH"
+
 [ -d /usr/local/sbin ] && export PATH="$PATH:/usr/local/sbin"
 
 alias l='ls '
@@ -132,3 +134,4 @@ fi
 #    source $HOME/.ssh-agent-`uname -n`
 #  fi
 #fi
+
