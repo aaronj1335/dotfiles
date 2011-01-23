@@ -8,7 +8,7 @@ import sys, os
 from subprocess import Popen, PIPE
 
 def is_git_output(line):
-	return 'git-diff' in line or line[0] == '*' or len(line) == 0
+	return 'git' in line or len(line) == 0 or line[0] == '*'
 
 if __name__ == '__main__':
 	l = sys.stdin.readline()
