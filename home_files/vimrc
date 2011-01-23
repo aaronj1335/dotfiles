@@ -19,6 +19,8 @@ set shiftwidth=4
 set tabstop=4
 "set expandtab
 
+inoremap <TAB> <C-P>
+
 " Press space to clear search highlighting and any message already displayed.
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
 
