@@ -33,16 +33,22 @@ alias grep="grep --color"
 # to get rid of self-assigned ip:
 # sudo ipfw -q flush
 
-export TERM="xterm-color"
+#export TERM="xterm-color"
 
-if [ `uname` == "SunOS" ]; then
-  export TERM="dtterm"
-fi
+#if [ `uname` == "SunOS" ]; then
+#  export TERM="dtterm"
+#fi
 
 # Environment Variables
-export PS1="
-\[\e[36;1m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w     \[\e[35m\]\T \[\e[31m\]\D{%d-%b-%Y}\[\e[0;1m\] 
->>\[\e[0m\] "
+if [ "$TERM" = "xterm-256color" ]; then
+	export PS1="
+\[\e[38;5;247m\]\u\[\e[38;5;87m\]@\[\e[38;5;247m\]\h\[\e[38;5;87m\]:\[\e[38;5;255m\]\w     \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%d-%b}\[\e[0;1m\] 
+\[\e[38;5;87m\]>\[\e[0m\] "
+else
+	export PS1="
+\[\e[38;5;195m\]\u\[\e[38;5;196m\]@\[\e[32m\]\h\[\e[33m\]:\w     \[\e[35m\]\T \[\e[31m\]\D{%d-%b}\[\e[0;1m\] 
+>\[\e[0m\] "
+fi
 export SHELL=${SHELL:-${BASH:-/bin/bash}}
 export EDITOR=vim
 if [ -f "$HOME/bin/conditional_pager.py" ]; then
@@ -55,7 +61,8 @@ fi
 # 5. executables are red
 # 10. and 11. directories that are writable to others are still bolyd cyan,
 #             but they have a red background
-export LSCOLORS="GxfxcxdxBxegedfbfgGbGb"
+#export LSCOLORS="GxfxcxdxBxegedfbfgGbGb"
+export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
   alias ll='ls -l --color=auto'
 fi
