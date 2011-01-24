@@ -129,6 +129,10 @@ end
 " make netrw directory view a tree view
 let g:netrw_liststyle=3
 
+if $TERM_PROGRAM == 'iTerm.app'
+	colorscheme railscasts
+end
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
