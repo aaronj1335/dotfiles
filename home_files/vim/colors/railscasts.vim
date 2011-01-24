@@ -48,7 +48,7 @@ highlight Normal                    guifg=#E6E1DC guibg=#111111
 highlight Cursor                    guifg=#000000 ctermfg=0 guibg=#FFFFFF ctermbg=15	
 highlight CursorLine                guibg=#000000 ctermbg=233 cterm=NONE
 
-highlight Comment                   guifg=#BC9458 ctermfg=180 gui=italic
+highlight Comment                   guifg=#BC9458 ctermfg=241 gui=italic
 highlight Constant                  guifg=#6D9CBE ctermfg=73
 highlight Define                    guifg=#CC7833 ctermfg=173
 highlight Error                     guifg=#FFC66D ctermfg=221 guibg=#990000 ctermbg=88
@@ -60,7 +60,8 @@ highlight Keyword                   guifg=#CC7833 ctermfg=173 cterm=NONE
 highlight LineNr                    guifg=#2B2B2B ctermfg=159 guibg=#C0C0FF
 highlight Number                    guifg=#A5C261 ctermfg=107
 highlight PreProc                   guifg=#E6E1DC ctermfg=103
-highlight Search                    guifg=NONE ctermfg=NONE guibg=#2b2b2b ctermbg=235 gui=italic cterm=underline
+"highlight Search                    guifg=NONE ctermfg=NONE guibg=#2b2b2b ctermbg=235 gui=italic cterm=underline
+highlight Search                    guifg=NONE ctermfg=black guibg=#2b2b2b ctermbg=94
 highlight Statement                 guifg=#CC7833 ctermfg=173 gui=NONE cterm=NONE
 highlight String                    guifg=#A5C261 ctermfg=107
 highlight Title                     guifg=#FFFFFF ctermfg=15
@@ -94,3 +95,6 @@ highlight SpellBad                  guifg=#D70000 ctermfg=160 ctermbg=NONE cterm
 highlight SpellRare                 guifg=#D75F87 ctermfg=168 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 highlight SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f ctermbg=23
+
+highlight Pmenu                     guifg=#f6f3e8 guibg=#444444 ctermfg=NONE ctermbg=234
+highlight PmenuSel                  guifg=#000000 guibg=#cae682 ctermfg=black ctermbg=107
