@@ -27,3 +27,6 @@ cp $(pwd)/$(dirname $0)/home_files/ssh_config $HOME/.ssh/config
 remove_references "$HOME/.gitconfig"
 ln -s $(pwd)/$(dirname $0)/home_files/gitconfig $HOME/.gitconfig
 
+remove_references "$HOME/.dir_colors"
+ln -s $(pwd)/$(dirname $0)/home_files/dir_colors $HOME/.dir_colors
+

@@ -33,12 +33,6 @@ alias grep="grep --color"
 # to get rid of self-assigned ip:
 # sudo ipfw -q flush
 
-#export TERM="xterm-color"
-
-#if [ `uname` == "SunOS" ]; then
-#  export TERM="dtterm"
-#fi
-
 # Environment Variables
 if [ "$TERM" = "xterm-256color" ]; then
 	export PS1="
@@ -64,7 +58,8 @@ fi
 #export LSCOLORS="GxfxcxdxBxegedfbfgGbGb"
 export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
-  alias ll='ls -l --color=auto'
+	alias ll='ls -l --color=auto'
+	eval "$(dircolors -b ~/.dir_colors)"
 fi
 export CLICOLOR="true"
 
