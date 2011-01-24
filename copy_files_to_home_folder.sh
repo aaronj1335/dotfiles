@@ -30,3 +30,6 @@ ln -s $(pwd)/$(dirname $0)/home_files/gitconfig $HOME/.gitconfig
 remove_references "$HOME/.dir_colors"
 ln -s $(pwd)/$(dirname $0)/home_files/dir_colors $HOME/.dir_colors
 
+remove_references "$HOME/.Xdefaults"
+ln -s $(pwd)/$(dirname $0)/home_files/Xdefaults $HOME/.Xdefaults
+

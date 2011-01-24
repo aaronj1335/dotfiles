@@ -1,0 +1,34 @@
+! from the template file /lusr/share/udb/pub/dotfiles/Xdefaults
+!
+! The following defaults change the behavior of clients using the
+! X libraries.
+
+/*XTerm*font: 	        9x15*/
+XTerm*Background:	black
+!XTerm*borderWidth:	2
+XTerm*BorderColor:	yellow
+XTerm*cursorColor:	white
+XTerm*visualBell:       on
+XTerm*ttyModes:		intr^cerase^hkill^ususp^z
+XTerm*Foreground:	moccasin
+XTerm*reverseWrap:	on
+XTerm*pointerColor:	yellow
+
+xclock*foreground:	turquoise
+xclock*background:	black
+xclock*border:		pink
+xclock*highlight:	gold
+xclock*hands:		yellow
+xclock*mode:		analog
+xclock*font: 		9x15
+xclock*padding:		10
+
+Emacs*Font:		9x15
+
+xman*Text.border:	Blue
+xman*foreground:	yellow
+xman*background:	Black
+xman*borderColor:	Blue
+
+xterm*visualBell: true
+xterm*audioBell: false
