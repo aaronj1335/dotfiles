@@ -133,6 +133,8 @@ if $TERM == 'xterm-256color'
 	colorscheme railscasts
 end
 
+set mouse=a
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
