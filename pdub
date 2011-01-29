@@ -32,9 +32,9 @@ fi
 pdub_vim="$(dirname $0)/pdub.vim"
 
 my_vim="vim"
-if which mvim &>/dev/null; then
-  my_vim="mvim"
-fi
+#if which mvim &>/dev/null; then
+#  my_vim="mvim"
+#fi
 
 gpg -d --passphrase $password ${pdubs_file}.gpg | \
   $my_vim -n -c "let password = \"$password\"" \
