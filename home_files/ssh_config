@@ -1,27 +1,35 @@
 Host sl
-  HostName staceserve.dyndns.org
-  User astacy
+	HostName staceserve.dyndns.org
+	User astacy
 
 Host ut1
-  HostName submerged-arc.cs.utexas.edu
-  User astacy
-  ForwardX11 yes
+	HostName cornuthaum.cs.utexas.edu
+	User astacy
+	ForwardX11 yes
 
 Host ut2
-  HostName tatarigami.cs.utexas.edu
-  User astacy
-  ForwardX11 yes
+	HostName tatarigami.cs.utexas.edu
+	User astacy
+	ForwardX11 yes
 
 Host ut3
-  HostName mondello.cs.utexas.edu
-  User astacy
-  ForwardX11 yes
+	HostName mondello.cs.utexas.edu
+	User astacy
+	ForwardX11 yes
 
 Host ashly
-  HostName mrs-stacys-macbook.local
-  User "Ashly Stacy"
-  ForwardX11 yes
+	HostName mrs-stacys-macbook.local
+	User "Ashly Stacy"
+	ForwardX11 yes
 
 Host msee140
-  HostName msee140lnx10.ecn.purdue.edu
-  User astacy
+	HostName msee140lnx10.ecn.purdue.edu
+	User astacy
+
+Host pte
+	HostName partytimeexcellent.local
+	User astacy
+
+Host long
+	HostName longhorn.tacc.utexas.edu
+	User astacy
