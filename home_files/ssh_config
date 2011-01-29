@@ -30,6 +30,6 @@ Host pte
 	HostName partytimeexcellent.local
 	User astacy
 
-Host long
+Host lon
 	HostName longhorn.tacc.utexas.edu
 	User astacy
