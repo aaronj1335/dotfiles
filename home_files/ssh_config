@@ -8,12 +8,12 @@ Host ut1
 	ForwardX11 yes
 
 Host ut2
-	HostName tatarigami.cs.utexas.edu
+	HostName stick.cs.utexas.edu
 	User astacy
 	ForwardX11 yes
 
 Host ut3
-	HostName mondello.cs.utexas.edu
+	HostName hachi.cs.utexas.edu
 	User astacy
 	ForwardX11 yes
 
@@ -32,4 +32,8 @@ Host pte
 
 Host lon
 	HostName longhorn.tacc.utexas.edu
+	User astacy
+
+Host ran
+	HostName ranger.tacc.utexas.edu
 	User astacy
