@@ -29,25 +29,25 @@ noremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
 
 " set tabs to normal for Makefiles
-au Filetype make set tabstop=4
-au Filetype make inoremap <tab> <tab>
-au Filetype make set paste
-au Filetype make set noexpandtab
+"au Filetype make set tabstop=4
+"au Filetype make inoremap <tab> <tab>
+"au Filetype make set paste
+"au Filetype make set noexpandtab
 
 " set tabs to normal for text files
-au Filetype text set tabstop=4
-au Filetype text inoremap <tab> <tab>
-au Filetype text set paste
-au Filetype text set noexpandtab
+"au Filetype text set tabstop=4
+"au Filetype text inoremap <tab> <tab>
+"au Filetype text set paste
+"au Filetype text set noexpandtab
 
 " set tab width to 4 in python
-au Filetype python set shiftwidth=4
-au Filetype python set tabstop=4
+"au Filetype python set shiftwidth=4
+"au Filetype python set tabstop=4
 
 " turn on the line number and location of the cursor as a percentage of the file
 set ruler 
 
-set history=50		" keep 50 lines of command line history
+set history=250		" keep 50 lines of command line history
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set background=dark
@@ -134,6 +134,30 @@ if $TERM == 'xterm-256color'
 end
 
 set mouse=a
+set modelines=0 " apparently this is a security hole?
+set scrolloff=2
+set ttyfast
+
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+let mapleader = ","
+set textwidth=79
+set colorcolumn=80
+
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap j gj
+nnoremap k gk
+
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+nnoremap <leader>p gqip
+vnoremap <leader>p gqip
 
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
@@ -146,7 +170,7 @@ set mouse=a
 "             so to toggle a character's case: ~
 "             to capitalize a word: wgU
 "             to lower-case a word: wgu
-" to format a long line into an organized paragraph: gql
+" to format a long line into an organized paragraph: gql, gqip for paragraph
 " to re-format windows newlines to *nix: :%s/<c-v><c-m>/\r\n/gc
 " to do a command w/o exiting insert mode: <c-o>
 " to pull a word into :ex mode (like for a search and replace): <c-r><c-w>
