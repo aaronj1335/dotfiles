@@ -99,4 +99,4 @@ highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f cterm
 highlight Pmenu                     guifg=#f6f3e8 guibg=#444444 ctermfg=NONE ctermbg=234
 highlight PmenuSel                  guifg=#000000 guibg=#cae682 ctermfg=black ctermbg=107
 
-hi ColorColumn ctermbg=232 guibg=lightgrey
+hi ColorColumn ctermbg=233 guibg=lightgrey
