@@ -214,3 +214,5 @@ hi  link csXmlTag             Keyword
 
 
 " Special for PHP
+
+hi ColorColumn ctermbg=232 guibg=#0A0A0A
