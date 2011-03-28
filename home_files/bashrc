@@ -83,6 +83,10 @@ if [ -d $HOME/local/bin ]; then
   export PATH=$HOME/local/bin:$PATH
 fi
 
+if which tabs &>/dev/null; then
+	tabs -4
+fi
+
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
