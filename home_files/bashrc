@@ -84,11 +84,17 @@ if [ -d $HOME/local/bin ]; then
 fi
 
 # add tab completion for ssh
-my_ssh_hosts="$(echo `cat ~/.ssh/known_hosts | \
-				cut -f 1 -d ' ' | \
-				sed -e s/,.*//g |\
-				uniq | \
-				grep -v "\["`;)"
+my_ssh_hosts="\
+	$(echo `cat ~/.ssh/known_hosts | \
+	  cut -f 1 -d ' ' | \
+	  sed -e s/,.*//g |\
+	  uniq | \
+	  grep -v "\["`;)"
+
+my_ssh_hosts="$my_ssh_hosts \
+	$(egrep -i "Host[[:space:]]" $HOME/.ssh/config | \
+	  cut -d' ' -f2)"
+
 complete -W "$my_ssh_hosts" ssh
 
 # set tab width to 4 (useful when you're running "cat" on a file)
