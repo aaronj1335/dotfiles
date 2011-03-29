@@ -83,6 +83,14 @@ if [ -d $HOME/local/bin ]; then
   export PATH=$HOME/local/bin:$PATH
 fi
 
+# add tab completion for ssh
+my_ssh_hosts="$(echo `cat ~/.ssh/known_hosts | \
+				cut -f 1 -d ' ' | \
+				sed -e s/,.*//g |\
+				uniq | \
+				grep -v "\["`;)"
+complete -W "$my_ssh_hosts" ssh
+
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
