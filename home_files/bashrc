@@ -91,6 +91,11 @@ my_ssh_hosts="$(echo `cat ~/.ssh/known_hosts | \
 				grep -v "\["`;)"
 complete -W "$my_ssh_hosts" ssh
 
+# set tab width to 4 (useful when you're running "cat" on a file)
+if which tabs &>/dev/null; then
+	tabs -4
+fi
+
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
