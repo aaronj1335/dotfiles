@@ -161,6 +161,11 @@ vnoremap <F1> <ESC>
 nnoremap <leader>p gqip
 vnoremap <leader>p gqip
 
+if has("clipboard")
+	vnoremap <leader>y "*y
+	nnoremap <leader>p "*p
+end
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
