@@ -1,5 +1,9 @@
 " Aaron Stacy's .vimrc file
 
+filetype off
+call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -130,9 +134,7 @@ end
 let g:netrw_liststyle=3
 
 if $TERM == 'xterm-256color'
-	if exists("##railscasts")
-		colorscheme railscasts
-	end
+	colorscheme railscasts
 end
 
 set mouse=a
