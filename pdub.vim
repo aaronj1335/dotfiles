@@ -3,4 +3,6 @@ function EncryptAndExit(password, filename)
   quit!
 endfunction
 
+set ft=javascript
+
 cmap wq<CR> :call<SPACE>EncryptAndExit(password,<SPACE>filename)<CR>
