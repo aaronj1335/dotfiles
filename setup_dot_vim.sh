@@ -25,11 +25,24 @@ bundles="`ssh ${ss} ls repositories | \
 		  grep -v pathogen | \
 		  tr '\n' ' '`"
 
+bundles="`ssh ${ss} \"ls repositories/vim-*/config; \
+		  ls repositories/vim-*/.hg/hgrc \"`"
+echo $bundles
+
 for b in $bundles; do
-	if [ -d ~/.vim/bundle/$b ]; then
-		echo "Pulling $b"
-		( cd ~/.vim/bundle/$b && git pull )
+	# each repo is named "vim-<something>" -- store that in $name
+	name=`echo $b | egrep -o "repositories/vim-[^/]*" | egrep -o "vim-.*"`
+	
+	# now set $prog to either git or hg
+	prog=git
+	if [ "`basename $b`" = "hgrc" ]; then
+		prog=hg
+	fi
+
+	if [ -d ~/.vim/bundle/$name ]; then
+		echo "Pulling $name"
+		( cd ~/.vim/bundle/$name && $prog pull )
 	else
-		git clone ssh://${ss}/~/repositories/$b ~/.vim/bundle/$b
+		$prog clone ssh://${ss}/~/repositories/$name ~/.vim/bundle/$name
 	fi
 done
