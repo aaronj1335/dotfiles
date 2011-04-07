@@ -2,7 +2,6 @@
 
 filetype off
 call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -78,9 +77,6 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
@@ -90,6 +86,8 @@ if has("autocmd")
     \ endif
 
   augroup END
+
+  autocmd BufNewFile,BufRead *.json set ft=javascript
 
 else
 
@@ -170,6 +168,8 @@ if has("clipboard")
 	nnoremap <leader>p "*p
 end
 
+nnoremap <leader>b <c-^>
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
@@ -189,4 +189,4 @@ end
 " show current file: <c-g>
 " get the name of the current file :! echo %
 " execute a command and paste the output into vim :r ! ls -la
-
+" go back to the previous buffer
