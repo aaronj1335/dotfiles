@@ -37,3 +37,16 @@ Host lon
 Host ran
 	HostName ranger.tacc.utexas.edu
 	User astacy
+
+Host aa
+	HostName appapp141
+	User root
+
+Host ab
+	HostName appapp142
+	User root
+
+Host ac
+	HostName appapp143
+	User root
+
