@@ -18,15 +18,17 @@ fi
 
 [ -f "$HOME/.ssh-agent" ] && . $HOME/.ssh-agent
 
-[ -d $HOME/downfrom-jmake/bin ] && export PATH="${PATH}:$HOME/downfrom-jmake/bin"
+[ -d $HOME/downfrom-jmake/bin ] && \
+	export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
 [ -d /usr/local/mysql/bin ] && export PATH="$PATH:/usr/local/mysql/bin"
-
-#export PATH="/System/Library/Frameworks/Python.framework/Versions/2.6/bin:$PATH"
 
 [ -d /usr/local/sbin ] && export PATH="$PATH:/usr/local/sbin"
 
 [ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
+
+[ -d $HOME/repositories/storediq/bin ] && \
+	export PATH="$PATH:$HOME/repositories/storediq/bin"
 
 alias l='ls '
 alias ll='ls -l'
