@@ -26,6 +26,8 @@ fi
 
 [ -d /usr/local/sbin ] && export PATH="$PATH:/usr/local/sbin"
 
+[ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
+
 alias l='ls '
 alias ll='ls -l'
 alias grep="grep --color"
