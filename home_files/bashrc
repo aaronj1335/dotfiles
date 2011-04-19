@@ -27,8 +27,8 @@ fi
 
 [ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
 
-[ -d $HOME/repositories/storediq/bin ] && \
-	export PATH="$PATH:$HOME/repositories/storediq/bin"
+[ -d $HOME/repositories/siq/bin ] && \
+	export PATH="$PATH:$HOME/repositories/siq/bin"
 
 alias l='ls '
 alias ll='ls -l'
