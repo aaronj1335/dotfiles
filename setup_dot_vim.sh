@@ -44,5 +44,9 @@ for b in $bundles; do
 		( cd ~/.vim/bundle/$name && $prog pull )
 	else
 		$prog clone ssh://${ss}/~/repositories/$name ~/.vim/bundle/$name
+
+		if [ "$name" = "vim-command-t" ]; then
+			( cd ~/.vim/bundle/$name && rake make )
+		fi
 	fi
 done

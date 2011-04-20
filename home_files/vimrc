@@ -170,6 +170,15 @@ end
 
 nnoremap <leader>b <c-^>
 
+if strlen(@%) == 0 && filereadable("Session.vim")
+	silent source Session.vim
+end
+
+let g:CommandTSelectNextMap='<tab>'
+let g:CommandTSelectPrevMap='<s-tab>'
+let g:CommandTAcceptSelectionMap='<s-cr>'
+let g:CommandTAcceptSelectionSplitMap='<cr>'
+
 "if has("python")
 "  autocmd FileType html map ,b :python makeBold()
 "  pyfile .vimpythonrc
