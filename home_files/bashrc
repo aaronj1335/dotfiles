@@ -98,9 +98,11 @@ my_ssh_hosts="$my_ssh_hosts \
 complete -W "$my_ssh_hosts" ssh
 
 # set tab width to 4 (useful when you're running "cat" on a file)
-if which tabs &>/dev/null; then
-	tabs -4
-fi
+#if which tabs &>/dev/null; then
+#    tabs -4
+#fi
+
+export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
 
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
