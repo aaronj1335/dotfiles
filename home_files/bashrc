@@ -40,12 +40,12 @@ alias grep="grep --color"
 # Environment Variables
 if [ "$TERM" = "xterm-256color" ]; then
 	export PS1="
-\[\e[38;5;247m\]\u\[\e[38;5;87m\]@\[\e[38;5;247m\]\h\[\e[38;5;87m\]:\[\e[38;5;255m\]\w     \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%d-%b}\[\e[0;1m\] 
+\[\e[38;5;247m\]\u\[\e[38;5;87m\]@\[\e[38;5;247m\]\h\[\e[38;5;87m\]:\[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%d-%b}\[\e[0;1m\] 
 \[\e[38;5;87m\]$\[\e[0m\] "
 else
 	export PS1="
-\[\e[38;5;195m\]\u\[\e[38;5;196m\]@\[\e[32m\]\h\[\e[33m\]:\w     \[\e[35m\]\T \[\e[31m\]\D{%d-%b}\[\e[0;1m\] 
-$\[\e[0m\] "
+\[\e[36;1m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w  \[\e[35m\]\T\[\e[31m\]\D{%d-%b-%Y}\[\e[0;1m\] 
+>>\[\e[0m\] "
 fi
 export SHELL=${SHELL:-${BASH:-/bin/bash}}
 export EDITOR=vim
