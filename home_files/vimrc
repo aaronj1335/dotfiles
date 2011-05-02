@@ -183,6 +183,7 @@ let g:CommandTSelectNextMap='<tab>'
 let g:CommandTSelectPrevMap='<s-tab>'
 let g:CommandTAcceptSelectionMap='<s-cr>'
 let g:CommandTAcceptSelectionSplitMap='<cr>'
+let g:CommandTMatchWindowAtTop=1
 
 set wildignore+=*.o,*.obj,.git,*CVS
 
