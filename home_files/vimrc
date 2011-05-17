@@ -2,6 +2,7 @@
 
 filetype off
 call pathogen#runtime_append_all_bundles()
+filetype on
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -23,6 +24,7 @@ set tabstop=4
 "set expandtab
 
 inoremap <TAB> <C-P>
+"inoremap <TAB> <C-X><C-O>
 
 " Press space to clear search highlighting and any message already displayed.
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
@@ -107,7 +109,7 @@ set mousemodel=extend
 
 " handy if you crash w/ a bunch of open vim's, just recover the file and then
 " type :DiffOrig
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
         \ | wincmd p | diffthis
 
 " if the file starts w/ "#!" and "/bin/", automatically make it executable
@@ -207,3 +209,13 @@ set wildignore+=*.o,*.obj,.git,*CVS
 " get the name of the current file :! echo %
 " execute a command and paste the output into vim :r ! ls -la
 " go back to the previous buffer
+
+call ucompleteme#Setup()
+
+function! MarkdownPreview()
+	w! /tmp/vim_markdown_preview.html
+	!markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
+	!mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
+	!open /tmp/vim_markdown_preview.html
+endfunction
+au Filetype markdown nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
