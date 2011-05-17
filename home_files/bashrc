@@ -27,6 +27,9 @@ fi
 
 [ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
 
+[ -d /Library/PostgreSQL/8.3/bin/ ] && \
+	export PATH="$PATH:/Library/PostgreSQL/8.3/bin"
+
 [ -d $HOME/repositories/siq/bin ] && \
 	export PATH="$PATH:$HOME/repositories/siq/bin"
 
@@ -69,6 +72,10 @@ if [ -f ~/.pythonrc ]; then
   export PYTHONSTARTUP="$HOME/.pythonrc"
 fi
 
+# check for bash completion on mac os x
+[ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
+
+# and my own copy of git bash completion
 [ -f "$HOME/bin/git-completion.sh" ] && source "$HOME/bin/git-completion.sh"
 
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
@@ -83,19 +90,19 @@ if [ -d $HOME/local/bin ]; then
   export PATH=$HOME/local/bin:$PATH
 fi
 
-# add tab completion for ssh
-my_ssh_hosts="\
-	$(echo `cat ~/.ssh/known_hosts | \
-	  cut -f 1 -d ' ' | \
-	  sed -e s/,.*//g |\
-	  uniq | \
-	  grep -v "\["`;)"
+# add tab completion for ssh -- this is taken care of w/ bash completion now
+#my_ssh_hosts="\
+#    $(echo `cat ~/.ssh/known_hosts | \
+#      cut -f 1 -d ' ' | \
+#      sed -e s/,.*//g |\
+#      uniq | \
+#      grep -v "\["`;)"
 
-my_ssh_hosts="$my_ssh_hosts \
-	$(egrep -i "Host[[:space:]]" $HOME/.ssh/config | \
-	  cut -d' ' -f2)"
+#my_ssh_hosts="$my_ssh_hosts \
+#    $(egrep -i "Host[[:space:]]" $HOME/.ssh/config | \
+#      cut -d' ' -f2)"
 
-complete -W "$my_ssh_hosts" ssh
+#complete -W "$my_ssh_hosts" ssh
 
 # set tab width to 4 (useful when you're running "cat" on a file)
 #if which tabs &>/dev/null; then
