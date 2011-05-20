@@ -113,6 +113,10 @@ fi
 
 export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
 
+# okay -- i'm gonna try this...
+[ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] && 
+	alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
 ########################################################################
