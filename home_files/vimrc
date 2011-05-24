@@ -1,7 +1,7 @@
 " Aaron Stacy's .vimrc file
 
 filetype off
-call pathogen#runtime_append_all_bundles()
+silent call pathogen#runtime_append_all_bundles()
 filetype on
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -209,13 +209,29 @@ set wildignore+=*.o,*.obj,.git,*CVS
 " get the name of the current file :! echo %
 " execute a command and paste the output into vim :r ! ls -la
 " go back to the previous buffer
+"
+" building macvim:
+"	- first deactivate libiconv: "sudo port deactivate libiconv"
+"	- configuration cmd: ./configure --enable-gui=macvim --with-features=huge
+"		--enable-rubyinterp --enable-pythoninterp --enable-perlinterp
+"		--with-python-config-dir=/Library/Frameworks/Python.framework/Versions/
+"		2.7/lib/python2.7/config/config --enable-cscope
+"	- make then choked when it got to something where it needed to 'curl' an
+"	  icon.  this is b/c curl (macports tool) failed w/o libiconv.  at this
+"	  point i just re-activated libiconv: "sudo port activate libiconv"
+"	- i also needed to edit the Makefile in the MacVim/icons directory b/c the
+"	  URL for the EnvyCodeR font was wrong.  i put in the correct url and the
+"	  build finally succeeded
+"	- i also downloaded the better macvim icon, converted it to a *.rsrc file
+"	  w/ icns2rsrc.app, and then ran cmd-i on both the icon and macvim, and
+"	  pasted the icnon's icon on the macvim info window
 
-call ucompleteme#Setup()
+silent call ucompleteme#Setup()
 
 function! MarkdownPreview()
-	w! /tmp/vim_markdown_preview.html
-	!markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
-	!mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
-	!open /tmp/vim_markdown_preview.html
+	silent w! /tmp/vim_markdown_preview.html
+	silent !markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
+	silent !mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
+	silent !open /tmp/vim_markdown_preview.html
 endfunction
 au Filetype markdown nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>

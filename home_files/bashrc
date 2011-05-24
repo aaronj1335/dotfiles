@@ -33,6 +33,8 @@ fi
 [ -d $HOME/repositories/siq/bin ] && \
 	export PATH="$PATH:$HOME/repositories/siq/bin"
 
+[ -d $HOME/repositories/pdub ] && export PATH="$PATH:$HOME/repositories/pdub"
+
 alias l='ls '
 alias ll='ls -l'
 alias grep="grep --color"
@@ -110,6 +112,10 @@ fi
 #fi
 
 export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
+
+# okay -- i'm gonna try this...
+[ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] && 
+	alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
