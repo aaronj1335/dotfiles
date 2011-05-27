@@ -168,7 +168,12 @@ vnoremap <leader>p gqip
 
 if has("clipboard")
 	vnoremap <leader>y "*y
+	nnoremap <leader>y "*yy
 	nnoremap <leader>p "*p
+
+	nnoremap <leader>f :call setreg('*', @%)<cr>
+else
+	nnoremap <leader>f :call setreg('.', @%)<cr>
 end
 
 nnoremap <leader>b <c-^>
