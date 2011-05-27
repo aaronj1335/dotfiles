@@ -134,11 +134,11 @@ end
 let g:netrw_liststyle=3
 
 if $TERM == 'xterm-256color'
-	"colorscheme railscasts
-	colorscheme solarized
+	colorscheme railscasts
+	"colorscheme solarized
 end
 
-set mouse=a
+"set mouse=a
 set modelines=0 " apparently this is a security hole?
 set scrolloff=2
 set ttyfast
