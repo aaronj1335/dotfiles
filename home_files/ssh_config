@@ -50,3 +50,11 @@ Host ac
 	HostName appapp143
 	User root
 
+Host janos
+	HostName janos-davincimr3
+	User root
+
+Host ad
+	HostName vmapp136
+	User root
+
