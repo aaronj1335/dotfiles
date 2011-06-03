@@ -1,23 +1,13 @@
+# the alleged .bashrc file of one aaron r. stacy
+
+
+
+# first of all...
 alias yo="echo 'screw you i am not a morning person'"
-if [[ `uname` == "Darwin" && `whoami` == "astacy" ]]; then
 
-  # Aliases
-  #alias keyon="ssh-add -t 30800"
-  #alias keyon="ssh-add"
-  #alias keyoff='ssh-add -D'
-  #alias keylist='ssh-add -l'
-  #alias pp='ps -jAc'
 
-  #if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
-  #  export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
-  #fi
 
-  [ -d $HOME/.cabal/bin ] && export PATH="${PATH}:$HOME/.cabal/bin"
-
-fi
-
-[ -f "$HOME/.ssh-agent" ] && . $HOME/.ssh-agent
-
+### wranging the path into submission ###
 [ -d $HOME/downfrom-jmake/bin ] && \
 	export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
@@ -35,14 +25,23 @@ fi
 
 [ -d $HOME/repositories/pdub ] && export PATH="$PATH:$HOME/repositories/pdub"
 
+[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+
+
+
+### the arbitrary and entirely personal aliases ###
 alias l='ls '
 alias ll='ls -l'
 alias grep="grep --color"
 
-# to get rid of self-assigned ip:
-# sudo ipfw -q flush
+# one vim to find them, one vim to rule them all...
+[ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] && 
+	alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
-# Environment Variables
+
+
+### other various exports ###
+export EDITOR=vim # this is most important...
 if [ "$TERM" = "xterm-256color" ]; then
 	export PS1="
 \[\e[38;5;247m\]\u\[\e[38;5;87m\]@\[\e[38;5;247m\]\h\[\e[38;5;87m\]:\[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%d-%b}\[\e[0;1m\] 
@@ -52,15 +51,9 @@ else
 \[\e[36;1m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w  \[\e[35m\]\T\[\e[31m\]\D{%d-%b-%Y}\[\e[0;1m\] 
 >>\[\e[0m\] "
 fi
-export SHELL=${SHELL:-${BASH:-/bin/bash}}
-export EDITOR=vim
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
-# 1. directories are bold cyan
-# 5. executables are red
-# 10. and 11. directories that are writable to others are still bolyd cyan,
-#             but they have a red background
-#export LSCOLORS="GxfxcxdxBxegedfbfgGbGb"
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+
 export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
 	alias ll='ls -l --color=auto'
@@ -70,10 +63,9 @@ export CLICOLOR="true"
 
 set -o emacs
 
-if [ -f ~/.pythonrc ]; then
-  export PYTHONSTARTUP="$HOME/.pythonrc"
-fi
 
+
+### tab completion is empirically the best part of unix ###
 # check for bash completion on mac os x
 [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
 
@@ -85,42 +77,27 @@ fi
 [ -f "$HOME/bin/npm-completion.sh" ] && which npm &>/dev/null && \
 	source "$HOME/bin/npm-completion.sh"
 
-[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+# and this is where i set up tab completion for python
+[ -f ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
-# check if we're on a UT CS machine
-if [ -d $HOME/CS395T/bin ]; then
-  export PATH=$HOME/CS395T/bin:$PATH
-fi
+# finally tell bash not to include CVS in the possible completions (b/c it sux)
+export FIGNORE="$FIGNORE:CVS"
 
-# add my own local directory if needed
-if [ -d $HOME/local/bin ]; then
-  export PATH=$HOME/local/bin:$PATH
-fi
 
-# add tab completion for ssh -- this is taken care of w/ bash completion now
-#my_ssh_hosts="\
-#    $(echo `cat ~/.ssh/known_hosts | \
-#      cut -f 1 -d ' ' | \
-#      sed -e s/,.*//g |\
-#      uniq | \
-#      grep -v "\["`;)"
 
-#my_ssh_hosts="$my_ssh_hosts \
-#    $(egrep -i "Host[[:space:]]" $HOME/.ssh/config | \
-#      cut -d' ' -f2)"
+### the ever-loathsome CVS, and a spot of miscellany ###
+export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
 
-#complete -W "$my_ssh_hosts" ssh
-
-# set tab width to 4 (useful when you're running "cat" on a file)
+# set tab width to 4 (useful when you're running "cat" on a file), but it makes
+# things all screwy when you ssh somewhere
 #if which tabs &>/dev/null; then
 #    tabs -4
 #fi
 
-export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
 
-# okay -- i'm gonna try this...
-[ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] && 
-	alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
+### and the ever stalwart ssh-agent ###
+[ -f "$HOME/.ssh-agent" ] && . $HOME/.ssh-agent
 
 ########################################################################
 ############       At-Work ssh-agent setup               ###############
