@@ -1,11 +1,12 @@
 #!/usr/bin/osascript
 
-tell application "Google Chrome"
+--tell application "Google Chrome"
+tell application "Google Chrome Canary"
 	activate
 end tell
 
 tell application "System Events"
-	tell process "Google Chrome"
+	tell process "Google Chrome Canary"
 		tell menu bar 1
 			tell menu bar item "File"
 				tell menu "File"
