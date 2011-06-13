@@ -25,14 +25,3 @@ fi
 	-c "Merge '$tmp_file' :CFBundleURLTypes" \
 	"/Applications/Google Chrome Canary.app/Contents/Info.plist"
 
-/usr/libexec/PlistBuddy \
-	-c "Merge '$tmp_file' :CFBundleURLTypes" \
-	"/Applications/Google Chrome.app/Contents/Info.plist"
-
-mv 	"/Applications/Google Chrome Canary.app" ~/Desktop/
-mv 	"/Applications/Google Chrome.app" ~/Desktop/
-
-sleep 2
-
-mv 	~/Desktop/Google\ Chrome\ Canary.app /Applications/
-mv 	~/Desktop/Google\ Chrome.app /Applications/
