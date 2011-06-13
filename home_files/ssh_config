@@ -58,3 +58,5 @@ Host ad
 	HostName vmapp136
 	User root
 
+Host devnode05
+	User root
