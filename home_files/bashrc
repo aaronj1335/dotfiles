@@ -48,8 +48,6 @@ if [ "$TERM" = "xterm-256color" ]; then
 \[\e[38;5;87m\]$\[\e[0m\] "
 else
 	export PS1="\[\033[0m\][\[\033[36m\]\u@\h\[\033[32m\]\w\[\033[0m\]]\n\[\033[31m\]\$ \[\033[0m\]"
-\[\e[36;1m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w  \[\e[35m\]\T\[\e[31m\]\D{%d-%b-%Y}\[\e[0;1m\] 
->>\[\e[0m\] "
 fi
 
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
