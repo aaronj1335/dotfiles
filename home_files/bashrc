@@ -40,6 +40,7 @@ alias grep="grep --color"
 
 
 
+
 ### other various exports ###
 export EDITOR=vim # this is most important...
 if [ "$TERM" = "xterm-256color" ]; then
@@ -94,6 +95,15 @@ export FIGNORE="$FIGNORE:CVS"
 
 ### the ever-loathsome CVS, and a spot of miscellany ###
 export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
+
+# lifted these from @zeeg
+function pyfind() {
+	x=`python -c "import $1; print $1.__file__" | sed 's/\.pyc$/\.py/'`
+	if [ $? -ne 0 ]; then 
+		exit $?
+	fi
+	grep -q "__init__.py$" <<< $x && echo `dirname $x` || echo $x
+}
 
 # set tab width to 4 (useful when you're running "cat" on a file), but it makes
 # things all screwy when you ssh somewhere
