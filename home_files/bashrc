@@ -67,13 +67,22 @@ set -o emacs
 # check for bash completion on mac os x
 [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
 
-# and my own copy of git bash completion
-[ -f "$HOME/bin/git-completion.sh" ] && which git &>/dev/null && \
-	source "$HOME/bin/git-completion.sh"
+# and my own copy of git bash completion (in order of precedence)
+potention_locations="
+/opt/local/share/doc/git-core/contrib/completion/git-completion.bash
+$HOME/bin/home_files/git-completion.bash"
+if which git &>/dev/null; then
+	for f in $potention_locations; do
+		if [ -f "$f" ]; then
+			source "$f"
+			break
+		fi
+	done
+fi
 
 # and the npm completion
-[ -f "$HOME/bin/npm-completion.sh" ] && which npm &>/dev/null && \
-	source "$HOME/bin/npm-completion.sh"
+[ -f "$HOME/bin/home/files/npm-completion.bash" ] && which npm &>/dev/null && \
+	source "$HOME/bin/home_files/npm-completion.bash"
 
 # and this is where i set up tab completion for python
 [ -f ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
