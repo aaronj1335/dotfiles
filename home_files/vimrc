@@ -180,14 +180,6 @@ end
 
 nnoremap <leader>b <c-^>
 
-if strlen(@%) == 0 && filereadable("Session.vim")
-	silent source Session.vim
-end
-
-if filereadable("Project.vim")
-	silent source Project.vim
-end
-
 let g:CommandTSelectNextMap='<tab>'
 let g:CommandTSelectPrevMap='<s-tab>'
 let g:CommandTAcceptSelectionMap='<s-cr>'
@@ -196,10 +188,33 @@ let g:CommandTMatchWindowAtTop=1
 
 set wildignore+=*.o,*.obj,.git,*CVS
 
-"if has("python")
-"  autocmd FileType html map ,b :python makeBold()
-"  pyfile .vimpythonrc
-"end
+silent call ucompleteme#Setup()
+
+function! MarkdownPreview()
+	silent w! /tmp/vim_markdown_preview.html
+	silent !markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
+	silent !mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
+	silent !open /tmp/vim_markdown_preview.html
+endfunction
+au Filetype markdown nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
+
+function! OpenTray(...)
+	if len(a:000) > 0
+		execute 'vsplit ' . a:000[0]
+	else
+		vsplit .
+	endif
+	vertical resize 25
+endfunction
+
+com! -nargs=? -complete=dir Tray call OpenTray(<f-args>)
+if filereadable("Project.vim")
+	silent source Project.vim
+end
+
+if strlen(@%) == 0 && filereadable("Session.vim")
+	silent source Session.vim
+end
 
 " some tips:
 " increment/decrement a number: <c-a>/<c-x>
@@ -233,23 +248,3 @@ set wildignore+=*.o,*.obj,.git,*CVS
 "	  w/ icns2rsrc.app, and then ran cmd-i on both the icon and macvim, and
 "	  pasted the icnon's icon on the macvim info window
 
-silent call ucompleteme#Setup()
-
-function! MarkdownPreview()
-	silent w! /tmp/vim_markdown_preview.html
-	silent !markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
-	silent !mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
-	silent !open /tmp/vim_markdown_preview.html
-endfunction
-au Filetype markdown nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
-
-function! OpenTray(...)
-	if len(a:000) > 0
-		execute 'vsplit ' . a:000[0]
-	else
-		vsplit .
-	endif
-	vertical resize 25
-endfunction
-
-com! -nargs=? -complete=dir Tray call OpenTray(<f-args>)
