@@ -58,5 +58,14 @@ Host ad
 	HostName vmapp136
 	User root
 
+Host ae
+	HostName appapp222
+	User root
+
 Host devnode05
 	User root
+
+Host merge
+	HostName mergeslave1.storediq.com
+	User root
+
