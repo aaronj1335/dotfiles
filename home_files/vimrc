@@ -216,6 +216,12 @@ if strlen(@%) == 0 && filereadable("Session.vim")
 	silent source Session.vim
 end
 
+" handy print statement shortcuts
+au BufNewFile,BufRead *.js nnoremap <leader>l oconsole.log();<esc>hi
+au BufNewFile,BufRead *.js nnoremap <leader><s-l> Oconsole.log();<esc>hi
+au BufNewFile,BufRead *.py nnoremap <leader>l oprint<space><space><esc>ha
+au BufNewFile,BufRead *.py nnoremap <leader><s-l> Oprint<space><space><esc>ha
+
 " some tips:
 " increment/decrement a number: <c-a>/<c-x>
 " capitalize: gU
