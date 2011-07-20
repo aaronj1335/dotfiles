@@ -1,1 +1,2 @@
 --type-set=cheetah=.tmpl
+--ignore-dir="Session.vim"
