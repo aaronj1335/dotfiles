@@ -34,10 +34,6 @@ alias l='ls '
 alias ll='ls -l'
 alias grep="grep --color"
 
-# one vim to find them, one vim to rule them all...
-[ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] && 
-	alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-
 
 
 
