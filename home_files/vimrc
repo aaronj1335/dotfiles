@@ -239,7 +239,7 @@ au BufNewFile,BufRead *.py nnoremap <leader><s-l> Oprint<space><space><esc>ha
 " go back to the previous buffer
 "
 " building macvim:
-"	- first deactivate libiconv: "sudo port deactivate libiconv"
+"	- first deactivate libiconv: "sudo port deactivate -f libiconv"
 "	- configuration cmd: ./configure --enable-gui=macvim --with-features=huge
 "		--enable-rubyinterp --enable-pythoninterp --enable-perlinterp
 "		--with-python-config-dir=/Library/Frameworks/Python.framework/Versions/
@@ -250,7 +250,8 @@ au BufNewFile,BufRead *.py nnoremap <leader><s-l> Oprint<space><space><esc>ha
 "	- i also needed to edit the Makefile in the MacVim/icons directory b/c the
 "	  URL for the EnvyCodeR font was wrong.  i put in the correct url and the
 "	  build finally succeeded
-"	- i also downloaded the better macvim icon, converted it to a *.rsrc file
-"	  w/ icns2rsrc.app, and then ran cmd-i on both the icon and macvim, and
-"	  pasted the icnon's icon on the macvim info window
-
+"	- i also downloaded the better macvim icon from here:
+"		http://dribbble.com/shots/121306-MacVim-Replacement-Icon
+"	  and then i opened it in finder, selected the image w/ cmd-a, then copied
+"	  it w/ cmd-c, then in the info window for the the macvim app, i clicked
+"	  the icon and pressed cmd-v
