@@ -20,10 +20,10 @@ alias yo="echo 'screw you i am not a morning person'"
 [ -d /Library/PostgreSQL/8.3/bin/ ] && \
 	export PATH="$PATH:/Library/PostgreSQL/8.3/bin"
 
-[ -d $HOME/repositories/siq/bin ] && \
-	export PATH="$PATH:$HOME/repositories/siq/bin"
+[ -d $HOME/code/siq/bin ] && \
+	export PATH="$PATH:$HOME/code/siq/bin"
 
-[ -d $HOME/repositories/pdub ] && export PATH="$PATH:$HOME/repositories/pdub"
+[ -d $HOME/code/pdub ] && export PATH="$PATH:$HOME/code/pdub"
 
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 
