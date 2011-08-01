@@ -69,3 +69,6 @@ Host merge
 	HostName mergeslave1.storediq.com
 	User root
 
+Host a
+ 	HostName appapp140
+ 	User root
