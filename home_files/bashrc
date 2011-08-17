@@ -13,9 +13,9 @@ alias yo="echo 'screw you i am not a morning person'"
 
 [ -d /usr/local/mysql/bin ] && export PATH="$PATH:/usr/local/mysql/bin"
 
-[ -d /usr/local/sbin ] && export PATH="$PATH:/usr/local/sbin"
-
 [ -d /sbin ] && export PATH="$PATH:/sbin"
+[ -d /usr/sbin ] && export PATH="$PATH:/usr/sbin"
+[ -d /usr/local/sbin ] && export PATH="$PATH:/usr/local/sbin"
 
 [ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
 
