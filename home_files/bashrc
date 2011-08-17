@@ -15,6 +15,8 @@ alias yo="echo 'screw you i am not a morning person'"
 
 [ -d /usr/local/sbin ] && export PATH="$PATH:/usr/local/sbin"
 
+[ -d /sbin ] && export PATH="$PATH:/sbin"
+
 [ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
 
 [ -d /Library/PostgreSQL/8.3/bin/ ] && \
