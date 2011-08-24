@@ -84,7 +84,7 @@ if which git &>/dev/null; then
 fi
 
 # and the npm completion
-[ -f "$HOME/bin/home/files/npm-completion.bash" ] && which npm &>/dev/null && \
+[ -f "$HOME/bin/home_files/npm-completion.bash" ] && which npm &>/dev/null && \
 	source "$HOME/bin/home_files/npm-completion.bash"
 
 # and this is where i set up tab completion for python
