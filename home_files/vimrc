@@ -188,8 +188,6 @@ let g:CommandTMatchWindowAtTop=1
 
 set wildignore+=*.o,*.obj,.git,*CVS
 
-silent call ucompleteme#Setup()
-
 function! MarkdownPreview()
 	silent w! /tmp/vim_markdown_preview.html
 	silent !markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
