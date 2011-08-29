@@ -220,6 +220,9 @@ au BufNewFile,BufRead *.js nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>h
 au BufNewFile,BufRead *.py nnoremap <buffer> <leader>l oprint<space><space><esc>ha
 au BufNewFile,BufRead *.py nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 
+" disable line wrap for quickfix window
+au BufReadPost quickfix setlocal nowrap
+
 " some tips:
 " increment/decrement a number: <c-a>/<c-x>
 " capitalize: gU
