@@ -7,7 +7,7 @@ alias yo="echo 'screw you i am not a morning person'"
 
 
 
-### wranging the path into submission ###
+### wrangling the path into submission ###
 [ -d $HOME/downfrom-jmake/bin ] && \
 	export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
@@ -28,6 +28,9 @@ alias yo="echo 'screw you i am not a morning person'"
 [ -d $HOME/code/pdub ] && export PATH="$PATH:$HOME/code/pdub"
 
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+
+[ -d /usr/local/lib/node_modules ] && \
+	export NODE_PATH="$NODE_PATH:/usr/local/lib/node_modules"
 
 
 
