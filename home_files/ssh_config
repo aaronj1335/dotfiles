@@ -39,15 +39,15 @@ Host ran
 	User astacy
 
 Host aa
-	HostName appapp141
+	HostName appapp141.storediq.com
 	User root
 
 Host ab
-	HostName appapp142
+	HostName appapp142.storediq.com
 	User root
 
 Host ac
-	HostName appapp143
+	HostName appapp143.storediq.com
 	User root
 
 Host janos
@@ -55,11 +55,11 @@ Host janos
 	User root
 
 Host ad
-	HostName vmapp136
+	HostName vmapp136.storediq.com
 	User root
 
 Host ae
-	HostName appapp222
+	HostName appapp222.storediq.com
 	User root
 
 Host devnode05
@@ -70,5 +70,5 @@ Host merge
 	User root
 
 Host a
- 	HostName appapp140
+ 	HostName appapp140.storediq.com
  	User root
