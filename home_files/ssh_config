@@ -27,7 +27,7 @@ Host msee140
 	User astacy
 
 Host pte
-	HostName partytimeexcellent.local
+	HostName staceserve.dyndns.org
 	User astacy
 
 Host lon
