@@ -46,8 +46,7 @@ inoremap <F5> <C-R>=strftime("%c")<CR>
 "au Filetype text set noexpandtab
 
 " set tab width to 4 in python
-"au Filetype python set shiftwidth=4
-"au Filetype python set tabstop=4
+au Filetype python set expandtab
 
 " turn on the line number and location of the cursor as a percentage of the file
 set ruler 
