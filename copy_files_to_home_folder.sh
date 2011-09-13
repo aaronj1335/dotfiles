@@ -15,7 +15,8 @@ fi
 remove_references "$HOME/.ssh/config"
 cp $home_files_dir/ssh_config $HOME/.ssh/config
 
-for i in bashrc vimrc gvimrc pythonrc gitconfig dir_colors Xdefaults ackrc; do
+for i in bashrc vimrc gvimrc pythonrc gitconfig dir_colors Xdefaults ackrc \
+    gitignore_global; do
 	remove_references "$HOME/.${i}"
 	ln -s $home_files_dir/${i} $HOME/.${i}
 
