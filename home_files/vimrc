@@ -21,7 +21,7 @@ set vb
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
-"set expandtab
+set expandtab
 
 inoremap <TAB> <C-P>
 "inoremap <TAB> <C-X><C-O>
@@ -34,10 +34,7 @@ noremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
 
 " set tabs to normal for Makefiles
-"au Filetype make set tabstop=4
-"au Filetype make inoremap <tab> <tab>
-"au Filetype make set paste
-"au Filetype make set noexpandtab
+au Filetype make set noexpandtab
 
 " set tabs to normal for text files
 "au Filetype text set tabstop=4
