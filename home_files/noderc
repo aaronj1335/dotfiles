@@ -1,0 +1,26 @@
+var fs = require('fs'),
+    path = require('path')
+    vm = require('vm');
+
+var stup = path.join(process.env.HOME, '.node_history');
+path.exists(stup, function(exists) {
+  if (exists) {
+    fs.readFile(stup, 'utf8', function(err, data) {
+      if (err) {
+        throw err;
+      } else {
+        module.exports.repl.rli.history = data.split('\n').reverse();
+      }
+    });
+  } else {
+    console.error('startup file does not exist:', stup);
+  }
+
+  module.exports.repl.rli.addListener('close', function() {
+    var s = module.exports.repl.rli.history.reverse().join('\n');
+    fs.writeFile(stup, s, function(e) {
+      if (e) throw e;
+    });
+  });
+
+});
