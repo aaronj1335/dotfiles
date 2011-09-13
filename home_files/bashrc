@@ -100,6 +100,9 @@ fi
 # finally tell bash not to include CVS in the possible completions (b/c it sux)
 export FIGNORE="$FIGNORE:CVS"
 
+# and my BALLER hack to node.js...
+[ -f ~/.noderc ] && export NODE_STARTUP="$HOME/.noderc"
+
 
 
 ### the ever-loathsome CVS, and a spot of miscellany ###

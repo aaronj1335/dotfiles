@@ -24,3 +24,7 @@ path.exists(stup, function(exists) {
   });
 
 });
+
+try {
+    var __ = require('underscore');
+} catch (e) { ; }
