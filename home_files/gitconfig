@@ -1,24 +1,25 @@
 [color]
-	ui = auto
+    ui = auto
 
 [color "diff"]
-	meta = yellow
-	frag = magenta
-	old = red
-	new = green
+    meta = yellow
+    frag = magenta
+    old = red
+    new = green
 
 [color "status"]
-	added = green
-	changed = yellow
-	untracked = cyan
+    added = green
+    changed = yellow
+    untracked = cyan
 
 [alias]
-	lg = log --graph --decorate --pretty=oneline --abbrev-commit
-	lga = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lg = log --graph --decorate --pretty=oneline --abbrev-commit
+    lga = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 [user]
-	name = Aaron Stacy
-	email = aaron.r.stacy@gmail.com
+    name = Aaron Stacy
+    email = aaron.r.stacy@gmail.com
 
 [core]
-	pager = cat
+    pager = cat
+    excludesfile = ~/.gitignore_global
