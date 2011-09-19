@@ -61,6 +61,10 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" disable that effin-stupid man thing that freezes vim up... vim prob freezes
+" because of my ridiculous $PAGER hack...
+nnoremap K k
+
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
