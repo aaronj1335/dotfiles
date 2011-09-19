@@ -38,3 +38,4 @@ Thumbs.db
 # Editor files #
 ################
 *.sw[op]
+Session.vim
