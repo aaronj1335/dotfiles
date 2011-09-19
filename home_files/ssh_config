@@ -50,16 +50,16 @@ Host ac
 	HostName appapp143.storediq.com
 	User root
 
-Host janos
-	HostName janos-davincimr3
-	User root
-
 Host ad
 	HostName vmapp136.storediq.com
 	User root
 
 Host ae
 	HostName appapp222.storediq.com
+	User root
+
+Host af
+	HostName appapp227.storediq.com
 	User root
 
 Host devnode05
