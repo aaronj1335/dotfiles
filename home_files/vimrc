@@ -210,8 +210,10 @@ if filereadable("Project.vim")
 	silent source Project.vim
 end
 
-if strlen(@%) == 0 && filereadable("Session.vim")
-	silent source Session.vim
+if ! exists('g:no_session_dot_vim') || g:no_session_dot_vim != 1
+    if strlen(@%) == 0 && filereadable("Session.vim")
+        silent source Session.vim
+    end
 end
 
 " handy print statement shortcuts

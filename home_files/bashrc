@@ -60,7 +60,7 @@ else
 	export PS1="\[\033[0m\][\[\033[36m\]\u@\h\[\033[32m\]\w\[\033[0m\]]\n\[\033[31m\]\$ \[\033[0m\]"
 fi
 
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
