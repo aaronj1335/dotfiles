@@ -11,13 +11,13 @@ def save_history(historyPath=historyPath):
 if os.path.exists(historyPath):
     readline.read_history_file(historyPath)
 
-_execfile = execfile
+# _execfile = execfile
 
-def execfile(fname):
-    import readline
-    [ readline.add_history(l.rstrip()) for l in open(fname).readlines() \
-            if not l.startswith('#!') and len(l.strip()) > 0 ]
-    _execfile(fname)
+# def execfile(fname):
+#     import readline
+#     [ readline.add_history(l.rstrip()) for l in open(fname).readlines() \
+#             if not l.startswith('#!') and len(l.strip()) > 0 ]
+#     _execfile(fname)
 
 atexit.register(save_history)
 del atexit, readline, rlcompleter, save_history, historyPath
