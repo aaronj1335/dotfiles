@@ -244,19 +244,36 @@ au BufReadPost quickfix setlocal nowrap
 " go back to the previous buffer
 "
 " building macvim:
-"	- first deactivate libiconv: "sudo port deactivate -f libiconv"
-"	- configuration cmd: ./configure --enable-gui=macvim --with-features=huge
-"		--enable-rubyinterp --enable-pythoninterp --enable-perlinterp
-"		--with-python-config-dir=/Library/Frameworks/Python.framework/Versions/
-"		2.7/lib/python2.7/config/config --enable-cscope
-"	- make then choked when it got to something where it needed to 'curl' an
-"	  icon.  this is b/c curl (macports tool) failed w/o libiconv.  at this
-"	  point i just re-activated libiconv: "sudo port activate libiconv"
-"	- i also needed to edit the Makefile in the MacVim/icons directory b/c the
-"	  URL for the EnvyCodeR font was wrong.  i put in the correct url and the
-"	  build finally succeeded
+"   - old instructions:
+"	    - first deactivate libiconv: "sudo port deactivate -f libiconv"
+"	    - configuration cmd: ./configure --enable-gui=macvim
+"	      --with-features=huge --enable-rubyinterp --enable-pythoninterp
+"	      --enable-perlinterp --with-python-config-dir=/Library/Frameworks/
+"	      Python.framework/Versions/2.7/lib/python2.7/config/config
+"	      --enable-cscope
+"	    - make then choked when it got to something where it needed to 'curl'
+"	      an icon.  this is b/c curl (macports tool) failed w/o libiconv.  at
+"	      this point i just re-activated libiconv: "sudo port activate
+"	      libiconv"
+"	    - i also needed to edit the Makefile in the MacVim/icons directory b/c
+"	      the URL for the EnvyCodeR font was wrong.  i put in the correct url
+"	      and the build finally succeeded
+"
+"   - configuration command:
+"      LDFLAGS=-L/usr/lib ./configure --enable-gui=macvim --with-features=huge
+"      --enable-rubyinterp --enable-pythoninterp --enable-perlinterp
+"      --with-python-config-dir=/Library/Frameworks/Python.framework/Versions/
+"      2.7/lib/python2.7/config --enable-python3interp
+"      --with-python3-config-dir=/Library/Frameworks/Python.framework/Versions/
+"      3.2/lib/python3.2/config-3.2m --enable-cscope 
+"   - note that b/c of the LDFLAGS env var, i didn't have to deactivate the 
+"     libiconv port
+"   - this didn't successfully build python3 (who really cares?)
+"   - *** DO NOT "sudo make install".  this gets all jacked up.  just drag 
+"     src/MacVim/build/Release/MacVim.app into the /Applications dir
+"
 "	- i also downloaded the better macvim icon from here:
 "		http://dribbble.com/shots/121306-MacVim-Replacement-Icon
-"	  and then i opened it in finder, selected the image w/ cmd-a, then copied
+"	  and then i opened it in preview, selected the image w/ cmd-a, then copied
 "	  it w/ cmd-c, then in the info window for the the macvim app, i clicked
 "	  the icon and pressed cmd-v
