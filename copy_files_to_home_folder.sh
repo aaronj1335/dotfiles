@@ -12,9 +12,21 @@ if ! echo $home_files_dir | egrep "^/.*" &>/dev/null ; then
 	home_files_dir="$(pwd)/${home_files_dir}"
 fi
 
+# the special cases
 remove_references "$HOME/.ssh/config"
 cp $home_files_dir/ssh_config $HOME/.ssh/config
 
+remove_references "$HOME/.matplotlibrc"
+
+if [ -d "$HOME/.matplotlib" ]; then
+    remove_references "$HOME/.matplotlib/matplotlibrc"
+else
+    mkdir "$HOME/.matplotlib"
+fi
+ln -s $home_files_dir/matplotlibrc "$HOME/.matplotlib/matplotlibrc"
+
+
+# the rest of the config files
 for i in bashrc vimrc gvimrc pythonrc gitconfig dir_colors Xdefaults ackrc \
     gitignore_global noderc; do
 	remove_references "$HOME/.${i}"
