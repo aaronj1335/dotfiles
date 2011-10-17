@@ -21,3 +21,6 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
+
+# Set my friggin host name
+scutil --set HostName stacebot
