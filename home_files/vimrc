@@ -216,10 +216,6 @@ end
 " my fix for the django-templates bundle
 au BufNewFile,BufRead *.djt set ft=htmldjango
 
-" my fix for the repeat bundle
-nunmap <silent> U
-nnoremap U <c-r>
-
 " handy print statement shortcuts
 au BufNewFile,BufRead *.js nnoremap <buffer> <leader>l oconsole.log();<esc>hi
 au BufNewFile,BufRead *.js nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>hi
