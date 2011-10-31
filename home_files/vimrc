@@ -213,7 +213,12 @@ if ! exists('g:no_session_dot_vim') || g:no_session_dot_vim != 1
     end
 end
 
+" my fix for the django-templates bundle
 au BufNewFile,BufRead *.djt set ft=htmldjango
+
+" my fix for the repeat bundle
+nunmap <silent> U
+nnoremap U <c-r>
 
 " handy print statement shortcuts
 au BufNewFile,BufRead *.js nnoremap <buffer> <leader>l oconsole.log();<esc>hi
@@ -227,7 +232,6 @@ au BufNewFile,BufRead *pythonrc set ft=python
 au BufReadPost quickfix setlocal nowrap
 
 " make markup languages a shiftwidth of 2
-" au Filetype *.html, *.djt, *.mustache, execute "setlocal sw=2 | setlocal ts=2 | setlocal sts=2"
 au Filetype htmldjango,html,coffee,ruby setlocal sw=2 sts=2 ts=2 textwidth=0
 
 runtime macros/matchit.vim
