@@ -7,5 +7,8 @@ noremap <D-[> gT
 noremap <D-]> gt
 colorscheme solarized
 set guifont=Consolas:h12
+" set guifont=Inconsolata:h11
 nmap <SwipeDown> <c-w>j<c-w>_
+nmap <SwipeRight> <c-w>j<c-w>_
 nmap <SwipeUp> <c-w>k<c-w>_
+nmap <SwipeLeft> <c-w>k<c-w>_
