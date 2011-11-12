@@ -216,6 +216,8 @@ end
 " handy print statement shortcuts
 au BufNewFile,BufRead *.js nnoremap <buffer> <leader>l oconsole.log();<esc>hi
 au BufNewFile,BufRead *.js nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>hi
+au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader>l oconsole.log<space>
+au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader><s-l> Oconsole.log<space>
 au BufNewFile,BufRead *.py nnoremap <buffer> <leader>l oprint<space><space><esc>ha
 au BufNewFile,BufRead *.py nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 
@@ -226,7 +228,7 @@ au BufReadPost quickfix setlocal nowrap
 
 " make markup languages a shiftwidth of 2
 " au Filetype *.html, *.djt, *.mustache, execute "setlocal sw=2 | setlocal ts=2 | setlocal sts=2"
-au Filetype htmldjango,html,ruby setlocal sw=2 sts=2 ts=2 textwidth=0
+au Filetype htmldjango,html,ruby,coffee setlocal sw=2 sts=2 ts=2 textwidth=0
 
 runtime macros/matchit.vim
 
