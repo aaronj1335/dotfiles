@@ -36,12 +36,6 @@ inoremap <F5> <C-R>=strftime("%c")<CR>
 " set tabs to normal for Makefiles
 au Filetype make set noexpandtab
 
-" set tabs to normal for text files
-"au Filetype text set tabstop=4
-"au Filetype text inoremap <tab> <tab>
-"au Filetype text set paste
-"au Filetype text set noexpandtab
-
 " set tab width to 4 in python
 au Filetype python set expandtab
 
