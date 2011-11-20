@@ -215,6 +215,8 @@ au BufNewFile,BufRead *.djt set ft=htmldjango
 " handy print statement shortcuts
 au BufNewFile,BufRead *.js nnoremap <buffer> <leader>l oconsole.log();<esc>hi
 au BufNewFile,BufRead *.js nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>hi
+au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader>l oconsole.log<space>
+au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader><s-l> Oconsole.log<space>
 au BufNewFile,BufRead *.py nnoremap <buffer> <leader>l oprint<space><space><esc>ha
 au BufNewFile,BufRead *.py nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 
