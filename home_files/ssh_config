@@ -62,6 +62,10 @@ Host af
 	HostName appapp227.storediq.com
 	User root
 
+Host appapp137
+    HostName appapp137.storediq.com
+    User root
+
 Host devnode05
 	User root
 
