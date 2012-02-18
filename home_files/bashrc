@@ -6,6 +6,8 @@
 alias yo="echo 'screw you i am not a morning person'"
 
 
+# quick setup...
+BREW_PREFIX="`which brew >/dev/null && brew --prefix`"
 
 ### wrangling the path into submission ###
 [ -d $HOME/downfrom-jmake/bin ] && \
@@ -77,20 +79,20 @@ set -o emacs
 
 ### tab completion is empirically the best part of unix ###
 # check for bash completion on mac os x
-[ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
+[ -f $BREW_PREFIX/etc/bash_completion ] && source $BREW_PREFIX/etc/bash_completion
 
 # and my own copy of git bash completion (in order of precedence)
-potention_locations="
-/opt/local/share/doc/git-core/contrib/completion/git-completion.bash
-$HOME/bin/home_files/git-completion.bash"
-if which git &>/dev/null; then
-	for f in $potention_locations; do
-		if [ -f "$f" ]; then
-			source "$f"
-			break
-		fi
-	done
-fi
+# potential_locations="
+# /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
+# $HOME/bin/home_files/git-completion.bash"
+# if which git &>/dev/null; then
+# 	for f in $potential_locations; do
+# 		if [ -f "$f" ]; then
+# 			source "$f"
+# 			break
+# 		fi
+# 	done
+# fi
 
 # and the npm completion
 [ -f "$HOME/bin/home_files/npm-completion.bash" ] && which npm &>/dev/null && \
