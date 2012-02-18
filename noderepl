@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+var repl = require('repl'),
+    fs = require('fs'),
+    path = require('path'),
+    vm = require('vm');
+
+var myrepl = repl.start();
+
+var stup = path.join(process.env.HOME, '.noderc');
+vm.runInContext(fs.readFileSync(stup).toString(), myrepl.context);
+
+process.argv.slice(2).forEach(function(filename) {
+    vm.runInContext(fs.readFileSync(filename).toString(), myrepl.context);
+});
