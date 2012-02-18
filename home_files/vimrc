@@ -221,6 +221,7 @@ au BufNewFile,BufRead *.py nnoremap <buffer> <leader>l oprint<space><space><esc>
 au BufNewFile,BufRead *.py nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 
 au BufNewFile,BufRead *pythonrc set ft=python
+au BufNewFile,BufRead *jshintrc set ft=javascript
 
 " disable line wrap for quickfix window
 au BufReadPost quickfix setlocal nowrap
