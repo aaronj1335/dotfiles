@@ -1,6 +1,5 @@
 var fs = require('fs'),
-    path = require('path')
-    vm = require('vm');
+    path = require('path');
 
 var stup = path.join(process.env.HOME, '.node_history');
 path.exists(stup, function(exists) {
