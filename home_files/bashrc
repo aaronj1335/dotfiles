@@ -69,6 +69,8 @@ if [ `uname` = "Linux" ]; then
 fi
 export CLICOLOR="true"
 
+export JS_CMD="node"
+
 set -o emacs
 
 
