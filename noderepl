@@ -3,7 +3,8 @@
 var repl = require('repl'),
     fs = require('fs'),
     path = require('path'),
-    vm = require('vm');
+    vm = require('vm'),
+    __ = require('underscore');
 
 var myrepl = repl.start();
 
