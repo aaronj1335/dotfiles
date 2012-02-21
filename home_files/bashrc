@@ -10,16 +10,19 @@ alias yo="echo 'screw you i am not a morning person'"
 BREW_PREFIX="`which brew >/dev/null && brew --prefix`"
 
 ### wrangling the path into submission ###
-[ -d $HOME/downfrom-jmake/bin ] && \
-	export PATH="${PATH}:$HOME/downfrom-jmake/bin"
+[ -d /sbin ] && export PATH="$PATH:/sbin"
+[ -d /usr/sbin ] && export PATH="$PATH:/usr/sbin"
+
+# b/c of homebrew...
+[ -d /usr/local/bin ] && export PATH="/usr/local/bin:$PATH"
+[ -d /usr/local/sbin ] && export PATH="/usr/local/sbin:$PATH"
 
 [ -d /usr/local/mysql/bin ] && export PATH="$PATH:/usr/local/mysql/bin"
 
-[ -d /sbin ] && export PATH="$PATH:/sbin"
-[ -d /usr/sbin ] && export PATH="$PATH:/usr/sbin"
-[ -d /usr/local/sbin ] && export PATH="$PATH:/usr/local/sbin"
-
 [ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
+
+[ -d $HOME/downfrom-jmake/bin ] && \
+	export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
 [ -d /Library/PostgreSQL/8.3/bin/ ] && \
 	export PATH="$PATH:/Library/PostgreSQL/8.3/bin"
