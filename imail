@@ -1,0 +1,12 @@
+#!/bin/bash
+
+osascript << EOS
+set theAttachment to "$1"
+tell application "Mail"
+   set theMessage to make new outgoing message with properties {visible:true}
+   tell content of theMessage
+      make new attachment with properties {file name:theAttachment} at after last paragraph
+   end tell
+end tell
+EOS
+
