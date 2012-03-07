@@ -37,10 +37,6 @@ BREW_PREFIX="`which brew >/dev/null && brew --prefix`"
 [ -d /usr/local/lib/node_modules ] && \
 	export NODE_PATH="$NODE_PATH:/usr/local/lib/node_modules"
 
-# this should probably not get checked in...
-[ -d "$HOME/Downloads/apache-maven-3.0.3/bin" ] && \
-	export PATH="$PATH:$HOME/Downloads/apache-maven-3.0.3/bin"
-
 
 
 ### the arbitrary and entirely personal aliases ###
