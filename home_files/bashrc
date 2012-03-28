@@ -7,7 +7,7 @@ alias yo="echo 'screw you i am not a morning person'"
 
 
 # quick setup...
-BREW_PREFIX="`which brew >/dev/null && brew --prefix`"
+BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 ### wrangling the path into submission ###
 [ -d /sbin ] && export PATH="$PATH:/sbin"
