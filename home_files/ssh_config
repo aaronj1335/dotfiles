@@ -84,3 +84,7 @@ Host dd
 Host aws
     HostName ec2-72-44-33-192.compute-1.amazonaws.com 
     User root
+
+Host auto-driver00
+    HostName auto-driver00.storediq.com
+    User testadmin
