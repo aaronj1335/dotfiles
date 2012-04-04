@@ -25,5 +25,5 @@ path.exists(stup, function(exists) {
 });
 
 try {
-    var __ = require('underscore');
+    var u = require('underscore');
 } catch (e) { ; }
