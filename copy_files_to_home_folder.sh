@@ -28,7 +28,7 @@ ln -s $home_files_dir/matplotlibrc "$HOME/.matplotlib/matplotlibrc"
 
 # the rest of the config files
 for i in bashrc vimrc gvimrc pythonrc gitconfig dir_colors Xdefaults ackrc \
-    gitignore_global noderc; do
+    gitignore_global noderc coffeerc.coffee; do
 	remove_references "$HOME/.${i}"
 	ln -s $home_files_dir/${i} $HOME/.${i}
 

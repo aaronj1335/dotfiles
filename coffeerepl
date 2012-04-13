@@ -1,0 +1,11 @@
+#!/bin/sh
+
+stup=~/.coffeerc.coffee
+
+if [ -f $stup ]; then
+    coffee -r $stup
+else
+    coffee
+fi
+
+exit $?
