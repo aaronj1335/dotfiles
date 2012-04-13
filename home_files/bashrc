@@ -37,6 +37,8 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 [ -d /usr/local/lib/node_modules ] && \
 	export NODE_PATH="$NODE_PATH:/usr/local/lib/node_modules"
 
+[ `which node 2>/dev/null` ] && export PATH="$PATH:./node_modules/.bin"
+
 
 
 ### the arbitrary and entirely personal aliases ###
