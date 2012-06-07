@@ -18,6 +18,6 @@ set guifont=Consolas:h12
 " set guifont=Inconsolata:h11
 
 nmap <SwipeDown> <c-w>k<c-w>_
-nmap <SwipeLeft> <c-w>k<c-w>_
+nmap <SwipeLeft> gT
 nmap <SwipeUp> <c-w>j<c-w>_
-nmap <SwipeRight> <c-w>j<c-w>_
+nmap <SwipeRight> gt
