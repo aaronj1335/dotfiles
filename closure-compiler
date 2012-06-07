@@ -1,0 +1,5 @@
+#!/bin/bash
+
+this_scripts_dir="$(dirname `type -p $0`)"
+
+java -jar "$this_scripts_dir/compiler.jar"
