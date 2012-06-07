@@ -102,15 +102,13 @@ set -o emacs
 # and this is where i set up tab completion for python
 [ -f ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
-# and add my company's repo to the path
-[ -h "$HOME/work/.pythonpath_helper/deepfile" ] && \
-    export PYTHONPATH="$HOME/work/.pythonpath_helper"
-
 # finally tell bash not to include CVS in the possible completions (b/c it sux)
 export FIGNORE="$FIGNORE:CVS:.DS_Store:.svn"
 
-# and my BALLER hack to node.js...
-[ -f ~/.noderc ] && export NODE_STARTUP="$HOME/.noderc"
+# csi completion -- young money!
+which component &>/dev/null && \
+    component completion > /tmp/component-completion.bash && \
+    source /tmp/component-completion.bash
 
 # and django completion
 [ -f "$HOME/bin/home_files/django-completion.bash" ] && \
