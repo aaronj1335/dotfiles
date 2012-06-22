@@ -120,7 +120,10 @@ which component &>/dev/null && \
 ### the ever-loathsome CVS, and a spot of miscellany ###
 export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
 
-# lifted these from @zeeg
+
+
+### and a spot of miscellany -- cause what's life without a little whimsy? ###
+# lifted this from @zeeg
 function pyfind() {
 	x=`python -c "import $1; print $1.__file__" | sed 's/\.pyc$/\.py/'`
 	if [ $? -ne 0 ]; then 
@@ -128,6 +131,37 @@ function pyfind() {
 	fi
 	grep -q "__init__.py$" <<< $x && echo `dirname $x` || echo $x
 }
+
+which tmutil &>/dev/null && \
+    alias bup="tmutil startbackup -b && \
+        ( growlnotify -m 'done with backup' --sticky; \
+          say done with backup )"
+
+if ! which ip &>/dev/null; then
+    function ip {
+        local addr='\d{1,3}(\.\d{1,3}){3}'
+
+        # if the argumetn was '-' echo the external ip
+        if [ "$1" = '-' ]; then
+            curl http://checkip.dyndns.org/ 2>/dev/null | \
+                ack -o '(?<=Address: )'$addr
+
+        # otherwise if a hostname was given as an argument...
+        elif [ "$1" ]; then
+
+            # ...echo the corresponding ip from either /etc/hosts or nslookup
+            ack -o $addr'(?=\s*'$1'\s*$)' /etc/hosts || \
+            nslookup $1 | ack -m 2 '^Address:' | tail -1 | ack -o $addr
+
+        # otherwise if no argument was given...
+        else
+
+            # ...echo the this machine's ip of the ethernet or the wireless
+            ifconfig en0 | ack -o '(?<=inet )'$addr || \
+            ifconfig en1 | ack -o '(?<=inet )'$addr
+        fi
+    }
+fi
 
 # set tab width to 4 (useful when you're running "cat" on a file), but it makes
 # things all screwy when you ssh somewhere
