@@ -88,3 +88,6 @@ Host aws
 Host auto-driver00
     HostName auto-driver00.storediq.com
     User testadmin
+
+Host app
+    User root
