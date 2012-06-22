@@ -180,7 +180,7 @@ let g:CommandTAcceptSelectionMap='<s-cr>'
 let g:CommandTAcceptSelectionSplitMap='<cr>'
 let g:CommandTMatchWindowAtTop=1
 
-set wildignore+=*.o,*.obj,.git,*CVS,node_modules/*/node_modules/*
+set wildignore+=*.o,*.obj,.git,*CVS,node_modules/*/node_modules/**,_src/*/node_modules/**
 
 au BufNewFile,BufRead *.md set ft=markdown
 function! MarkdownPreview()
