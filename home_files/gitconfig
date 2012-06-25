@@ -19,8 +19,8 @@
     st = status
 
 [user]
-    name = Aaron Stacy
-    email = aaron.r.stacy@gmail.com
+	name = Aaron Stacy
+	email = aaron.r.stacy@gmail.com
 
 [core]
     pager = cat
