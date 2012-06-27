@@ -121,8 +121,7 @@ which hub &>/dev/null && alias git=hub
 # and smoother node.js-ery
 [ -f "$HOME/code/nvm/nvm.sh" ] && \
     source "$HOME/code/nvm/nvm.sh" && \
-    source "$HOME/code/nvm/bash_completion" && \
-    nvm use v0.8.0 >/dev/null
+    source "$HOME/code/nvm/bash_completion"
 
 [ "`which node 2>/dev/null`" ] && export PATH="$PATH:./node_modules/.bin"
 
