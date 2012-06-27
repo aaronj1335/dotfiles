@@ -34,11 +34,6 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 
-[ -d /usr/local/lib/node_modules ] && \
-	export NODE_PATH="$NODE_PATH:/usr/local/lib/node_modules"
-
-[ "`which node 2>/dev/null`" ] && export PATH="$PATH:./node_modules/.bin"
-
 
 
 ### the arbitrary and entirely personal aliases ###
@@ -82,23 +77,6 @@ set -o emacs
 # check for bash completion on mac os x
 [ -f $BREW_PREFIX/etc/bash_completion ] && source $BREW_PREFIX/etc/bash_completion
 
-# and my own copy of git bash completion (in order of precedence)
-# potential_locations="
-# /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
-# $HOME/bin/home_files/git-completion.bash"
-# if which git &>/dev/null; then
-# 	for f in $potential_locations; do
-# 		if [ -f "$f" ]; then
-# 			source "$f"
-# 			break
-# 		fi
-# 	done
-# fi
-
-# and the npm completion
-[ -f "$HOME/bin/home_files/npm-completion.bash" ] && which npm &>/dev/null && \
-	source "$HOME/bin/home_files/npm-completion.bash"
-
 # and this is where i set up tab completion for python
 [ -f ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
@@ -117,7 +95,7 @@ which component &>/dev/null && \
 
 
 
-### the ever-loathsome CVS, and a spot of miscellany ###
+### the ever-loathsome CVS ###
 export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
 
 
@@ -139,6 +117,18 @@ which tmutil &>/dev/null && \
 
 # for smoother git-hubbery
 which hub &>/dev/null && alias git=hub
+
+# and smoother node.js-ery
+[ -f "$HOME/code/nvm/nvm.sh" ] && \
+    source "$HOME/code/nvm/nvm.sh" && \
+    source "$HOME/code/nvm/bash_completion" && \
+    nvm use v0.8.0 >/dev/null
+
+[ "`which node 2>/dev/null`" ] && export PATH="$PATH:./node_modules/.bin"
+
+[ -f "$HOME/bin/home_files/npm-completion.bash" ] && which npm &>/dev/null && \
+	source "$HOME/bin/home_files/npm-completion.bash"
+
 
 if ! which ip &>/dev/null; then
     function ip {
