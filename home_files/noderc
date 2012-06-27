@@ -1,8 +1,9 @@
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    exists = fs.exists || path.exists;
 
 var stup = path.join(process.env.HOME, '.node_history');
-path.exists(stup, function(exists) {
+exists(stup, function(exists) {
   if (exists) {
     fs.readFile(stup, 'utf8', function(err, data) {
       if (err) {
