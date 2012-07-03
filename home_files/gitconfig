@@ -25,7 +25,7 @@
 [core]
     pager = cat
     excludesfile = ~/.gitignore_global
-    quotepath = false
+	quotepath = false
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
     path =
