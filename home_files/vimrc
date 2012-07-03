@@ -222,6 +222,8 @@ au BufNewFile,BufRead *.py nnoremap <buffer> <leader><s-l> Oprint<space><space><
 
 au BufNewFile,BufRead *pythonrc set ft=python
 au BufNewFile,BufRead *jshintrc set ft=javascript
+au BufNewFile,BufRead *COMMIT_EDITMSG set textwidth=72
+au BufNewFile,BufRead *COMMIT_EDITMSG set colorcolumn=72
 
 " disable line wrap for quickfix window
 au BufReadPost quickfix setlocal nowrap
