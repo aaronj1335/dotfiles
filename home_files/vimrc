@@ -211,19 +211,18 @@ end
 
 " my fix for the django-templates bundle
 au BufNewFile,BufRead *.djt set ft=htmldjango
-
-" handy print statement shortcuts
-au BufNewFile,BufRead *.js nnoremap <buffer> <leader>l oconsole.log();<esc>hi
-au BufNewFile,BufRead *.js nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>hi
-au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader>l oconsole.log<space>
-au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader><s-l> Oconsole.log<space>
-au BufNewFile,BufRead *.py nnoremap <buffer> <leader>l oprint<space><space><esc>ha
-au BufNewFile,BufRead *.py nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
-
 au BufNewFile,BufRead *pythonrc set ft=python
-au BufNewFile,BufRead *jshintrc set ft=javascript
+au BufNewFile,BufRead *jshintrc,*noderc set ft=javascript
 au BufNewFile,BufRead *COMMIT_EDITMSG set textwidth=72
 au BufNewFile,BufRead *COMMIT_EDITMSG set colorcolumn=72
+
+" handy print statement shortcuts
+au Filetype javascript nnoremap <buffer> <leader>l oconsole.log();<esc>hi
+au Filetype javascript nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>hi
+au Filetype coffee nnoremap <buffer> <leader>l oconsole.log<space>
+au Filetype coffee nnoremap <buffer> <leader><s-l> Oconsole.log<space>
+au Filetype python nnoremap <buffer> <leader>l oprint<space><space><esc>ha
+au Filetype python nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 
 " disable line wrap for quickfix window
 au BufReadPost quickfix setlocal nowrap
