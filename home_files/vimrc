@@ -34,10 +34,10 @@ noremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
 
 " set tabs to normal for Makefiles
-au Filetype make set noexpandtab
+au Filetype make setlocal noexpandtab
 
 " set tab width to 4 in python
-au Filetype python set expandtab
+au Filetype python setlocal expandtab
 
 " turn on the line number and location of the cursor as a percentage of the file
 set ruler 
@@ -83,7 +83,7 @@ if has("autocmd")
 
   augroup END
 
-  autocmd BufNewFile,BufRead *.json set ft=javascript
+  autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 
 else
 
@@ -182,7 +182,7 @@ let g:CommandTMatchWindowAtTop=1
 
 set wildignore+=*.o,*.obj,.git,*CVS,node_modules/*/node_modules/**,_src/*/node_modules/**
 
-au BufNewFile,BufRead *.md set ft=markdown
+au BufNewFile,BufRead *.md setlocal ft=markdown
 function! MarkdownPreview()
 	silent w! /tmp/vim_markdown_preview.html
     " silent !python -c "import string,sys,markdown; s = filter(lambda x: x in string.printable, open('/tmp/vim_markdown_preview.html').read()); sys.stdout.write(open('template.html').read() \% markdown.Markdown().convert(s))" > /tmp/vim_markdown_preview.html.2
@@ -210,11 +210,11 @@ if ! exists('g:no_session_dot_vim') || g:no_session_dot_vim != 1
 end
 
 " my fix for the django-templates bundle
-au BufNewFile,BufRead *.djt set ft=htmldjango
-au BufNewFile,BufRead *pythonrc set ft=python
-au BufNewFile,BufRead *jshintrc,*noderc set ft=javascript
-au BufNewFile,BufRead *COMMIT_EDITMSG set textwidth=72
-au BufNewFile,BufRead *COMMIT_EDITMSG set colorcolumn=72
+au BufNewFile,BufRead *.djt setlocal ft=htmldjango
+au BufNewFile,BufRead *pythonrc setlocal ft=python
+au BufNewFile,BufRead *jshintrc,*noderc setlocal ft=javascript
+au BufNewFile,BufRead *COMMIT_EDITMSG setlocal textwidth=72
+au BufNewFile,BufRead *COMMIT_EDITMSG setlocal colorcolumn=72
 
 " handy print statement shortcuts
 au Filetype javascript nnoremap <buffer> <leader>l oconsole.log();<esc>hi
