@@ -83,11 +83,6 @@ set -o emacs
 # finally tell bash not to include CVS in the possible completions (b/c it sux)
 export FIGNORE="$FIGNORE:CVS:.DS_Store:.svn"
 
-# csi completion -- young money!
-which component &>/dev/null && \
-    component completion > /tmp/component-completion.bash && \
-    source /tmp/component-completion.bash
-
 # and django completion
 [ -f "$HOME/bin/home_files/django-completion.bash" ] && \
     which django-admin.py &>/dev/null && \
@@ -127,6 +122,11 @@ which hub &>/dev/null && alias git=hub
 
 [ -f "$HOME/bin/home_files/npm-completion.bash" ] && which npm &>/dev/null && \
 	source "$HOME/bin/home_files/npm-completion.bash"
+
+# csi completion -- young money!
+which component &>/dev/null && \
+    component completion > /tmp/component-completion.bash && \
+    source /tmp/component-completion.bash
 
 
 if ! which ip &>/dev/null; then
