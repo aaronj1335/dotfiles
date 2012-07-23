@@ -124,9 +124,8 @@ which hub &>/dev/null && alias git=hub
 	source "$HOME/bin/home_files/npm-completion.bash"
 
 # csi completion -- young money!
-which component &>/dev/null && \
-    component completion > /tmp/component-completion.bash && \
-    source /tmp/component-completion.bash
+which csi &>/dev/null && \
+    csi completion > /tmp/csi-completion.bash && . /tmp/csi-completion.bash
 
 
 if ! which ip &>/dev/null; then
