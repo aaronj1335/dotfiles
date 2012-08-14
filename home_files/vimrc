@@ -279,3 +279,58 @@ runtime macros/matchit.vim
 "	  and then i opened it in preview, selected the image w/ cmd-a, then copied
 "	  it w/ cmd-c, then in the info window for the the macvim app, i clicked
 "	  the icon and pressed cmd-v
+
+if !exists("*SetCurWinNr")
+  function SetCurWinNr(tot, nr)
+    exe a:tot . ' winc k'
+    if a:nr > 1
+      exe (a:nr-1) . ' winc j'
+    endif
+  endfunction
+endif
+
+if !exists("*MaximizeWithoutResizingQuickfix")
+  function MaximizeWithoutResizingQuickfix()
+	" disable stuff to make this faster
+	let SaveLazyredraw = &lazyredraw
+	let SaveEi = &ei
+	set lazyredraw
+	set ei=WinEnter
+
+	let qfwinnr = -1        " quickfix window number
+	let tot = winnr('$')    " total number of windows
+	let curwinnr = winnr()  " current window number
+
+	" find the window number of the quickfix window
+	for i in range(1, tot)
+		if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+			let qfwinnr = i
+		endif
+	endfor
+
+	" we only need to do anything if we're NOT entering the quickfix window
+	if qfwinnr != curwinnr
+
+		let qfheight = winheight(qfwinnr)
+
+		" maximize this window
+		winc _
+
+		if qfwinnr > -1
+			exe qfwinnr . "wincmd \<c-w>"
+			exe 'resize ' . qfheight
+			exe curwinnr . "wincmd \<c-w>"
+		endif
+
+	endif
+
+	" re-enable stuff
+	let &ei = SaveEi
+	let &lazyredraw = SaveLazyredraw
+
+  endfunction
+endif
+map <C-J> <C-W>j:call<space>MaximizeWithoutResizingQuickfix()<cr>
+map <C-K> <C-W>k:call<space>MaximizeWithoutResizingQuickfix()<cr>
+
+set equalalways
