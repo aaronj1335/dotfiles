@@ -17,7 +17,7 @@ hi StatusLineNC guifg=#211714 guibg=#E6E1DC
 set guifont=Consolas:h12
 " set guifont=Inconsolata:h11
 
-nmap <SwipeDown> <c-w>k<c-w>_
+map <SwipeUp> <C-W>j:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
+map <SwipeDown> <C-W>k:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
 nmap <SwipeLeft> gT
-nmap <SwipeUp> <c-w>j<c-w>_
 nmap <SwipeRight> gt

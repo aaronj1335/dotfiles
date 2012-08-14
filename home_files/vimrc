@@ -204,7 +204,9 @@ function! OpenTray(...)
 	vertical resize 25
 endfunction
 
-com! -nargs=? -complete=dir Tray call OpenTray(<f-args>)
+if !exists(':Tray')
+  com -nargs=? -complete=dir Tray call OpenTray(<f-args>)
+endif
 
 if ! exists('g:no_session_dot_vim') || g:no_session_dot_vim != 1
     if strlen(@%) == 0 && filereadable("Session.vim")
@@ -280,15 +282,6 @@ runtime macros/matchit.vim
 "	  it w/ cmd-c, then in the info window for the the macvim app, i clicked
 "	  the icon and pressed cmd-v
 
-if !exists("*SetCurWinNr")
-  function SetCurWinNr(tot, nr)
-    exe a:tot . ' winc k'
-    if a:nr > 1
-      exe (a:nr-1) . ' winc j'
-    endif
-  endfunction
-endif
-
 if !exists("*MaximizeWithoutResizingQuickfix")
   function MaximizeWithoutResizingQuickfix()
 	" disable stuff to make this faster
@@ -300,37 +293,48 @@ if !exists("*MaximizeWithoutResizingQuickfix")
 	let qfwinnr = -1        " quickfix window number
 	let tot = winnr('$')    " total number of windows
 	let curwinnr = winnr()  " current window number
+  let reenable = 0
 
-	" find the window number of the quickfix window
 	for i in range(1, tot)
 		if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
 			let qfwinnr = i
 		endif
 	endfor
 
-	" we only need to do anything if we're NOT entering the quickfix window
 	if qfwinnr != curwinnr
 
 		let qfheight = winheight(qfwinnr)
 
-		" maximize this window
 		winc _
 
 		if qfwinnr > -1
+      if "javascript" == &ft
+        if !exists('b:jshint_disabled') || !b:jshint_disabled
+          JSHintToggle
+          let reenable=1
+        endif
+      endif
 			exe qfwinnr . "wincmd \<c-w>"
 			exe 'resize ' . qfheight
 			exe curwinnr . "wincmd \<c-w>"
+      if reenable
+        JSHintToggle
+      endif
 		endif
 
 	endif
 
-	" re-enable stuff
 	let &ei = SaveEi
 	let &lazyredraw = SaveLazyredraw
 
   endfunction
 endif
-map <C-J> <C-W>j:call<space>MaximizeWithoutResizingQuickfix()<cr>
-map <C-K> <C-W>k:call<space>MaximizeWithoutResizingQuickfix()<cr>
+nnoremap <C-J> <C-W>j:call<space>MaximizeWithoutResizingQuickfix()<bar>echo<cr>
+nnoremap <C-K> <C-W>k:call<space>MaximizeWithoutResizingQuickfix()<bar>echo<cr>
 
-set equalalways
+set noequalalways
+
+let g:ackprg="ack -H --nocolor --nogroup --column --follow"
+
+nnoremap <leader>n :set<space>lazyredraw<bar>echo<cr><c-w>jj<cr>:set<space>nolazyredraw<bar>:echo<cr>
+nnoremap <leader>p :set<space>lazyredraw<bar>echo<cr><c-w>jk<cr>:set<space>nolazyredraw<bar>:echo<cr>
