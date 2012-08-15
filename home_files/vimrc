@@ -153,17 +153,14 @@ if exists("+colorcolumn")
 	set colorcolumn=80
 end
 
-" nnoremap <tab> %
-" vnoremap <tab> %
+nnoremap <tab> %
+vnoremap <tab> %
 nnoremap j gj
 nnoremap k gk
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-
-nnoremap <leader>p gqip
-vnoremap <leader>p gqip
 
 if has("clipboard")
 	vnoremap <leader>y "*y
@@ -336,5 +333,13 @@ set noequalalways
 
 let g:ackprg="ack -H --nocolor --nogroup --column --follow"
 
-nnoremap <leader>n :set<space>lazyredraw<bar>echo<cr><c-w>jj<cr>:set<space>nolazyredraw<bar>:echo<cr>
-nnoremap <leader>p :set<space>lazyredraw<bar>echo<cr><c-w>jk<cr>:set<space>nolazyredraw<bar>:echo<cr>
+" <leader>p is already mapped to pasting from system clipboard
+" nnoremap <leader>n :set<space>lazyredraw<bar>echo<cr><c-w>jj<cr>:set<space>nolazyredraw<bar>:echo<cr>
+" nnoremap <leader>p :set<space>lazyredraw<bar>echo<cr><c-w>jk<cr>:set<space>nolazyredraw<bar>:echo<cr>
+
+" highlight trailing whitespace
+au BufEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+au ColorScheme * highlight ExtraWhitespace guibg=red
