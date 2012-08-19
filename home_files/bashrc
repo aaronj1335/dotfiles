@@ -66,6 +66,16 @@ which hub &>/dev/null && alias git=hub
 
 ### other various exports ###
 export EDITOR=vim # this is most important...
+export LSCOLORS=dxfxcxdxbxegedabagacad
+if [ `uname` = "Linux" ]; then
+	alias ll='ls -l --color=auto'
+	eval "$(dircolors -b ~/.dir_colors)"
+fi
+export CLICOLOR="true"
+
+export JS_CMD="node"
+
+set -o emacs
 
 
 
@@ -113,18 +123,6 @@ pimpmyps1 $color $unycodes
 # this often screws things up
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
-
-
-export LSCOLORS=dxfxcxdxbxegedabagacad
-if [ `uname` = "Linux" ]; then
-	alias ll='ls -l --color=auto'
-	eval "$(dircolors -b ~/.dir_colors)"
-fi
-export CLICOLOR="true"
-
-export JS_CMD="node"
-
-set -o emacs
 
 
 
