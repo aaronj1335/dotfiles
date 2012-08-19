@@ -8,11 +8,15 @@ USAGE="USAGE: `basename $0` [-h] <build job name>
 Kick off a jenkins build and tail the log.
 
 Options:
+    -f  Just tail the last jenkins log
     -h  Show this help message"
 
 # Parse command line options.
-while getopts h OPT; do
+while getopts fh OPT; do
     case "$OPT" in
+        f)
+            JUST_TAIL=1
+            ;;
         h)
             echo "$USAGE"
             exit 0
@@ -39,11 +43,22 @@ last=""
 job_name="$1"
 [ "$job_name" ] || job_name="$last"
 
+tail_f() {
+    job_name=$1
+    ssh -t jenkins.storediq.com "tail -f \"/var/lib/jenkins/jobs/$job_name/builds/\`ls -ltr /var/lib/jenkins/jobs/$job_name/builds/ | grep '^l' | tail -n 1|awk '{print \$9}'\`/log\""
+}
+
 echo -n $job_name > "$config_dir/last"
+
+if [ $JUST_TAIL ]; then
+    tail_f $job_name
+    exit 0
+fi
 
 echo "building $job_name"
 java -jar $jenkins \
     -i ~/.ssh/id_rsa.siq \
     -s http://jenkins.storediq.com build \
     $job_name && \
-ssh -t jenkins.storediq.com "tail -f \"/var/lib/jenkins/jobs/$job_name/builds/\`ls -ltr /var/lib/jenkins/jobs/$job_name/builds/ | grep '^l' | tail -n 1|awk '{print \$9}'\`/log\""
+    sleep 5 && \
+tail_f $job_name
