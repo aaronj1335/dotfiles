@@ -69,13 +69,21 @@ if [ "$TERM" = "xterm-256color" ]; then
     hn="\h"
     sep=":"
     dollar="$"
+    usr="\u"
     if locale | grep -i utf-8 &>/dev/null; then
         at="∂"
         if which upsidedownify &>/dev/null; then
-            hn="`echo -n $(scutil --get ComputerName) | upsidedownify`"
+            if which scutil &>/dev/null; then
+                hn="`echo -n $(scutil --get ComputerName) | upsidedownify`"
+            else
+                hn="`echo -n $(hostname) | upsidedownify`"
+            fi
         fi
         sep="☠"
         dollar="§"
+    fi
+    if [ "$USER" = root ]; then
+        dollar="$dollar#"
     fi
 	export PS1="
 \[\e[38;5;247m\]\u\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\] $sep \[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
