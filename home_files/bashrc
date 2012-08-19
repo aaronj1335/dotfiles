@@ -76,7 +76,7 @@ function pimpmyps1() {
   at="@"
   hn="\h"
   sep=":"
-  dollar="$"
+  dollar='$'
   usr="\u"
   if [ "$color" = 1 ]; then
     if [ "$unycodes" = 1 ]; then
