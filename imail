@@ -1,5 +1,31 @@
 #!/bin/bash
 
+USAGE="USAGE: `basename $0` [-h] <file to be attached>
+
+this is an applescript to send the command line argument as an attachment in
+apple mail
+
+Options:
+    -h  Show this help message"
+
+# Parse command line options.
+while getopts h OPT; do
+    case "$OPT" in
+        h)
+            echo "$USAGE"
+            exit 0
+            ;;
+        \?)
+            # getopts issues an error message
+            echo "$USAGE" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Remove the switches we parsed above.
+shift `expr $OPTIND - 1`
+
 osascript << EOS
 set theAttachment to "$1"
 tell application "Mail"
@@ -10,3 +36,4 @@ tell application "Mail"
 end tell
 EOS
 
+open /Applications/Mail.app
