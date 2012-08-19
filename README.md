@@ -6,4 +6,4 @@ gratuitous.
                 ɥs˙ɹǝpʃoɟ‾ǝɯoɥ‾oʇ‾sǝʃıɟ‾ʎdoɔ/˙ ⅋⅋ uıq/~ pɔ $
     uıq/~ ʇıƃ˙sǝʃıɟʇop/5ƐƐ1ɾuoɹɐɐ:ɯoɔ˙qnɥʇıƃ@ʇıƃ ǝuoʃɔ ʇıƃ $
 
-                                                     ˙snoʇınʇɐɹƃ
+<div style="text-align:right;">˙snoʇınʇɐɹƃ</div>
