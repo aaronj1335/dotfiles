@@ -66,6 +66,10 @@ which hub &>/dev/null && alias git=hub
 
 ### other various exports ###
 export EDITOR=vim # this is most important...
+
+
+
+### how many peices of flair can we add to our $PS1‽
 if [ "$TERM" = "xterm-256color" ]; then
     at="@"
     hn="\h"
@@ -83,9 +87,9 @@ if [ "$TERM" = "xterm-256color" ]; then
         fi
         sep="☠"
         dollar="§"
-    fi
-    if [ "$USER" = root ]; then
-        dollar="$dollar#"
+        [ "$USER" = root ] && dollar="$dollar∞"
+    else
+        [ "$USER" = root ] && dollar="$dollar#"
     fi
 	export PS1="
 \[\e[38;5;247m\]\u\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\] $sep \[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
@@ -93,6 +97,7 @@ if [ "$TERM" = "xterm-256color" ]; then
 else
 	export PS1="\[\033[0m\][\[\033[36m\]\u@\h\[\033[32m\]\w\[\033[0m\]]\n\[\033[31m\]\$ \[\033[0m\]"
 fi
+
 
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
