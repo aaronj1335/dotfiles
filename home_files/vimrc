@@ -34,10 +34,10 @@ noremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
 
 " set tabs to normal for Makefiles
-au Filetype make set noexpandtab
+au Filetype make setlocal noexpandtab
 
 " set tab width to 4 in python
-au Filetype python set expandtab
+au Filetype python setlocal expandtab
 
 " turn on the line number and location of the cursor as a percentage of the file
 set ruler 
@@ -83,7 +83,7 @@ if has("autocmd")
 
   augroup END
 
-  autocmd BufNewFile,BufRead *.json set ft=javascript
+  autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 
 else
 
@@ -128,11 +128,14 @@ end
 let g:netrw_liststyle=3
 let g:netrw_winsize=1000
 
+let g:solarized_contrast='high'
+if $TERM_PROGRAM == 'Apple_Terminal'
+    let g:solarized_termtrans=1
+end
 if $TERM == 'xterm-256color'
-	"colorscheme railscasts
+	" colorscheme railscasts
 	colorscheme solarized
 end
-let g:solarized_contrast='high'
 
 set mouse=a
 set modelines=0 " apparently this is a security hole?
@@ -159,9 +162,6 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap <leader>p gqip
-vnoremap <leader>p gqip
-
 if has("clipboard")
 	vnoremap <leader>y "*y
 	nnoremap <leader>y "*yy
@@ -182,7 +182,7 @@ let g:CommandTMatchWindowAtTop=1
 
 set wildignore+=*.o,*.obj,.git,*CVS,node_modules/*/node_modules/**,_src/*/node_modules/**
 
-au BufNewFile,BufRead *.md set ft=markdown
+au BufNewFile,BufRead *.md setlocal ft=markdown
 function! MarkdownPreview()
 	silent w! /tmp/vim_markdown_preview.html
     " silent !python -c "import string,sys,markdown; s = filter(lambda x: x in string.printable, open('/tmp/vim_markdown_preview.html').read()); sys.stdout.write(open('template.html').read() \% markdown.Markdown().convert(s))" > /tmp/vim_markdown_preview.html.2
@@ -201,7 +201,9 @@ function! OpenTray(...)
 	vertical resize 25
 endfunction
 
-com! -nargs=? -complete=dir Tray call OpenTray(<f-args>)
+if !exists(':Tray')
+  com -nargs=? -complete=dir Tray call OpenTray(<f-args>)
+endif
 
 if ! exists('g:no_session_dot_vim') || g:no_session_dot_vim != 1
     if strlen(@%) == 0 && filereadable("Session.vim")
@@ -210,26 +212,27 @@ if ! exists('g:no_session_dot_vim') || g:no_session_dot_vim != 1
 end
 
 " my fix for the django-templates bundle
-au BufNewFile,BufRead *.djt set ft=htmldjango
+au BufNewFile,BufRead *.djt setlocal ft=htmldjango
+au BufNewFile,BufRead *pythonrc setlocal ft=python
+au BufNewFile,BufRead *jshintrc,*noderc setlocal ft=javascript
+au BufNewFile,BufRead *COMMIT_EDITMSG setlocal textwidth=72
+au BufNewFile,BufRead *COMMIT_EDITMSG setlocal colorcolumn=72
 
 " handy print statement shortcuts
-au BufNewFile,BufRead *.js nnoremap <buffer> <leader>l oconsole.log();<esc>hi
-au BufNewFile,BufRead *.js nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>hi
-au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader>l oconsole.log<space>
-au BufNewFile,BufRead *.coffee nnoremap <buffer> <leader><s-l> Oconsole.log<space>
-au BufNewFile,BufRead *.py nnoremap <buffer> <leader>l oprint<space><space><esc>ha
-au BufNewFile,BufRead *.py nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
-
-au BufNewFile,BufRead *pythonrc set ft=python
-au BufNewFile,BufRead *jshintrc set ft=javascript
-au BufNewFile,BufRead *COMMIT_EDITMSG set textwidth=72
-au BufNewFile,BufRead *COMMIT_EDITMSG set colorcolumn=72
+au Filetype javascript nnoremap <buffer> <leader>l oconsole.log();<esc>hi
+au Filetype javascript nnoremap <buffer> <leader><s-l> Oconsole.log();<esc>hi
+au Filetype coffee nnoremap <buffer> <leader>l oconsole.log<space>
+au Filetype coffee nnoremap <buffer> <leader><s-l> Oconsole.log<space>
+au Filetype python nnoremap <buffer> <leader>l oprint<space><space><esc>ha
+au Filetype python nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 
 " disable line wrap for quickfix window
 au BufReadPost quickfix setlocal nowrap
 
 " make markup languages a shiftwidth of 2
-au Filetype htmldjango,html,coffee,ruby,css,less setlocal sw=2 sts=2 ts=2 textwidth=0
+au Filetype htmldjango,html,coffee,ruby,css,less,vim setlocal sw=2 sts=2 ts=2 textwidth=0
+
+au Filetype markdown setlocal autoindent
 
 runtime macros/matchit.vim
 
@@ -266,20 +269,77 @@ runtime macros/matchit.vim
 "	      and the build finally succeeded
 "
 "   - configuration command:
-"      LDFLAGS=-L/usr/lib ./configure --enable-gui=macvim --with-features=huge
-"      --enable-rubyinterp --enable-pythoninterp --enable-perlinterp
-"      --with-python-config-dir=/Library/Frameworks/Python.framework/Versions/
-"      2.7/lib/python2.7/config --enable-python3interp
-"      --with-python3-config-dir=/Library/Frameworks/Python.framework/Versions/
-"      3.2/lib/python3.2/config-3.2m --enable-cscope 
-"   - note that b/c of the LDFLAGS env var, i didn't have to deactivate the 
-"     libiconv port
-"   - this didn't successfully build python3 (who really cares?)
+"      ./configure --enable-gui=macvim --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --with-python-config-dir=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config/ --enable-cscope 
 "   - *** DO NOT "sudo make install".  this gets all jacked up.  just drag 
 "     src/MacVim/build/Release/MacVim.app into the /Applications dir
 "
 "	- i also downloaded the better macvim icon from here:
-"		http://dribbble.com/shots/121306-MacVim-Replacement-Icon
+"		http://dribbble.com/shots/337065-MacVim-Icon-Updated
 "	  and then i opened it in preview, selected the image w/ cmd-a, then copied
 "	  it w/ cmd-c, then in the info window for the the macvim app, i clicked
 "	  the icon and pressed cmd-v
+
+if !exists("*MaximizeWithoutResizingQuickfix")
+  function MaximizeWithoutResizingQuickfix()
+	" disable stuff to make this faster
+	let SaveLazyredraw = &lazyredraw
+	let SaveEi = &ei
+	set lazyredraw
+	set ei=WinEnter
+
+	let qfwinnr = -1        " quickfix window number
+	let tot = winnr('$')    " total number of windows
+	let curwinnr = winnr()  " current window number
+  let reenable = 0
+
+	for i in range(1, tot)
+		if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+			let qfwinnr = i
+		endif
+	endfor
+
+	if qfwinnr != curwinnr
+
+		let qfheight = winheight(qfwinnr)
+
+		winc _
+
+		if qfwinnr > -1
+      if "javascript" == &ft
+        if !exists('b:jshint_disabled') || !b:jshint_disabled
+          JSHintToggle
+          let reenable=1
+        endif
+      endif
+			exe qfwinnr . "wincmd \<c-w>"
+			exe 'resize ' . qfheight
+			exe curwinnr . "wincmd \<c-w>"
+      if reenable
+        JSHintToggle
+      endif
+		endif
+
+	endif
+
+	let &ei = SaveEi
+	let &lazyredraw = SaveLazyredraw
+
+  endfunction
+endif
+nnoremap <C-J> <C-W>j:call<space>MaximizeWithoutResizingQuickfix()<bar>echo<cr>
+nnoremap <C-K> <C-W>k:call<space>MaximizeWithoutResizingQuickfix()<bar>echo<cr>
+
+set noequalalways
+
+let g:ackprg="ack -H --nocolor --nogroup --column --follow"
+
+" <leader>p is already mapped to pasting from system clipboard
+" nnoremap <leader>n :set<space>lazyredraw<bar>echo<cr><c-w>jj<cr>:set<space>nolazyredraw<bar>:echo<cr>
+" nnoremap <leader>p :set<space>lazyredraw<bar>echo<cr><c-w>jk<cr>:set<space>nolazyredraw<bar>:echo<cr>
+
+" highlight trailing whitespace
+au BufEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=#413E3C
+au ColorScheme * highlight ExtraWhitespace guibg=#413E3C

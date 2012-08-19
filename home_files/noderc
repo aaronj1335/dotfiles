@@ -1,6 +1,8 @@
 var fs = require('fs'),
     path = require('path'),
-    exists = fs.exists || path.exists;
+    exists = fs.exists || path.exists,
+    globalNodeModulesDir =
+        path.join(path.dirname(path.dirname(process.execPath)), 'lib/node_modules');
 
 var stup = path.join(process.env.HOME, '.node_history');
 exists(stup, function(exists) {
@@ -25,6 +27,11 @@ exists(stup, function(exists) {
 
 });
 
-try {
-    var u = require('underscore');
-} catch (e) { ; }
+exists(globalNodeModulesDir, function(exists) {
+    if (exists) {
+        module.paths.push(globalNodeModulesDir);
+        try {
+            global.u = require('underscore');
+        } catch (e) { }
+    }
+});

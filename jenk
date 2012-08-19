@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# get the directory where this script resides
+this_scripts_dir="$(dirname `type -p $0`)"
+
+USAGE="USAGE: `basename $0` [-h] <build job name>
+
+Kick off a jenkins build and tail the log.
+
+Options:
+    -f  Just tail the last jenkins log
+    -h  Show this help message"
+
+# Parse command line options.
+while getopts fh OPT; do
+    case "$OPT" in
+        f)
+            JUST_TAIL=1
+            ;;
+        h)
+            echo "$USAGE"
+            exit 0
+            ;;
+        \?)
+            # getopts issues an error message
+            echo "$USAGE" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Remove the switches we parsed above.
+shift `expr $OPTIND - 1`
+
+jenkins="$HOME/bin/jenkins-cli.jar"
+
+config_dir="$HOME/.build"
+[ -d "$config_dir" ] || mkdir "$config_dir"
+
+last=""
+[ -e "$config_dir/last" ] && last="`cat $config_dir/last`"
+
+job_name="$1"
+[ "$job_name" ] || job_name="$last"
+
+tail_f() {
+    job_name=$1
+    ssh -t jenkins.storediq.com "tail -f \"/var/lib/jenkins/jobs/$job_name/builds/\`ls -ltr /var/lib/jenkins/jobs/$job_name/builds/ | grep '^l' | tail -n 1|awk '{print \$9}'\`/log\""
+}
+
+echo -n $job_name > "$config_dir/last"
+
+if [ $JUST_TAIL ]; then
+    tail_f $job_name
+    exit 0
+fi
+
+echo "building $job_name"
+java -jar $jenkins \
+    -i ~/.ssh/id_rsa.siq \
+    -s http://jenkins.storediq.com build \
+    $job_name && \
+    sleep 5 && \
+tail_f $job_name
