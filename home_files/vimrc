@@ -42,9 +42,9 @@ au Filetype python setlocal expandtab
 " turn on the line number and location of the cursor as a percentage of the file
 set ruler 
 
-set history=250		" keep 50 lines of command line history
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=250    " keep 50 lines of command line history
+set showcmd    " display incomplete commands
+set incsearch    " do incremental searching
 set background=dark
 set vb t_vb=
 
@@ -87,7 +87,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent    " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -133,8 +133,8 @@ if $TERM_PROGRAM == 'Apple_Terminal'
     let g:solarized_termtrans=1
 end
 if $TERM == 'xterm-256color'
-	" colorscheme railscasts
-	colorscheme solarized
+  " colorscheme railscasts
+  colorscheme solarized
 end
 
 set mouse=a
@@ -150,7 +150,7 @@ set gdefault
 let mapleader = ","
 set textwidth=79
 if exists("+colorcolumn")
-	set colorcolumn=80
+  set colorcolumn=80
 end
 
 nnoremap <tab> %
@@ -163,13 +163,13 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 if has("clipboard")
-	vnoremap <leader>y "*y
-	nnoremap <leader>y "*yy
-	nnoremap <leader>p "*p
+  vnoremap <leader>y "*y
+  nnoremap <leader>y "*yy
+  nnoremap <leader>p "*p
 
-	nnoremap <leader>f :call setreg('*', @%)<cr>
+  nnoremap <leader>f :call setreg('*', @%)<cr>
 else
-	nnoremap <leader>f :call setreg('.', @%)<cr>
+  nnoremap <leader>f :call setreg('.', @%)<cr>
 end
 
 nnoremap <leader>b <c-^>
@@ -184,21 +184,21 @@ set wildignore+=*.o,*.obj,.git,*CVS,node_modules/*/node_modules/**,_src/*/node_m
 
 au BufNewFile,BufRead *.md setlocal ft=markdown
 function! MarkdownPreview()
-	silent w! /tmp/vim_markdown_preview.html
+  silent w! /tmp/vim_markdown_preview.html
     " silent !python -c "import string,sys,markdown; s = filter(lambda x: x in string.printable, open('/tmp/vim_markdown_preview.html').read()); sys.stdout.write(open('template.html').read() \% markdown.Markdown().convert(s))" > /tmp/vim_markdown_preview.html.2
-	silent !markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
-	silent !mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
-	silent !open /tmp/vim_markdown_preview.html
+  silent !markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
+  silent !mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
+  silent !open /tmp/vim_markdown_preview.html
 endfunction
 au Filetype markdown nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
 
 function! OpenTray(...)
-	if len(a:000) > 0
-		execute 'vsplit ' . a:000[0]
-	else
-		vsplit .
-	endif
-	vertical resize 25
+  if len(a:000) > 0
+    execute 'vsplit ' . a:000[0]
+  else
+    vsplit .
+  endif
+  vertical resize 25
 endfunction
 
 if !exists(':Tray')
@@ -230,7 +230,7 @@ au Filetype python nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 au BufReadPost quickfix setlocal nowrap
 
 " make markup languages a shiftwidth of 2
-au Filetype htmldjango,html,coffee,ruby,css,less,vim setlocal sw=2 sts=2 ts=2 textwidth=0
+au Filetype htmldjango,html,coffee,ruby,css,less,vim,sh setlocal sw=2 sts=2 ts=2 textwidth=0
 
 au Filetype markdown setlocal autoindent
 
@@ -254,75 +254,75 @@ runtime macros/matchit.vim
 "
 " building macvim:
 "   - old instructions:
-"	    - first deactivate libiconv: "sudo port deactivate -f libiconv"
-"	    - configuration cmd: ./configure --enable-gui=macvim
-"	      --with-features=huge --enable-rubyinterp --enable-pythoninterp
-"	      --enable-perlinterp --with-python-config-dir=/Library/Frameworks/
-"	      Python.framework/Versions/2.7/lib/python2.7/config/config
-"	      --enable-cscope
-"	    - make then choked when it got to something where it needed to 'curl'
-"	      an icon.  this is b/c curl (macports tool) failed w/o libiconv.  at
-"	      this point i just re-activated libiconv: "sudo port activate
-"	      libiconv"
-"	    - i also needed to edit the Makefile in the MacVim/icons directory b/c
-"	      the URL for the EnvyCodeR font was wrong.  i put in the correct url
-"	      and the build finally succeeded
+"      - first deactivate libiconv: "sudo port deactivate -f libiconv"
+"      - configuration cmd: ./configure --enable-gui=macvim
+"        --with-features=huge --enable-rubyinterp --enable-pythoninterp
+"        --enable-perlinterp --with-python-config-dir=/Library/Frameworks/
+"        Python.framework/Versions/2.7/lib/python2.7/config/config
+"        --enable-cscope
+"      - make then choked when it got to something where it needed to 'curl'
+"        an icon.  this is b/c curl (macports tool) failed w/o libiconv.  at
+"        this point i just re-activated libiconv: "sudo port activate
+"        libiconv"
+"      - i also needed to edit the Makefile in the MacVim/icons directory b/c
+"        the URL for the EnvyCodeR font was wrong.  i put in the correct url
+"        and the build finally succeeded
 "
 "   - configuration command:
 "      ./configure --enable-gui=macvim --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --with-python-config-dir=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config/ --enable-cscope 
 "   - *** DO NOT "sudo make install".  this gets all jacked up.  just drag 
 "     src/MacVim/build/Release/MacVim.app into the /Applications dir
 "
-"	- i also downloaded the better macvim icon from here:
-"		http://dribbble.com/shots/337065-MacVim-Icon-Updated
-"	  and then i opened it in preview, selected the image w/ cmd-a, then copied
-"	  it w/ cmd-c, then in the info window for the the macvim app, i clicked
-"	  the icon and pressed cmd-v
+"  - i also downloaded the better macvim icon from here:
+"    http://dribbble.com/shots/337065-MacVim-Icon-Updated
+"    and then i opened it in preview, selected the image w/ cmd-a, then copied
+"    it w/ cmd-c, then in the info window for the the macvim app, i clicked
+"    the icon and pressed cmd-v
 
 if !exists("*MaximizeWithoutResizingQuickfix")
   function MaximizeWithoutResizingQuickfix()
-	" disable stuff to make this faster
-	let SaveLazyredraw = &lazyredraw
-	let SaveEi = &ei
-	set lazyredraw
-	set ei=WinEnter
+  " disable stuff to make this faster
+  let SaveLazyredraw = &lazyredraw
+  let SaveEi = &ei
+  set lazyredraw
+  set ei=WinEnter
 
-	let qfwinnr = -1        " quickfix window number
-	let tot = winnr('$')    " total number of windows
-	let curwinnr = winnr()  " current window number
+  let qfwinnr = -1        " quickfix window number
+  let tot = winnr('$')    " total number of windows
+  let curwinnr = winnr()  " current window number
   let reenable = 0
 
-	for i in range(1, tot)
-		if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
-			let qfwinnr = i
-		endif
-	endfor
+  for i in range(1, tot)
+    if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+      let qfwinnr = i
+    endif
+  endfor
 
-	if qfwinnr != curwinnr
+  if qfwinnr != curwinnr
 
-		let qfheight = winheight(qfwinnr)
+    let qfheight = winheight(qfwinnr)
 
-		winc _
+    winc _
 
-		if qfwinnr > -1
+    if qfwinnr > -1
       if "javascript" == &ft
         if !exists('b:jshint_disabled') || !b:jshint_disabled
           JSHintToggle
           let reenable=1
         endif
       endif
-			exe qfwinnr . "wincmd \<c-w>"
-			exe 'resize ' . qfheight
-			exe curwinnr . "wincmd \<c-w>"
+      exe qfwinnr . "wincmd \<c-w>"
+      exe 'resize ' . qfheight
+      exe curwinnr . "wincmd \<c-w>"
       if reenable
         JSHintToggle
       endif
-		endif
+    endif
 
-	endif
+  endif
 
-	let &ei = SaveEi
-	let &lazyredraw = SaveLazyredraw
+  let &ei = SaveEi
+  let &lazyredraw = SaveLazyredraw
 
   endfunction
 endif
