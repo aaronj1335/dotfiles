@@ -1,14 +1,37 @@
-#! /bin/sh
+#! /bin/bash
 
-# this just spins and waits for a SIGUSR1, when it gets signaled, it runs the
-# specified command.  example usage would be something like:
-#
-#     $ sigwrap run_unit_test.sh
-#     sig wrapper started. trigger with:
-#     kill -SIGUSR1 45697
-#
-# then in your editor of choice you might set up some keyboard mapping to run
-# that command and re-run your unit tests
+USAGE="USAGE: `basename $0` [-h] [args...]
+
+this just spins and waits for a SIGUSR1, when it gets signaled, it runs the
+specified command.  example usage would be something like:
+
+    $ sigwrap run_unit_test.sh
+    sig wrapper started. trigger with:
+    kill -SIGUSR1 45697
+
+then in your editor of choice you might set up some keyboard mapping to run
+that command and re-run your unit tests
+
+Options:
+    -h  Show this help message"
+
+# Parse command line options.
+while getopts h OPT; do
+    case "$OPT" in
+        h)
+            echo "$USAGE"
+            exit 0
+            ;;
+        \?)
+            # getopts issues an error message
+            echo "$USAGE" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Remove the switches we parsed above.
+shift `expr $OPTIND - 1`
 
 args="$*"
 
