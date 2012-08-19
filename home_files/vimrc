@@ -341,5 +341,5 @@ let g:ackprg="ack -H --nocolor --nogroup --column --follow"
 au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
-highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
+highlight ExtraWhitespace ctermbg=red guibg=#413E3C
+au ColorScheme * highlight ExtraWhitespace guibg=#413E3C
