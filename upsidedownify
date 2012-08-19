@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+// i'm not going to lie to you, this is the most important script ever written.
+//
+// http://www.revfad.com/flip.html
+// http://www.fileformat.info/convert/text/upside-down-map.htm
 
 var fs = require('fs');
 
