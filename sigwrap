@@ -1,5 +1,15 @@
 #! /bin/sh
 
+# this just spins and waits for a SIGUSR1, when it gets signaled, it runs the
+# specified command.  example usage would be something like:
+#
+#     $ sigwrap run_unit_test.sh
+#     sig wrapper started. trigger with:
+#     kill -SIGUSR1 45697
+#
+# then in your editor of choice you might set up some keyboard mapping to run
+# that command and re-run your unit tests
+
 args="$*"
 
 # trap ctrl-c:
