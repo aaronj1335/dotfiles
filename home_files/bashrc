@@ -68,36 +68,50 @@ export EDITOR=vim # this is most important...
 
 
 ### how many peices of flair can we add to our $PS1‽
-if [ "$TERM" = "xterm-256color" ]; then
-    at="@"
-    hn="\h"
-    sep=":"
-    dollar="$"
-    usr="\u"
-    if locale | grep -i utf-8 &>/dev/null; then
-        at="∂"
-        if which upsidedownify &>/dev/null; then
-            if which scutil &>/dev/null; then
-                hn="`echo -n $(scutil --get ComputerName) | upsidedownify`"
-            else
-                hn="`echo -n $(hostname) | upsidedownify`"
-            fi
+function pimpmyps1() {
+  color="$1"
+  unycodes="$2"
+  at="@"
+  hn="\h"
+  sep=":"
+  dollar="$"
+  usr="\u"
+  if [ "$color" = 1 ]; then
+    if [ "$unycodes" = 1 ]; then
+      at="∂"
+      if which upsidedownify &>/dev/null; then
+        if which scutil &>/dev/null; then
+          hn="`echo -n $(scutil --get ComputerName) | upsidedownify`"
+        else
+          hn="`echo -n $(hostname) | upsidedownify`"
         fi
-        sep="☠"
-        dollar="§"
-        [ "$USER" = root ] && dollar="$dollar∞"
+      fi
+      sep=" ☠ "
+      dollar="§"
+      [ "$USER" = root ] && dollar="$dollar∞"
+      function unƒvckmyps1() {
+        pimpmyps1 1 0
+      }
     else
-        [ "$USER" = root ] && dollar="$dollar#"
+      [ "$USER" = root ] && dollar="$dollar#"
     fi
-	export PS1="
-\[\e[38;5;247m\]\u\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\] $sep \[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
+    export PS1="
+\[\e[38;5;247m\]\u\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\]$sep\[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
 \[\e[38;5;87m\]$dollar\[\e[0m\] "
-else
-	export PS1="\[\033[0m\][\[\033[36m\]\u@\h\[\033[32m\]\w\[\033[0m\]]\n\[\033[31m\]\$ \[\033[0m\]"
-fi
+  else
+    export PS1="\[\033[0m\][\[\033[36m\]\u@\h\[\033[32m\]\w\[\033[0m\]]\n\[\033[31m\]\$ \[\033[0m\]"
+  fi
+}
+[ "$TERM" = "xterm-256color" ] && color=1
+if locale | grep -i utf-8 &>/dev/null; then unycodes=1; fi
+pimpmyps1 $color $unycodes
 
 
+
+# this often screws things up
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+
+
 
 export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
