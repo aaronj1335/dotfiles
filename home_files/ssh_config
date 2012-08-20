@@ -22,20 +22,8 @@ Host ashly
 	User "Ashly Stacy"
 	ForwardX11 yes
 
-Host msee140
-	HostName msee140lnx10.ecn.purdue.edu
-	User astacy
-
 Host pte
 	HostName staceserve.dyndns.org
-	User astacy
-
-Host lon
-	HostName longhorn.tacc.utexas.edu
-	User astacy
-
-Host ran
-	HostName ranger.tacc.utexas.edu
 	User astacy
 
 Host aa
@@ -77,17 +65,26 @@ Host a
  	HostName appapp140.storediq.com
  	User root
 
-Host dd
-    HostName delldemo.storediq.com
-    User root
-
-Host aws
-    HostName ec2-72-44-33-192.compute-1.amazonaws.com 
-    User root
-
-Host auto-driver00
-    HostName auto-driver00.storediq.com
-    User testadmin
-
 Host app
     User root
+
+# datest-pakistan-gateway
+Host gateway
+    HostName 10.10.200.26
+    User root
+
+# datest-pakistan-ds1
+Host ds1
+    HostName 10.10.200.42
+    User root
+
+# datest-pakistan-ds2
+Host ds2
+    HostName 10.10.200.43
+    User root
+
+# datest-pakistan-ds3
+Host ds3
+    HostName 10.10.200.41
+    User root
+
