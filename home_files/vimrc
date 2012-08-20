@@ -186,7 +186,7 @@ au BufNewFile,BufRead *.md setlocal ft=markdown
 function! MarkdownPreview()
   silent w! /tmp/vim_markdown_preview.html
     " silent !python -c "import string,sys,markdown; s = filter(lambda x: x in string.printable, open('/tmp/vim_markdown_preview.html').read()); sys.stdout.write(open('template.html').read() \% markdown.Markdown().convert(s))" > /tmp/vim_markdown_preview.html.2
-  silent !markdown /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
+  silent !$(which skeldown &>/dev/null && echo 'skeldown' || echo 'markdown') /tmp/vim_markdown_preview.html > /tmp/vim_markdown_preview.html.2
   silent !mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
   silent !open /tmp/vim_markdown_preview.html
 endfunction
