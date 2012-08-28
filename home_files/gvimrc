@@ -21,3 +21,6 @@ map <SwipeUp> <C-W>j:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
 map <SwipeDown> <C-W>k:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
 nmap <SwipeLeft> gT
 nmap <SwipeRight> gt
+
+highlight NonText    guifg=#181210
+highlight SpecialKey guifg=#181210
