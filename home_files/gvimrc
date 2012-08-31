@@ -24,3 +24,6 @@ nmap <SwipeRight> gt
 
 highlight NonText    guifg=#181210
 highlight SpecialKey guifg=#181210
+
+let g:CommandTAcceptSelectionSplitMap='<C-CR>'
+let g:CommandTAcceptSelectionTabMap='<CR>'
