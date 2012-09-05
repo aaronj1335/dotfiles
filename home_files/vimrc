@@ -230,7 +230,7 @@ au Filetype python nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 au BufReadPost quickfix setlocal nowrap
 
 " make markup languages a shiftwidth of 2
-au Filetype htmldjango,html,coffee,ruby,css,less,vim,sh setlocal sw=2 sts=2 ts=2 textwidth=0
+au Filetype htmldjango,html,coffee,ruby,css,less,vim,sh,yaml setlocal sw=2 sts=2 ts=2 textwidth=0
 
 au Filetype markdown setlocal autoindent
 
