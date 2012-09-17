@@ -57,7 +57,7 @@ which hub &>/dev/null && alias git=hub
     source "$HOME/code/nvm/nvm.sh" && \
     source "$HOME/code/nvm/bash_completion"
 
-[ "`which node 2>/dev/null`" ] && export PATH="$PATH:./node_modules/.bin"
+[ "`which node 2>/dev/null`" ] && export PATH="./node_modules/.bin:$PATH"
 
 [ "`which npm 2>/dev/null`" ] && \
   echo "`npm completion`" > /tmp/npm-completion.sh && \
