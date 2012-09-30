@@ -22,13 +22,13 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 [ -d /usr/local/cuda/bin ] && export PATH="$PATH:/usr/local/cuda/bin"
 
 [ -d $HOME/downfrom-jmake/bin ] && \
-	export PATH="${PATH}:$HOME/downfrom-jmake/bin"
+  export PATH="${PATH}:$HOME/downfrom-jmake/bin"
 
 [ -d /Library/PostgreSQL/8.3/bin/ ] && \
-	export PATH="$PATH:/Library/PostgreSQL/8.3/bin"
+  export PATH="$PATH:/Library/PostgreSQL/8.3/bin"
 
 [ -d $HOME/code/siq/bin ] && \
-	export PATH="$PATH:$HOME/code/siq/bin"
+  export PATH="$PATH:$HOME/code/siq/bin"
 
 [ -d $HOME/code/pdub ] && export PATH="$PATH:$HOME/code/pdub"
 
@@ -45,7 +45,7 @@ alias grep="grep --color"
 
 # one vim to find them, one vim to rule them all...
 [ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] &&
-	export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
+  export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
 
 
 
@@ -69,8 +69,8 @@ which hub &>/dev/null && alias git=hub
 export EDITOR=vim # this is most important...
 export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
-	alias ll='ls -l --color=auto'
-	eval "$(dircolors -b ~/.dir_colors)"
+  alias ll='ls -l --color=auto'
+  eval "$(dircolors -b ~/.dir_colors)"
 fi
 export CLICOLOR="true"
 
@@ -140,7 +140,7 @@ export FIGNORE="$FIGNORE:CVS:.DS_Store:.svn"
 # and django completion
 [ -f "$HOME/bin/home_files/django-completion.bash" ] && \
     which django-admin.py &>/dev/null && \
-	source "$HOME/bin/home_files/django-completion.bash"
+  source "$HOME/bin/home_files/django-completion.bash"
 
 
 
@@ -152,11 +152,11 @@ export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
 ### and a spot of miscellany -- cause what's life without a little whimsy? ###
 # lifted this from @zeeg
 function pyfind() {
-	x=`python -c "import $1; print $1.__file__" | sed 's/\.pyc$/\.py/'`
-	if [ $? -ne 0 ]; then 
-		exit $?
-	fi
-	grep -q "__init__.py$" <<< $x && echo `dirname $x` || echo $x
+  x=`python -c "import $1; print $1.__file__" | sed 's/\.pyc$/\.py/'`
+  if [ $? -ne 0 ]; then 
+    exit $?
+  fi
+  grep -q "__init__.py$" <<< $x && echo `dirname $x` || echo $x
 }
 
 which tmutil &>/dev/null && \
