@@ -36,6 +36,8 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -d /siq/bin ] && export PATH="/siq/bin:$PATH"
 
+[ -d "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
+
 
 
 ### the arbitrary and entirely personal aliases ###
