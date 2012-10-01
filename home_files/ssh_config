@@ -1,90 +1,43 @@
 Host sl
-	HostName staceserve.dyndns.org
-	User astacy
+    HostName staceserve.dyndns.org
+    User astacy
 
 Host ut1
-	HostName cornuthaum.cs.utexas.edu
-	User astacy
-	#ForwardX11 yes
+    HostName cornuthaum.cs.utexas.edu
+    User astacy
+    #ForwardX11 yes
 
 Host ut2
-	HostName stick.cs.utexas.edu
-	User astacy
-	#ForwardX11 yes
+    HostName stick.cs.utexas.edu
+    User astacy
+    #ForwardX11 yes
 
 Host ut3
-	HostName hachi.cs.utexas.edu
-	User astacy
-	#ForwardX11 yes
+    HostName hachi.cs.utexas.edu
+    User astacy
+    #ForwardX11 yes
 
 Host ashly
-	HostName mrs-stacys-macbook.local
-	User "Ashly Stacy"
-	ForwardX11 yes
+    HostName mrs-stacys-macbook.local
+    User "Ashly Stacy"
+    ForwardX11 yes
 
 Host pte
-	HostName staceserve.dyndns.org
-	User astacy
-
-Host aa
-	HostName appapp141.storediq.com
-	User root
-
-Host ab
-	HostName appapp142.storediq.com
-	User root
-
-Host ac
-	HostName appapp143.storediq.com
-	User root
-
-Host ad
-	HostName vmapp136.storediq.com
-	User root
-
-Host ae
-	HostName appapp222.storediq.com
-	User root
-
-Host af
-	HostName appapp227.storediq.com
-	User root
-
-Host appapp137
-    HostName appapp137.storediq.com
-    User root
-
-Host devnode05
-	User root
+    HostName staceserve.dyndns.org
+    User astacy
 
 Host merge
-	HostName mergeslave1.storediq.com
-	User root
-
-Host a
- 	HostName appapp140.storediq.com
- 	User root
+    HostName mergeslave1.storediq.com
+    User root
 
 Host app
+    User root
+
+Host 6x
     User root
 
 # datest-pakistan-gateway
 Host gateway
     HostName 10.10.200.26
-    User root
-
-# datest-pakistan-ds1
-Host ds1
-    HostName 10.10.200.42
-    User root
-
-# datest-pakistan-ds2
-Host ds2
-    HostName 10.10.200.43
-    User root
-
-# datest-pakistan-ds3
-Host ds3
-    HostName 10.10.200.41
     User root
 
