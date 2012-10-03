@@ -33,6 +33,12 @@ Host merge
 Host app
     User root
 
+Host gw
+    User root
+
+Host ds
+    User root
+
 Host 6x
     User root
 
