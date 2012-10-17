@@ -47,3 +47,8 @@ Host gateway
     HostName 10.10.200.26
     User root
 
+Host ubuntu-build01
+    User testadmin
+
+Host dev.storediq.com
+    User ubuntu
