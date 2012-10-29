@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# to get the bounds of a window:
+# osascript -e 'tell application "Twitter"' -e "get bounds of front window" -e "end tell"
+
+osascript \
+  -e 'tell application "Terminal"' \
+    -e 'set bounds of front window to {2814, 0, 3524, 1037}' \
+  -e 'end tell'
+
+osascript \
+  -e 'tell application "Safari"' \
+    -e 'set bounds of front window to {0, 22, 1024, 1196}' \
+  -e 'end tell'
+
+osascript -e \
+  'tell application "MacVim"' \
+    -e 'set bounds of front window to {1920, 0, 2813, 1040}' \
+  -e 'end tell'
+
+osascript -e \
+  'tell application "Twitter"' \
+    -e 'set bounds of front window to {3284, 428, 3600, 1050}' \
+  -e 'end tell'
