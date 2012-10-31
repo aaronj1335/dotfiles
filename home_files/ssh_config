@@ -33,6 +33,9 @@ Host merge
 Host app
     User root
 
+Host oldapp
+    User root
+
 Host gw
     User root
 
