@@ -14,10 +14,10 @@ function remove_references {
 # set up our .vim directory
 if [ ! -d ~/.vim ] || [ ! -f ~/.vim/autoload/pathogen.vim ]; then 
 	remove_references ~/.vim
-	git clone ssh://${ss}/~/$repo_dir/vim-pathogen ~/.vim
+	git clone ssh://${ss}/~/$repo_dir/dotvim ~/.vim
 	mkdir ~/.vim/bundle
 else
-	echo "Pulling vim-pathogen"
+	echo "Pulling ~/.vim"
 	( cd ~/.vim && git pull )
 fi
 
