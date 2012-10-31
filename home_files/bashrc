@@ -99,7 +99,7 @@ function pimpmyps1() {
   if [ "$color" = 1 ]; then
     if [ "$unycodes" = 1 ]; then
       at="∂"
-      if which upsidedownify &>/dev/null; then
+      if ( which upsidedownify && which node ) &>/dev/null; then
         if which scutil &>/dev/null; then
           hn="`echo -n $(scutil --get ComputerName) | upsidedownify`"
         else
