@@ -51,6 +51,11 @@ Host gateway
     User root
 
 Host ubuntu-build01
+    HostName 10.99.11.15
+    User testadmin
+
+Host ubuntu-beta-build01
+    HostName 10.98.11.55
     User testadmin
 
 Host dev.storediq.com
