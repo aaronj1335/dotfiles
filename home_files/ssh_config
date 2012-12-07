@@ -45,6 +45,9 @@ Host ds
 Host 6x
     User root
 
+Host citest
+    User root
+
 # datest-pakistan-gateway
 Host gateway
     HostName 10.10.200.26
