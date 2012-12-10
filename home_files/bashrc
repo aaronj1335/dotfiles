@@ -32,6 +32,8 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -d $HOME/code/pdub ] && export PATH="$PATH:$HOME/code/pdub"
 
+[ -d $HOME/code/repozish ] && export PATH="$PATH:$HOME/code/repozish"
+
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 
 [ -d /siq/bin ] && export PATH="/siq/bin:$PATH"
