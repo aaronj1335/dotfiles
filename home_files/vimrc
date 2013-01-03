@@ -225,6 +225,8 @@ au Filetype coffee nnoremap <buffer> <leader>l oconsole.log<space>
 au Filetype coffee nnoremap <buffer> <leader><s-l> Oconsole.log<space>
 au Filetype python nnoremap <buffer> <leader>l oprint<space><space><esc>ha
 au Filetype python nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
+au Filetype ruby nnoremap <buffer> <leader>l op<space><space><esc>ha
+au Filetype ruby nnoremap <buffer> <leader><s-l> Op<space><space><esc>ha
 
 " disable line wrap for quickfix window
 au BufReadPost quickfix setlocal nowrap
