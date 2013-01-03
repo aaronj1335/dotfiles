@@ -83,7 +83,7 @@ if has("autocmd")
 
   augroup END
 
-  autocmd BufNewFile,BufRead *.json setlocal ft=javascript
+  autocmd BufNewFile,BufRead *.json,*.har setlocal ft=javascript
 
 else
 
