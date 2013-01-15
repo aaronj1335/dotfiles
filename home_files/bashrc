@@ -27,8 +27,8 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 [ -d /Library/PostgreSQL/8.3/bin/ ] && \
   export PATH="$PATH:/Library/PostgreSQL/8.3/bin"
 
-[ -d $HOME/code/siq/bin ] && \
-  export PATH="$PATH:$HOME/code/siq/bin"
+[ -d $HOME/work/util/bin ] && \
+  export PATH="$PATH:$HOME/work/util/bin"
 
 [ -d $HOME/code/pdub ] && export PATH="$PATH:$HOME/code/pdub"
 
