@@ -6,7 +6,7 @@
     frag = magenta
     old = red
     new = green
-	whitespace = red reverse
+    whitespace = red reverse
 
 [color "status"]
     added = green
@@ -15,13 +15,13 @@
 
 [alias]
     lg = log --graph --decorate --pretty=oneline --abbrev-commit
-    lga = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lga = log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all
     stat = status
     st = status
 
 [user]
-	name = Aaron Stacy
-	email = aaron.r.stacy@gmail.com
+    name = Aaron Stacy
+    email = aaron.r.stacy@gmail.com
 
 [core]
     pager = cat
@@ -40,4 +40,4 @@
 [diff]
     tool = Kaleidoscope
 [github]
-	user = aaronj1335
+    user = aaronj1335
