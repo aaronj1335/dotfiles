@@ -227,6 +227,8 @@ au Filetype python nnoremap <buffer> <leader>l oprint<space><space><esc>ha
 au Filetype python nnoremap <buffer> <leader><s-l> Oprint<space><space><esc>ha
 au Filetype ruby nnoremap <buffer> <leader>l op<space><space><esc>ha
 au Filetype ruby nnoremap <buffer> <leader><s-l> Op<space><space><esc>ha
+au Filetype c nnoremap <buffer> <leader>l oprintf("\n");<esc>hhhhi
+au Filetype c nnoremap <buffer> <leader><s-l> Oprintf("\n");<esc>hhhhi
 
 " disable line wrap for quickfix window
 au BufReadPost quickfix setlocal nowrap
