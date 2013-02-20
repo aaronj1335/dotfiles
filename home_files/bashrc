@@ -38,6 +38,9 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -d "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
 
+# GAH! curse u pysetup
+export PYTHONPATH="$PYTHONPATH:/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
+
 
 
 ### the arbitrary and entirely personal aliases ###
@@ -148,6 +151,12 @@ export FIGNORE="$FIGNORE:CVS:.DS_Store:.svn"
 [ -f "$HOME/bin/home_files/django-completion.bash" ] && \
     which django-admin.py &>/dev/null && \
   source "$HOME/bin/home_files/django-completion.bash"
+
+_butler_completion() {
+  COMPREPLY=( $(butler --_completion "${COMP_WORDS[*]}") )
+  return 0
+}
+complete -F _butler_completion butler
 
 
 
