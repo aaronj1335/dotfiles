@@ -63,3 +63,6 @@ Host ubuntu-beta-build01
 
 Host dev.storediq.com
     User ubuntu
+
+Host beth
+    User root
