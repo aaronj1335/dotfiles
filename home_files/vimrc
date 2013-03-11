@@ -351,3 +351,8 @@ au ColorScheme * highlight ExtraWhitespace guibg=#413E3C
 set listchars=tab:▸\ 
 set list " show invisibles
 
+" for github flavored markdown
+augroup markdown
+  au!
+  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
