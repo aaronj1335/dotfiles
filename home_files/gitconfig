@@ -41,3 +41,5 @@
     tool = Kaleidoscope
 [github]
     user = aaronj1335
+[push]
+	default = simple
