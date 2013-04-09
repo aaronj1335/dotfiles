@@ -5,8 +5,8 @@ endif
 autocmd BufRead *.safari setfiletype html
 noremap <D-[> gT
 noremap <D-]> gt
-noremap <D-P> <Nop>
-inoremap <D-P> <Nop>
+" noremap <D-P> <Nop>
+" inoremap <D-P> <Nop>
 
 " colorscheme solarized
 colorscheme railscasts
@@ -29,3 +29,9 @@ highlight SpecialKey guifg=#181210
 
 let g:CommandTAcceptSelectionSplitMap='<C-CR>'
 let g:CommandTAcceptSelectionTabMap='<CR>'
+
+if has("gui_macvim")
+  macmenu &File.Print key=<nop>
+  map <D-p> :CtrlP<cr>
+endif
+

@@ -180,6 +180,12 @@ let g:CommandTAcceptSelectionMap='<s-cr>'
 let g:CommandTAcceptSelectionSplitMap='<cr>'
 let g:CommandTMatchWindowAtTop=1
 
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
+let g:ctrlp_working_path_mode = '0'
+
 set wildignore+=*.o,*.obj,.git,*CVS,node_modules/*
 
 au BufNewFile,BufRead *.md setlocal ft=markdown
