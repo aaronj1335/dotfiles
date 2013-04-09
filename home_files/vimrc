@@ -190,7 +190,7 @@ function! MarkdownPreview()
   silent !mv /tmp/vim_markdown_preview.html.2 /tmp/vim_markdown_preview.html
   silent !open /tmp/vim_markdown_preview.html
 endfunction
-au Filetype markdown nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
+au Filetype markdown,text nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
 
 function! OpenTray(...)
   if len(a:000) > 0
