@@ -16,8 +16,8 @@
 [alias]
     lg = log --graph --decorate --pretty=oneline --abbrev-commit
     lga = log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all
-    stat = status
-    st = status
+    st = status -sb
+    stat = status -sb
 
 [user]
     name = Aaron Stacy
