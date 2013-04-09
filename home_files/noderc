@@ -31,7 +31,7 @@ exists(globalNodeModulesDir, function(exists) {
     if (exists) {
         module.paths.push(globalNodeModulesDir);
         try {
-            global.u = require('underscore');
+            global.u = require('lodash');
         } catch (e) { }
     }
 });
