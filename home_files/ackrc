@@ -2,4 +2,5 @@
 --type-set=django_template=.djt
 --type-set=mtpl=.mtpl
 --type-set=less=.less
+--type-set=jade=.jade
 --ignore-dir="Session.vim"
