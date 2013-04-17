@@ -152,10 +152,9 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view --cmd 'let g:no_session_
 # finally tell bash not to include CVS in the possible completions (b/c it sux)
 export FIGNORE="$FIGNORE:CVS:.DS_Store:.svn"
 
-# and django completion
-[ -f "$HOME/bin/home_files/django-completion.bash" ] && \
-    which django-admin.py &>/dev/null && \
-  source "$HOME/bin/home_files/django-completion.bash"
+if which grunt &>/dev/null; then
+  eval "$(grunt --completion=bash)"
+fi
 
 _butler_completion() {
   COMPREPLY=( $(butler --_completion "${COMP_WORDS[*]}") )
