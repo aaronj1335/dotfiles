@@ -9,7 +9,7 @@ function remove_references {
 home_files_dir="$(dirname `type -p $0`)/home_files"
 
 if ! echo $home_files_dir | egrep "^/.*" &>/dev/null ; then
-	home_files_dir="$(pwd)/${home_files_dir}"
+  home_files_dir="$(pwd)/${home_files_dir}"
 fi
 
 # the special cases
@@ -28,12 +28,12 @@ ln -s $home_files_dir/matplotlibrc "$HOME/.matplotlib/matplotlibrc"
 
 # the rest of the config files
 for i in bashrc vimrc gvimrc pythonrc gitconfig dir_colors Xdefaults ackrc \
-    gitignore_global noderc coffeerc.coffee jshintrc; do
-	remove_references "$HOME/.${i}"
-	ln -s $home_files_dir/${i} $HOME/.${i}
+    gitignore_global noderc coffeerc.coffee jshintrc skeldown; do
+  remove_references "$HOME/.${i}"
+  ln -s $home_files_dir/${i} $HOME/.${i}
 
-	if [ "bashrc" = "$i" ]; then
-		source $HOME/.bashrc
-	fi
+  if [ "bashrc" = "$i" ]; then
+    source $HOME/.bashrc
+  fi
 done
 
