@@ -38,6 +38,11 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -d "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
 
+# this should probably be detected dynamically somehow, but i'm not sure how to
+# do that
+[ -d /usr/local/Cellar/ruby/2.0.0-p0/bin ] && \
+  export PATH="$PATH:/usr/local/Cellar/ruby/2.0.0-p0/bin"
+
 # GAH! curse u pysetup
 export PYTHONPATH="$PYTHONPATH:/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
 
