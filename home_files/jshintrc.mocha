@@ -1,0 +1,29 @@
+{
+    "forin": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "noarg": true,
+    "noempty": true,
+    "bitwise": true,
+    "undef": true,
+    "curly": false,
+    "browser": true,
+    "unused": true,
+    "globals": {
+        "require": false,
+        "define": false,
+        "exports": false,
+        "console": false,
+        "process": false,
+        "__filename": false,
+        "__dirname": false,
+        "$": false,
+        "waterfall": false,
+        "msgme": false,
+        "module": false,
+            "phantom": false,
+            "describe": false,
+            "it": false,
+            "expect": false
+    }
+}
