@@ -1,15 +1,24 @@
 {
-    "forin": true,
+    "browser": true,
+    "bitwise": true,
+    "curly": false,
     "eqeqeq": true,
     "eqnull": true,
+    "forin": true,
+    "immed": true,
+    "indent": 4,
+    "latedef": true,
     "noarg": true,
     "noempty": true,
-    "bitwise": true,
+    "nonew": true,
+    "quotmark": true,
+    "trailing": true,
     "undef": true,
-    "curly": false,
-    "browser": true,
     "unused": true,
     "globals": {
+
+        "describe": false, "it": false, "expect": false, "beforeEach": false, "afterEach": false, "before": false, "after": false, "sinon": false,
+
         "require": false,
         "define": false,
         "exports": false,
@@ -21,9 +30,7 @@
         "waterfall": false,
         "msgme": false,
         "module": false,
-            "phantom": false,
-            "describe": false,
-            "it": false,
-            "expect": false
+        "MSGME_VERSION": false
     }
 }
+
