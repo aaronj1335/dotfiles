@@ -18,6 +18,7 @@
     lga = log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all
     st = status -sb
     stat = status -sb
+    wrapup = "!f() { b=$1; if [ ! "$b" ]; then b=\"`git rev-parse --abbrev-ref HEAD`\"; git checkout master; fi; [ \"$b\" = master ] && echo ERROR: dont run this on master or production && exit 1; git push origin --delete $b; git branch -D $b; }; f"
 
 [user]
     name = Aaron Stacy
@@ -26,7 +27,7 @@
 [core]
     pager = cat
     excludesfile = ~/.gitignore_global
-	quotepath = false
+    quotepath = false
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
     path =
@@ -42,4 +43,4 @@
 [github]
     user = aaronj1335
 [push]
-	default = simple
+    default = simple
