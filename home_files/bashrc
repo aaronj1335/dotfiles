@@ -45,7 +45,10 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 # GAH! curse u pysetup
 export PYTHONPATH="$PYTHONPATH:/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
+# WORTHLESS python
+[ -d /usr/local/share/python ] && export PATH="$PATH:/usr/local/share/python"
 
+[ -f ~/code/z/z.sh ] && . ~/code/z/z.sh
 
 
 ### the arbitrary and entirely personal aliases ###
@@ -137,7 +140,7 @@ pimpmyps1 $color $unycodes
 
 
 # this often screws things up
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+export MANPAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 
 
@@ -156,13 +159,11 @@ if which grunt &>/dev/null; then
   eval "$(grunt --completion=bash)"
 fi
 
-_butler_completion() {
-  COMPREPLY=( $(butler --_completion "${COMP_WORDS[*]}") )
-  return 0
-}
-complete -F _butler_completion butler
-
-
+# if the system has git installed and i've got the 'wrapup' alias in my
+# gitconfig, then define a completion function for it
+if which git &>/dev/null && grep wrapup ~/.gitconfig &>/dev/null; then
+  _git_wrapup() { _git_branch; }
+fi
 
 ### the ever-loathsome CVS ###
 export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
