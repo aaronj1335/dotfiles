@@ -43,16 +43,10 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 [ -d /usr/local/Cellar/ruby/2.0.0-p0/bin ] && \
   export PATH="$PATH:/usr/local/Cellar/ruby/2.0.0-p0/bin"
 
-<<<<<<< HEAD
-# GAH! curse u pysetup
-export PYTHONPATH="$PYTHONPATH:/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
 # WORTHLESS python
 [ -d /usr/local/share/python ] && export PATH="$PATH:/usr/local/share/python"
 
 [ -f ~/code/z/z.sh ] && . ~/code/z/z.sh
-
-=======
->>>>>>> 0d2144588d9482b4676863df7942ff13d3f7e3e7
 
 ### the arbitrary and entirely personal aliases ###
 alias l='ls '
