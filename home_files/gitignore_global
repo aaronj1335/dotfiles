@@ -27,6 +27,7 @@ node_modules
 *.log
 *.sql
 *.sqlite
+*.tmp
 
 # OS generated files #
 ######################
@@ -41,3 +42,6 @@ Thumbs.db
 *.sw[op]
 Session.vim
 [Pp]roject.vim
+.project.vim
+*.tern-port
+.
