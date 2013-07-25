@@ -31,7 +31,10 @@ let g:CommandTAcceptSelectionSplitMap='<C-CR>'
 let g:CommandTAcceptSelectionTabMap='<CR>'
 
 if has("gui_macvim")
+  macmenu &File.Open\.\.\. key=<nop>
+  map <D-o> :CtrlP<cr>
+
+  " cause who the eff ever wants to print a file from vim?
   macmenu &File.Print key=<nop>
-  map <D-p> :CtrlP<cr>
 endif
 
