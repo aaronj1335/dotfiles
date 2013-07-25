@@ -185,8 +185,12 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 let g:ctrlp_working_path_mode = '0'
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_custom_ignore = '\vnode_modules/[^/]+/node_modules'
 
-set wildignore+=*.o,*.obj,.git,*CVS,node_modules/*
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+set wildignore+=*.o,*.obj,.git,*CVS
 
 au BufNewFile,BufRead *.md setlocal ft=markdown
 function! MarkdownPreview()
@@ -240,7 +244,7 @@ au Filetype c nnoremap <buffer> <leader><s-l> Oprintf("\n");<esc>hhhhi
 au BufReadPost quickfix setlocal nowrap
 
 " make markup languages a shiftwidth of 2
-au Filetype htmldjango,html,coffee,ruby,css,less,vim,sh,yaml,typescript,haskell setlocal sw=2 sts=2 ts=2 textwidth=0
+au Filetype htmldjango,html,coffee,ruby,css,less,vim,sh,yaml,typescript,haskell,jade,xml setlocal sw=2 sts=2 ts=2 textwidth=0
 
 au Filetype markdown,yaml,haskell setlocal autoindent
 
