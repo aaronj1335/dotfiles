@@ -3,17 +3,12 @@ Host sl
     User astacy
 
 Host ut1
-    HostName cornuthaum.cs.utexas.edu
+    HostName adorable-seal-larva.cs.utexas.edu
     User astacy
     #ForwardX11 yes
 
 Host ut2
-    HostName stick.cs.utexas.edu
-    User astacy
-    #ForwardX11 yes
-
-Host ut3
-    HostName hachi.cs.utexas.edu
+    HostName apathetic-lizardman.cs.utexas.edu
     User astacy
     #ForwardX11 yes
 
@@ -66,3 +61,11 @@ Host dev.storediq.com
 
 Host beth
     User root
+
+Host trainwreck
+    HostName ec2-54-214-93-250.us-west-2.compute.amazonaws.com
+    User ubuntu
+
+Host stompingground
+    HostName stompingground.local
+    User waterfallaustin
