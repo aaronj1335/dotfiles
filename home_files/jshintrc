@@ -1,13 +1,18 @@
 {
-    "forin": true,
+    "bitwise": true,
+    "browser": true,
+    "curly": false,
     "eqeqeq": true,
     "eqnull": true,
+    "forin": true,
+    "indent": 2,
+    "latedef": true,
     "noarg": true,
     "noempty": true,
-    "bitwise": true,
+    "nonew": true,
+    "quotmark": true,
+    "trailing": true,
     "undef": true,
-    "curly": false,
-    "browser": true,
     "unused": true,
     "globals": {
         "require": false,
@@ -18,8 +23,6 @@
         "__filename": false,
         "__dirname": false,
         "$": false,
-        "waterfall": false,
-        "msgme": false,
         "module": false
     }
 }
