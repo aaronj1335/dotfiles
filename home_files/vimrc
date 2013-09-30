@@ -40,7 +40,7 @@ au Filetype make setlocal noexpandtab
 au Filetype python setlocal expandtab
 
 " turn on the line number and location of the cursor as a percentage of the file
-set ruler 
+set ruler
 
 set history=250    " keep 50 lines of command line history
 set showcmd    " display incomplete commands
