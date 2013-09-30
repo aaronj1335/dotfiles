@@ -82,6 +82,9 @@ which hub &>/dev/null && alias git=hub
 
 ### other various exports ###
 export EDITOR=vim # this is most important...
+if which mvim &>/dev/null; then
+  export VISUAL="mvim -f"
+fi
 export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
   alias ll='ls -l --color=auto'
