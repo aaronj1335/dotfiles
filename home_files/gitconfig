@@ -15,7 +15,7 @@
 
 [alias]
     lg = log --graph --decorate --pretty=oneline --abbrev-commit
-    lga = log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all
+    lga = !git log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all && git status -sb
     st = status -sb
     stat = status -sb
     wrapup = "!f() { b=$1; if [ ! "$b" ]; then b=\"`git rev-parse --abbrev-ref HEAD`\"; git checkout master; fi; [ \"$b\" = master ] && echo ERROR: dont run this on master or production && exit 1; git push origin --delete $b; git branch -D $b; }; f"
