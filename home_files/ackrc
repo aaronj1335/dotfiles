@@ -4,4 +4,5 @@
 --type-set=less=.less
 --type-set=jade=.jade
 --type-set=coffee=.coffee
+--type-set=md=.md
 --ignore-dir="Session.vim"
