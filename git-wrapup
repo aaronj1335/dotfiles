@@ -1,0 +1,81 @@
+#!/bin/bash -e
+
+if [ "$1" = "--help" -o "$1" = "--help" ]; then
+cat <<DOCS
+USAGE: git-wrapup <branch>
+
+# summary
+
+wrap up the feature branch that you're working on.
+
+# more info
+
+if <branch> is not given, then use the current branch.
+
+fail if <branch> is 'master' or 'production'. because those probably aren't
+features ;)
+
+# implementation details
+
+git-wrapup deletes the branch and its remote tracking branch.
+
+if the branch's remote is origin, then delete the remote branch as well.
+
+if the branch's remote is something other than origin, then presumably you can't
+delete the remote, so just remove the branch from the list of fetched branches
+in .git/config. this works well with the hub(1) command's feature that checks
+out pull requests to your local repo.
+
+# integration
+
+descriptive branch names can be long, so it's helpful to have command line
+completion with this command. this is pretty easy if you're using bash and
+you've already got git completion setup for bash. if you do, then add this
+script to your \$PATH, make it a git alias:
+
+    $ git config --global alias.wrapup '!git-wrapup'
+
+and then add this line to your bash startup script (~/.bashrc or whatever):
+
+    if which git &>/dev/null && grep wrapup ~/.gitconfig &>/dev/null; then
+      _git_wrapup() { _git_branch; }
+    fi
+DOCS
+exit 70 # i guess this is the exit code for a documentatin request?
+fi
+
+branch=$1
+
+# default to using the current branch if none is given
+if [ ! "$branch" ]; then
+  branch="`git rev-parse --abbrev-ref HEAD`"
+  git checkout master
+fi
+
+if [ "$branch" = master ] || [ "$branch" = production ]; then
+  echo ERROR: dont run this on master or production
+  exit 1
+fi
+
+# this is the remote tracking branch, if one exists and it's not on origin
+remote="`git branch --list -vv $branch | \
+  ack -v origin | \
+  ack -o '\[[^\]]+\]' | \
+  ack -o '[^\[:\]]+' | \
+  head -1`"
+
+gitconfig="$(git rev-parse --show-toplevel)/.git/config"
+
+if [ "$remote" ]; then
+  # delete the remote tracking branch and remove it from the list of fetched
+  # branches for this remote
+  git branch -dr $remote
+  perl -pi -e "s|^.*$remote.*\$||" "$gitconfig"
+  perl -pi -e 's/^$//' "$gitconfig"
+else
+  # we control this branch, so delete it on the remote
+  git push origin --delete $branch
+fi
+
+git branch -D $branch
+
