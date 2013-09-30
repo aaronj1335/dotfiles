@@ -158,6 +158,10 @@ vnoremap <tab> %
 nnoremap j gj
 nnoremap k gk
 
+" make it so that collapsing things on to one line in html doesn't surround the
+" tag w/ spaces
+au FileType html,mustache,markdown,ghmarkdown nnoremap J Jx
+
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
