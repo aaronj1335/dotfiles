@@ -15,7 +15,7 @@
 
 [alias]
     lg = log --graph --decorate --pretty=oneline --abbrev-commit
-    lga = !git log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all && git status -sb
+    lga = !git status -sb && echo "" && git log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all
     st = status -sb
     stat = status -sb
 
