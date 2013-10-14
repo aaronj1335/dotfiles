@@ -161,7 +161,7 @@ fi
 
 # if the system has git installed and i've got the 'wrapup' alias in my
 # gitconfig, then define a completion function for it
-if which git &>/dev/null && grep wrapup ~/.gitconfig &>/dev/null; then
+if which git-wrapup &>/dev/null; then
   _git_wrapup() { _git_branch; }
 fi
 

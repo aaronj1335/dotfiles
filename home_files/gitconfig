@@ -18,7 +18,6 @@
     lga = !git log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all && git status -sb
     st = status -sb
     stat = status -sb
-    wrapup = !git-wrapup
 
 [user]
     name = Aaron Stacy

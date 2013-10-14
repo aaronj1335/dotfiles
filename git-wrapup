@@ -31,13 +31,10 @@ out pull requests to your local repo.
 descriptive branch names can be long, so it's helpful to have command line
 completion with this command. this is pretty easy if you're using bash and
 you've already got git completion setup for bash. if you do, then add this
-script to your \$PATH, make it a git alias:
-
-    $ git config --global alias.wrapup '!git-wrapup'
-
+script to your \$PATH (keep it named "git-wrapup" so "git wrapup" will work),
 and then add this line to your bash startup script (~/.bashrc or whatever):
 
-    if which git &>/dev/null && grep wrapup ~/.gitconfig &>/dev/null; then
+    if which git-wrapup &>/dev/null; then
       _git_wrapup() { _git_branch; }
     fi
 DOCS
@@ -45,10 +42,14 @@ exit 70 # i guess this is the exit code for a documentatin request?
 fi
 
 branch=$1
+current_branch="`git rev-parse --abbrev-ref HEAD`"
 
 # default to using the current branch if none is given
 if [ ! "$branch" ]; then
-  branch="`git rev-parse --abbrev-ref HEAD`"
+  branch="$current_branch"
+fi
+
+if [ "$branch" = "$current_branch" ]; then
   git checkout master
 fi
 
@@ -71,7 +72,7 @@ if [ "$remote" ]; then
   # branches for this remote
   git branch -dr $remote
   perl -pi -e "s|^.*$remote.*\$||" "$gitconfig"
-  perl -pi -e 's/^$//' "$gitconfig"
+  perl -pi -e 's/^\n//' "$gitconfig"
 else
   # we control this branch, so delete it on the remote
   git push origin --delete $branch
