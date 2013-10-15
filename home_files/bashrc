@@ -178,9 +178,12 @@ function pyfind() {
 }
 
 which tmutil &>/dev/null && \
-    alias bup="tmutil startbackup -b && \
-        ( growlnotify -m 'done with backup' --sticky; \
-          say done with backup )"
+  alias bup="( tmutil startbackup -b && \
+      terminal-notifier \
+        -execute 'open /System/Library/PreferencePanes/TimeMachine.prefPane/' \
+        -title bup \
+        -message 'finished backup'; \
+      say done with backup; )"
 
 
 if ! which ip &>/dev/null; then
