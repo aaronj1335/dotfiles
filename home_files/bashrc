@@ -165,9 +165,6 @@ if which git-wrapup &>/dev/null; then
   _git_wrapup() { _git_branch; }
 fi
 
-### the ever-loathsome CVS ###
-export CVSROOT=":ext:astacy@cvs.storediq.com:/home/cvsroot.2"
-
 
 
 ### and a spot of miscellany -- cause what's life without a little whimsy? ###
