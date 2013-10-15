@@ -182,10 +182,6 @@ which tmutil &>/dev/null && \
         ( growlnotify -m 'done with backup' --sticky; \
           say done with backup )"
 
-# csi completion -- young money!
-which csi &>/dev/null && \
-    csi completion > /tmp/csi-completion.bash && . /tmp/csi-completion.bash
-
 
 if ! which ip &>/dev/null; then
     function ip {
