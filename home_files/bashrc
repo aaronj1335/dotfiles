@@ -38,13 +38,10 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -d "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
 
-# this should probably be detected dynamically somehow, but i'm not sure how to
-# do that
-[ -d /usr/local/Cellar/ruby/2.0.0-p0/bin ] && \
-  export PATH="$PATH:/usr/local/Cellar/ruby/2.0.0-p0/bin"
-
 # WORTHLESS python
 [ -d /usr/local/share/python ] && export PATH="$PATH:/usr/local/share/python"
+
+[ -f $HOME/.rvm/bin ] && export PATH=$PATH:$HOME/.rvm/bin
 
 [ -f $BREW_PREFIX/etc/profile.d/z.sh ] && . $BREW_PREFIX/etc/profile.d/z.sh
 
