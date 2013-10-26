@@ -45,6 +45,9 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -f $BREW_PREFIX/etc/profile.d/z.sh ] && . $BREW_PREFIX/etc/profile.d/z.sh
 
+[ -e "$HOME/ut-env.bash" ] && source "$HOME/ut-env.bash"
+
+
 ### the arbitrary and entirely personal aliases ###
 alias l='ls '
 alias ll='ls -l'
