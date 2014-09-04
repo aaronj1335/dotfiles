@@ -372,5 +372,9 @@ augroup markdown
   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
+augroup clojure
+  au BufNewFile,BufRead *.edn setlocal filetype=clojure
+augroup END
+
 nmap <silent> <leader>d <Plug>DashSearch
 nmap <silent> <leader>D <Plug>DashGlobalSearch
