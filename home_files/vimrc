@@ -160,7 +160,7 @@ nnoremap k gk
 
 " make it so that collapsing things on to one line in html doesn't surround the
 " tag w/ spaces
-au FileType html,mustache,markdown,ghmarkdown nnoremap <buffer> J Jx
+au FileType html,mustache nnoremap <buffer> J Jx
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
