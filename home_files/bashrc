@@ -162,7 +162,9 @@ fi
 if which git-wrapup &>/dev/null; then
   _git_wrapup() { _git_branch; }
 fi
-
+if which git-squash &>/dev/null; then
+  _git_squash() { _git_commit; }
+fi
 
 
 ### and a spot of miscellany -- cause what's life without a little whimsy? ###
