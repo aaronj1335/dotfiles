@@ -1,7 +1,8 @@
-var fs = require('fs'),
-    path = require('path'),
-    exists = fs.exists || path.exists,
-    globalNodeModulesDir =
+var fs = require('fs');
+var path = require('path');
+var child_process = require('child_process');
+var exists = fs.exists || path.exists;
+var globalNodeModulesDir =
         path.join(path.dirname(path.dirname(process.execPath)), 'lib/node_modules');
 
 var stup = path.join(process.env.HOME, '.node_history');
@@ -28,10 +29,16 @@ exists(stup, function(exists) {
 });
 
 exists(globalNodeModulesDir, function(exists) {
-    if (exists) {
-        module.paths.push(globalNodeModulesDir);
-        try {
-            global.u = require('lodash');
-        } catch (e) { }
-    }
+  if (exists) {
+    module.paths.push(globalNodeModulesDir);
+    try {
+      global.u = require('lodash');
+    } catch (e) { }
+  }
 });
+
+function copy(data) {
+  var proc = child_process.spawn('pbcopy');
+  proc.stdin.write(data);
+  proc.stdin.end();
+}
