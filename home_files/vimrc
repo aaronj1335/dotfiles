@@ -205,7 +205,7 @@ function! MarkdownPreview()
   silent !open /tmp/vim_markdown_preview.html
 endfunction
 au Filetype markdown,text nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
-au Filetype markdown,ghmarkdown setlocal spell
+au Filetype markdown,ghmarkdown,tex,gitcommit setlocal spell
 
 function! OpenTray(...)
   if len(a:000) > 0
