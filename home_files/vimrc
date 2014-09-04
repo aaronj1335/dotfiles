@@ -190,7 +190,7 @@ let g:ctrlp_prompt_mappings = {
     \ }
 let g:ctrlp_working_path_mode = '0'
 let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_custom_ignore = '\v(node_modules/[^/]+/node_modules)|(_site)'
+let g:ctrlp_custom_ignore = '\v(node_modules/[^/]+/node_modules)|(_site)|.class'
 
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
