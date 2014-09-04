@@ -5,4 +5,7 @@
 --type-set=jade=.jade
 --type-set=coffee=.coffee
 --type-set=md=.md
+--type-set=clj=.clj
+--type-set=cljs=.cljs
+--type-set=jsx=.jsx
 --ignore-dir="Session.vim"
