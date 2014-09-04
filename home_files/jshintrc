@@ -1,10 +1,11 @@
 {
     "bitwise": true,
+    "esnext": true,
     "browser": true,
     "curly": false,
     "eqeqeq": true,
     "eqnull": true,
-    "forin": true,
+    "forin": false,
     "indent": 2,
     "latedef": true,
     "noarg": true,
