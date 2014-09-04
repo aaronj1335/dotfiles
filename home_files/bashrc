@@ -41,12 +41,9 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 # WORTHLESS python
 [ -d /usr/local/share/python ] && export PATH="$PATH:/usr/local/share/python"
 
-[ -f $HOME/.rvm/bin ] && export PATH=$PATH:$HOME/.rvm/bin
-
 [ -f $BREW_PREFIX/etc/profile.d/z.sh ] && . $BREW_PREFIX/etc/profile.d/z.sh
 
-[ -e "$HOME/ut-env.bash" ] && source "$HOME/ut-env.bash"
-
+[ -e $HOME/code/utilities/bin ] && export PATH="$PATH:$HOME/code/utilities/bin"
 
 ### the arbitrary and entirely personal aliases ###
 alias l='ls '
