@@ -47,7 +47,7 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 ### the arbitrary and entirely personal aliases ###
 alias l='ls '
-alias ll='ls -l'
+alias ll='ls -lh'
 alias grep="grep --color"
 
 if [ "`uname`" = Darwin ]; then
