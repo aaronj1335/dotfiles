@@ -91,6 +91,8 @@ export CLICOLOR="true"
 
 export JS_CMD="node"
 
+export WEBPACK_NO_LAZY="true"
+
 
 
 ### how many peices of flair can we add to our $PS1‽
