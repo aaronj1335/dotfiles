@@ -30,8 +30,8 @@ inoremap <TAB> <C-P>
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
 
 " set F5 to insert date/time stamp in regular mode or insert mode
-noremap <F5> "=strftime("%c")<CR>P
-inoremap <F5> <C-R>=strftime("%c")<CR>
+noremap <F5> "=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>P
+inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>
 
 " set tabs to normal for Makefiles
 au Filetype make setlocal noexpandtab
