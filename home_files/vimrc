@@ -1,7 +1,7 @@
 " Aaron Stacy's .vimrc file
 
 filetype off
-silent call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 filetype on
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -134,7 +134,8 @@ if $TERM_PROGRAM == 'Apple_Terminal'
 end
 if $TERM == 'xterm-256color'
   " colorscheme railscasts
-  colorscheme solarized
+  " silent! colorscheme solarized
+  silent! colorscheme smyck
 end
 
 set mouse=a

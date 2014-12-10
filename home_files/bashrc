@@ -59,6 +59,9 @@ fi
 [ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] &&
   export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
 
+[ -e '/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS/Vim' ] &&
+  export PATH="/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS:$PATH"
+
 
 
 # for smoother git-hubbery
@@ -68,6 +71,11 @@ which hub &>/dev/null && alias git=hub
 [ -f "$HOME/code/nvm/nvm.sh" ] && \
     source "$HOME/code/nvm/nvm.sh" && \
     source "$HOME/code/nvm/bash_completion"
+
+if which brew >/dev/null; then
+  [ -f "$(brew --prefix nvm)/nvm.sh" ] && \
+    source "$(brew --prefix nvm)/nvm.sh"
+fi
 
 [ "`which node 2>/dev/null`" ] && export PATH="./node_modules/.bin:$PATH"
 

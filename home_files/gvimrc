@@ -9,7 +9,8 @@ noremap <D-]> gt
 " inoremap <D-P> <Nop>
 
 " colorscheme solarized
-colorscheme railscasts
+" silent! colorscheme railscasts
+silent! colorscheme smyck
 hi ColorColumn guibg=#242424
 hi NonText guifg=#242424
 hi StatusLine guifg=#E6E1DC guibg=#211714
