@@ -18,9 +18,9 @@ noremap U <C-R>
 set vb 
 
 " Change tab width
-set softtabstop=4
-set shiftwidth=4
-set tabstop=4
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
 set expandtab
 
 inoremap <TAB> <C-P>
@@ -59,47 +59,21 @@ endif
 " because of my ridiculous $PAGER hack...
 nnoremap K k
 
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  " filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  augroup END
-
-  autocmd BufNewFile,BufRead *.json,*.har setlocal ft=javascript
-
-else
-
-  set autoindent    " always set autoindenting on
-
-endif " has("autocmd")
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
 
 " Enable CTRL+direction to switch between split windows
 map <C-J> <C-W>j<C-W>_ 
 map <C-K> <C-W>k<C-W>_ 
 
-" comment using NERD_commenter
-" vmap c ,cl
-" vmap u ,cu
-
 set mousemodel=extend
+
+set autoindent
 
 " handy if you crash w/ a bunch of open vim's, just recover the file and then
 " type :DiffOrig
@@ -149,7 +123,7 @@ set ignorecase
 set smartcase
 set gdefault
 let mapleader = ","
-set textwidth=79
+" set textwidth=79
 if exists("+colorcolumn")
   set colorcolumn=80
 end
@@ -250,9 +224,7 @@ au Filetype c nnoremap <buffer> <leader><s-l> Oprintf("\n");<esc>hhhhi
 au BufReadPost quickfix setlocal nowrap
 
 " make markup languages a shiftwidth of 2
-au Filetype javascript,htmldjango,html,tmpl,coffee,ruby,css,less,vim,sh,yaml,typescript,haskell,jade,xml,md,markdown,gfmarkdown,scss,c,tex setlocal sw=2 sts=2 ts=2 textwidth=0
-
-au Filetype markdown,yaml,haskell setlocal autoindent
+" au Filetype javascript,htmldjango,html,tmpl,coffee,ruby,css,less,vim,sh,yaml,typescript,haskell,jade,xml,md,markdown,gfmarkdown,scss,c,tex setlocal sw=2 sts=2 ts=2 textwidth=0
 
 runtime macros/matchit.vim
 
@@ -379,3 +351,19 @@ augroup END
 
 nmap <silent> <leader>d <Plug>DashSearch
 nmap <silent> <leader>D <Plug>DashGlobalSearch
+
+" read local ./.project.vim for project-specific settings
+if filereadable(".project.vim")
+  source .project.vim
+endif
+
+" i like to use <leader>r as a generic shortcut for running a build, whatever
+" that is. this makes a shortcut to map <leader>r to run whatever command is in
+" g:cmd variable
+if !exists("*Build")
+  function Build()
+    execute g:cmd
+  endfunction
+
+  nnoremap <leader>r :call Build()<cr>
+endif
