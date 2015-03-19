@@ -15,7 +15,7 @@
 
 [alias]
     lg = log --graph --decorate --pretty=oneline --abbrev-commit
-    lga = !git status -sb && echo "" && git log -n30 --graph --decorate --pretty=oneline --abbrev-commit --all
+    lga = !git status -sb && echo "" && git log -n15 --graph --decorate --pretty=oneline --abbrev-commit --all
     st = status -sb
     stat = status -sb
 
@@ -45,5 +45,8 @@
 [push]
     default = simple
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+[amazon]
+    append-cr-url = true
+    pull-request-by-default = false
