@@ -226,6 +226,8 @@ if which selecta &>/dev/null; then
   bind '"\C-b" "$(find -E . -type f -not -regex \"$SELECTA_IGNORE\" \| selecta)\n"'
 fi
 
+[ -f ~/code/amz/etc/env ] && . ~/code/amz/etc/env
+
 # set tab width to 4 (useful when you're running "cat" on a file), but it makes
 # things all screwy when you ssh somewhere
 #if which tabs &>/dev/null; then
