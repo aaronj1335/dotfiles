@@ -8,4 +8,5 @@
 --type-set=clj=.clj
 --type-set=cljs=.cljs
 --type-set=jsx=.jsx
+--type-set=mason=.mi
 --ignore-dir="Session.vim"
