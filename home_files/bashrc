@@ -292,3 +292,6 @@ fi
 #    source $HOME/.ssh-agent-`uname -n`
 #  fi
 #fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
