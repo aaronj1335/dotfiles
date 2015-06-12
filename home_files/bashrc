@@ -45,6 +45,8 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 [ -e $HOME/code/utilities/bin ] && export PATH="$PATH:$HOME/code/utilities/bin"
 
+[ -e /apollo/env/SDETools/bin ] && export PATH="/apollo/env/SDETools/bin:$PATH"
+
 ### the arbitrary and entirely personal aliases ###
 alias l='ls '
 alias ll='ls -lh'
