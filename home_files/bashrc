@@ -168,6 +168,8 @@ if which grunt &>/dev/null; then
   eval "$(grunt --completion=bash)"
 fi
 
+[ -e ~/ws/src/ToolsAarstacy/etc/env ] && source ~/ws/src/ToolsAarstacy/etc/env
+
 # if the system has git installed and i've got the 'wrapup' alias in my
 # gitconfig, then define a completion function for it
 if which git-wrapup &>/dev/null; then
