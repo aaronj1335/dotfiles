@@ -63,8 +63,9 @@ fi
 [ -f '/Applications/MacVim.app/Contents/MacOS/Vim' ] &&
   export PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
 
-[ -f '/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS/Vim' ] &&
-  export PATH="/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS:$PATH"
+_MAC_VIM_VIM=$(ls /usr/local/Cellar/macvim/*/MacVim.app/Contents/MacOS/Vim | head -1)
+[ -f $_MAC_VIM_VIM ] &&
+  export PATH="$(dirname $_MAC_VIM_VIM):$PATH"
 
 
 
