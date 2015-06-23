@@ -1,0 +1,5 @@
+{
+  "disallowCapitalizedComments": true,
+  "disallowKeywordsOnNewLine": ["else"],
+  "disallowMixedSpacesAndTabs": true
+}

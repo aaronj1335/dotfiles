@@ -28,7 +28,8 @@ ln -s $home_files_dir/matplotlibrc "$HOME/.matplotlib/matplotlibrc"
 
 # the rest of the config files
 for i in bashrc vimrc gvimrc pythonrc gitconfig dir_colors Xdefaults ackrc \
-    gitignore_global noderc coffeerc.coffee jshintrc repozishrc digrc; do
+    gitignore_global noderc coffeerc.coffee jshintrc repozishrc digrc \
+    eslintrc jscsrc; do
   remove_references "$HOME/.${i}"
   ln -s $home_files_dir/${i} $HOME/.${i}
 
@@ -36,4 +37,3 @@ for i in bashrc vimrc gvimrc pythonrc gitconfig dir_colors Xdefaults ackrc \
     source $HOME/.bashrc
   fi
 done
-
