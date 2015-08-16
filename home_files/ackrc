@@ -10,3 +10,4 @@
 --type-set=jsx=.jsx
 --type-set=mason=.mi
 --ignore-dir="Session.vim"
+--ignore-dir="_site"
