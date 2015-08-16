@@ -3,4 +3,15 @@ env:
 rules:
   quotes: [2, "single"]
   no-multiple-empty-lines: [2, {"max": 1}]
-  curly: [0] # WHOA SCANDAL
+  curly: 0 # WHOA SCANDAL
+  indent: [2, 2]
+  brace-style: [2, "1tbs"]
+  computed-property-spacing: [2, "never"]
+  space-after-keywords: [2, "always"]
+  no-shadow: 0
+  space-in-parens: [2, "never"]
+  newline-after-var: [2, "always"]
+  func-style: [2, "declaration"]
+  no-unneeded-ternary: 2
+  one-var: [2, "never"]
+  space-before-blocks: [2, "always"]
