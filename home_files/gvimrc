@@ -3,10 +3,6 @@ if exists('&transparency')
 	set transparency=2
 endif
 autocmd BufRead *.safari setfiletype html
-noremap <D-[> gT
-noremap <D-]> gt
-" noremap <D-P> <Nop>
-" inoremap <D-P> <Nop>
 
 " colorscheme solarized
 " silent! colorscheme railscasts
@@ -17,9 +13,18 @@ hi StatusLine guifg=#E6E1DC guibg=#211714
 hi StatusLineNC guifg=#211714 guibg=#E6E1DC
 
 
-" set guifont=Consolas:h12
-" set guifont=Inconsolata:h11
-set guifont=Menlo:h13
+if has("mac")
+  set guifont=Menlo:h13
+  noremap <D-[> gT
+  noremap <D-]> gt
+" noremap <D-P> <Nop>
+" inoremap <D-P> <Nop>
+elseif has("unix")
+  set guifont=Droid\ Sans\ Mono\ 12
+  noremap <esc> <Nop>
+  " noremap <C-[> gT " FML
+  noremap <C-]> gt
+endif
 
 map <SwipeUp> <C-W>j:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
 map <SwipeDown> <C-W>k:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
@@ -38,5 +43,6 @@ if has("gui_macvim")
 
   " cause who the eff ever wants to print a file from vim?
   macmenu &File.Print key=<nop>
+elseif has("unix")
+  map <C-o> :CtrlP<cr>
 endif
-
