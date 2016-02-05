@@ -23,6 +23,9 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 
+" ...except python. pep8 and all.
+au Filetype python set sw=4 sts=4 ts=4
+
 inoremap <TAB> <C-P>
 "inoremap <TAB> <C-X><C-O>
 
@@ -222,9 +225,6 @@ au Filetype c nnoremap <buffer> <leader><s-l> Oprintf("\n");<esc>hhhhi
 
 " disable line wrap for quickfix window
 au BufReadPost quickfix setlocal nowrap
-
-" make markup languages a shiftwidth of 2
-" au Filetype javascript,htmldjango,html,tmpl,coffee,ruby,css,less,vim,sh,yaml,typescript,haskell,jade,xml,md,markdown,gfmarkdown,scss,c,tex setlocal sw=2 sts=2 ts=2 textwidth=0
 
 runtime macros/matchit.vim
 
