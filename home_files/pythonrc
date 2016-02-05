@@ -1,7 +1,10 @@
 import sys, os, atexit, rlcompleter, readline
 from pprint import pprint
 
-readline.parse_and_bind('tab: complete')
+if 'libedit' in readline.__doc__:
+    readline.parse_and_bind('bind ^I rl_complete')
+else:
+    readline.parse_and_bind('tab: complete')
 historyPath = os.path.expanduser('~/.python_history')
 
 def save_history(historyPath=historyPath):
