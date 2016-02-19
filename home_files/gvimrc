@@ -1,4 +1,4 @@
-set guioptions=egrt 
+set guioptions=egt
 if exists('&transparency')
 	set transparency=2
 endif
@@ -17,8 +17,9 @@ hi StatusLine guifg=#E6E1DC guibg=#211714
 hi StatusLineNC guifg=#211714 guibg=#E6E1DC
 
 
-set guifont=Consolas:h12
+" set guifont=Consolas:h12
 " set guifont=Inconsolata:h11
+set guifont=Menlo:h13
 
 map <SwipeUp> <C-W>j:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
 map <SwipeDown> <C-W>k:silent call<space>MaximizeWithoutResizingQuickfix()<cr>
