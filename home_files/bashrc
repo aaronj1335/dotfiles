@@ -110,7 +110,7 @@ if which mvim &>/dev/null; then
 fi
 export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ `uname` = "Linux" ]; then
-  alias ll='ls -l --color=auto'
+  alias ll='ls -lh --color=auto'
   eval "$(dircolors -b ~/.dir_colors)"
 fi
 export CLICOLOR="true"
