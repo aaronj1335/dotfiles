@@ -253,13 +253,6 @@ if ! which ip &>/dev/null; then
     }
 fi
 
-# if we've got the 'selecta' command (https://github.com/garybernhardt/selecta)
-# then bind ctrl-b to fuzzy-find a file and insert it on the command line
-if which selecta &>/dev/null; then
-  export SELECTA_IGNORE='(.*node_modules.*)|(.*.git.*)'
-  bind '"\C-b" "$(find -E . -type f -not -regex \"$SELECTA_IGNORE\" \| selecta)\n"'
-fi
-
 [ -f ~/code/amz/etc/env ] && . ~/code/amz/etc/env
 
 # set tab width to 4 (useful when you're running "cat" on a file), but it makes
