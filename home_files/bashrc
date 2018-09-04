@@ -130,16 +130,25 @@ function pimpmyps1() {
   sep=":"
   dollar='$'
   usr="\u"
+
   if [ "$color" = 1 ]; then
     if [ "$unycodes" = 1 ]; then
       at="∂"
-      if ( which upsidedownify && which node ) &>/dev/null; then
-        if which scutil &>/dev/null; then
-          hn="`echo -n $(scutil --get ComputerName) | upsidedownify`"
-        else
-          hn="`echo -n $(hostname) | upsidedownify`"
-        fi
+
+      if which scutil &>/dev/null; then
+        hn="`echo -n $(scutil --get ComputerName)`"
+      else
+        hn="`echo -n $(hostname)`"
       fi
+
+      if [ "$hn" = aaronstacy-macbookpro ]; then
+        hn=laptop
+      fi
+
+      if ( which upsidedownify && which node ) &>/dev/null; then
+        hn="`echo -n $hn | upsidedownify`"
+      fi
+
       sep=" ☠ "
       dollar="§"
       [ "$USER" = root ] && dollar="$dollar∞"
@@ -149,8 +158,13 @@ function pimpmyps1() {
     else
       [ "$USER" = root ] && dollar="$dollar#"
     fi
+
+    if [ "$USER" = aaronstacy ]; then
+      usr=me
+    fi
+
     export PS1="
-\[\e[38;5;247m\]\u\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\]$sep\[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
+\[\e[38;5;247m\]$usr\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\]$sep\[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
 \[\e[38;5;87m\]$dollar\[\e[0m\] "
   else
     export PS1="\[\033[0m\][\[\033[36m\]\u@\h:\[\033[32m\]\w\[\033[0m\]]\n\[\033[31m\]\$ \[\033[0m\]"
