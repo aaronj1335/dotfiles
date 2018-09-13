@@ -1,7 +1,6 @@
 # the alleged .bashrc file of one aaron r. stacy
 
 
-
 # first of all...
 alias yo="echo 'screw you i am not a morning person'"
 
@@ -131,6 +130,14 @@ export JS_CMD="node"
 
 export WEBPACK_NO_LAZY="true"
 
+pwd_or_citc() {
+  pwd | sed -E \
+    -e "s|^$HOME|~|" \
+    -e "s|^/google/src/cloud/$USER/(.+)/google3/?|ⓒ \1:|" \
+    -e "s|java/com/google/android|j/c/g/a|" \
+    -e "s|javatests/com/google/android|jt/c/g/a|"
+}
+
 
 
 ### how many peices of flair can we add to our $PS1‽
@@ -146,15 +153,10 @@ function pimpmyps1() {
   if [ "$color" = 1 ]; then
     if [ "$unycodes" = 1 ]; then
       at="∂"
-
       if which scutil &>/dev/null; then
-        hn="`echo -n $(scutil --get ComputerName)`"
+        hn="`scutil --get ComputerName`"
       else
-        hn="`echo -n $(hostname)`"
-      fi
-
-      if [ "$hn" = aaronstacy-macbookpro ]; then
-        hn=laptop
+        hn="`hostname -s`"
       fi
 
       if ( which upsidedownify && which node ) &>/dev/null; then
@@ -171,18 +173,22 @@ function pimpmyps1() {
       [ "$USER" = root ] && dollar="$dollar#"
     fi
 
-    if [ "$USER" = aaronstacy ]; then
+    if [ "$USER" = aaronstacy ] || [ "$USER" = astacy ]; then
       usr=me
     fi
 
+    if [ "$hn" = aaronstacy-goobuntu ]; then
+      hn="w̼o͋r᷌k᷿"
+    fi
+
     export PS1="
-\[\e[38;5;247m\]$usr\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\]$sep\[\e[38;5;255m\]\w  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
+\[\e[38;5;247m\]$usr\[\e[38;5;87m\]$at\[\e[38;5;247m\]$hn\[\e[38;5;87m\]$sep\[\e[38;5;255m\]\$(pwd_or_citc)  \[\e[38;5;30m\]\T \[\e[38;5;30m\]\D{%b%d}\[\e[0;1m\]
 \[\e[38;5;87m\]$dollar\[\e[0m\] "
   else
     export PS1="\[\033[0m\][\[\033[36m\]\u@\h:\[\033[32m\]\w\[\033[0m\]]\n\[\033[31m\]\$ \[\033[0m\]"
   fi
 }
-[ "$TERM" = "xterm-256color" ] && color=1
+( [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "screen-256color" ] ) && color=1
 if locale | grep -i utf-8 &>/dev/null; then unycodes=1; fi
 pimpmyps1 $color $unycodes
 
@@ -334,3 +340,9 @@ fi
 #fi
 
 alias jorbascrump=noderepl
+
+if [ -e $HOME/code/google-scripts/etc/env ]; then
+  . $HOME/code/google-scripts/etc/env
+fi
+
+[ "$DISPLAY" ] && [ -f ~/.Xmodmap ] && which xmodmap &>/dev/null && xmodmap ~/.Xmodmap
