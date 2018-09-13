@@ -21,7 +21,7 @@
 
 [user]
     name = Aaron Stacy
-    email = aaron.r.stacy@gmail.com
+    email = aaronstacy@google.com
 
 [core]
     pager = cat
@@ -52,3 +52,9 @@
     pull-request-by-default = false
 [http]
 	cookiefile = /Users/aaronstacy/.gitcookies
+# [http]
+# 	cookiefile = /usr/local/google/home/aaronstacy/.gitcookies
+# [credential]
+# 	helper = corpsso
+# [google]
+# 	uplink = true
