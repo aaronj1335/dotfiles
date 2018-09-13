@@ -120,9 +120,9 @@ set smartcase
 set gdefault
 let mapleader = ","
 " set textwidth=79
-if exists("+colorcolumn")
-  set colorcolumn=80
-end
+" if exists("+colorcolumn")
+"   set colorcolumn=80
+" end
 
 nnoremap <tab> %
 vnoremap <tab> %
@@ -162,6 +162,10 @@ let g:ctrlp_prompt_mappings = {
 let g:ctrlp_working_path_mode = '0'
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_custom_ignore = '\v(node_modules/[^/]+/node_modules)|(_site)|(.class)|(dist/)'
+
+if executable('workingset') && getcwd() =~ '/google/src'
+  let g:ctrlp_user_command = "cd %s && workingset"
+endif
 
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
