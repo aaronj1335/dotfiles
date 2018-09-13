@@ -107,7 +107,6 @@ if $TERM == 'xterm-256color'
   silent! colorscheme smyck
 end
 
-set mouse=a
 set modelines=0 " apparently this is a security hole?
 set scrolloff=2
 set ttyfast
