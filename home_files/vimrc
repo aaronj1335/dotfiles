@@ -163,10 +163,6 @@ let g:ctrlp_working_path_mode = '0'
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_custom_ignore = '\v(node_modules/[^/]+/node_modules)|(_site)|(.class)|(dist/)'
 
-if executable('workingset') && getcwd() =~ '/google/src'
-  let g:ctrlp_user_command = "cd %s && workingset"
-endif
-
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 set wildignore+=*.o,*.obj,.git,*CVS
@@ -385,7 +381,53 @@ autocmd VimLeave * call OptionallyMakeSesh()
 autocmd VimEnter * call RestoreSesh()
 
 let g:syntastic_mode_map = {'mode': 'passive'}
+" let g:syntastic_auto_loc_list = 1
 
 au BufWriteCmd *.clj w | silent! Require
 
 au BufNewFile,BufRead *.mjs set filetype=javascript
+
+if filereadable('/usr/share/vim/google/google.vim')
+  source /usr/share/vim/google/google.vim
+  " Glug youcompleteme-google
+  " Glug grok
+  " Glug corpweb plugin[mappings]='<leader>w'
+  " Glug syntastic-google checkers=`{'python': 'gpylint'}`
+
+  " Run :RelatedFilesWindow to jump to a build file
+  Glug relatedfiles
+
+  " Run :FormatCode to auto-format
+  Glug codefmt-google
+
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  " autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType jslayout AutoFormatBuffer jslfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  " autocmd FileType python AutoFormatBuffer pyformat
+
+  autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
+  " save w/o formatting via:
+  " :noautocmd w
+  autocmd BufWritePost bzl,blazebuild FormatCode
+
+  " Run :GtiImporter to auto-magically import java files?
+  source /usr/share/vim/google/gtags.vim
+  Glug gtimporter
+
+  " Get the list of piper's active files with ,a
+  nnoremap <leader>a :tabnew<cr>:PiperSelectActiveFiles<cr>/
+
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'Kythe Language Server',
+      \ 'cmd': {server_info->['/google/data/ro/teams/grok/tools/kythe_languageserver', '--google3']},
+      \ 'whitelist': ['python', 'java', 'proto', 'bzl'],
+      \})
+
+  " Jump to definition should actually work.
+  nnoremap gd :<C-u>LspDefinition<CR>
+
+  if executable('workingset') && getcwd() =~ '/google/src'
+    let g:ctrlp_user_command = "cd %s && workingset"
+  endif
+endif
