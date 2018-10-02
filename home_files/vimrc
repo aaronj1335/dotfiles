@@ -71,6 +71,7 @@ map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_ 
 
 set mousemodel=extend
+set mouse=n
 
 set autoindent
 
@@ -101,7 +102,7 @@ let g:solarized_contrast='high'
 if $TERM_PROGRAM == 'Apple_Terminal'
     let g:solarized_termtrans=1
 end
-if $TERM == 'xterm-256color'
+if $TERM == 'xterm-256color' || $TERM == 'screen-256color'
   " colorscheme railscasts
   " silent! colorscheme solarized
   silent! colorscheme smyck
@@ -381,3 +382,5 @@ autocmd VimEnter * call RestoreSesh()
 let g:syntastic_mode_map = {'mode': 'passive'}
 
 au BufWriteCmd *.clj w | silent! Require
+
+au BufNewFile,BufRead *.mjs set filetype=javascript
