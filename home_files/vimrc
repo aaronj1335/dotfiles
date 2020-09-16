@@ -24,7 +24,6 @@ set expandtab
 
 inoremap <TAB> <C-P>
 "inoremap <TAB> <C-X><C-O>
-au Filetype beancount inoremap <TAB> <C-X><C-O>
 
 " Press space to clear search highlighting and any message already displayed.
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
@@ -72,7 +71,6 @@ map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_ 
 
 set mousemodel=extend
-set mouse=n
 
 set autoindent
 
@@ -103,12 +101,13 @@ let g:solarized_contrast='high'
 if $TERM_PROGRAM == 'Apple_Terminal'
     let g:solarized_termtrans=1
 end
-if $TERM == 'xterm-256color' || $TERM == 'screen-256color'
+if $TERM =~ '256color$'
   " colorscheme railscasts
   " silent! colorscheme solarized
   silent! colorscheme smyck
 end
 
+set mouse=n
 set modelines=0 " apparently this is a security hole?
 set scrolloff=2
 set ttyfast
@@ -385,7 +384,12 @@ let g:syntastic_mode_map = {'mode': 'passive'}
 
 au BufWriteCmd *.clj w | silent! Require
 
-au BufNewFile,BufRead *.mjs set filetype=javascript
+set rtp+=~/.fzf
+
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'sso://user/mcdermottm/vim-csearch'
+call plug#end()
 
 if filereadable('/usr/share/vim/google/google.vim')
   source /usr/share/vim/google/google.vim
@@ -412,11 +416,11 @@ if filereadable('/usr/share/vim/google/google.vim')
   autocmd BufWritePost bzl,blazebuild FormatCode
 
   " Run :GtiImporter to auto-magically import java files?
-  source /usr/share/vim/google/gtags.vim
-  Glug gtimporter
+  " source /usr/share/vim/google/gtags.vim
+  " Glug gtimporter
 
   " Get the list of piper's active files with ,a
-  nnoremap <leader>a :tabnew<cr>:PiperSelectActiveFiles<cr>/
+  " nnoremap <leader>a :tabnew<cr>:PiperSelectActiveFiles<cr>/
 
   au User lsp_setup call lsp#register_server({
       \ 'name': 'Kythe Language Server',
@@ -427,7 +431,9 @@ if filereadable('/usr/share/vim/google/google.vim')
   " Jump to definition should actually work.
   nnoremap gd :<C-u>LspDefinition<CR>
 
-  if executable('workingset') && getcwd() =~ '/google/src'
-    let g:ctrlp_user_command = "cd %s && workingset"
-  endif
+  " if executable('workingset') && getcwd() =~ '/google/src'
+  "   let g:ctrlp_user_command = "cd %s && workingset"
+  " endif
+
+  " Glug csearch
 endif
