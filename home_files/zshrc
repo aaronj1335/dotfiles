@@ -1,0 +1,130 @@
+export CLICOLOR="true"
+
+if which lsd >/dev/null; then
+  alias ls="lsd --icon never --date relative"
+else
+  alias ls="ls --color=auto"
+fi
+alias ll="ls -l"
+
+zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-/]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' max-errors 3
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' original true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' substitute 1
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/Users/aaronstacy/.zshrc'
+
+autoload -Uz compinit
+compinit
+
+maybe.() { [ -e "$1" ] && . $1 }
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export PAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+export MANPAGER="$PAGER"
+
+bindkey "^[[3~" delete-char # fix the delete key?
+
+autoload -Uz add-zsh-hook
+
+_format_runtime_ms() {
+    local t="$1."
+    local d=$((t/1000/60/60/24))
+    local h=$((t/1000/60/60%24))
+    local m=$((t/1000/60%60))
+    local M=$((t%1000))
+
+    if [[ $t -lt 1000 ]]; then
+      printf "%.0fms" $M
+    elif [[ $t -lt $((60 * 1000)) ]]; then
+      printf "%.3fs" $((t/1000.))
+    elif [[ $t -lt $((60 * 60 * 1000)) ]]; then
+      printf "%.0fm %.3fs" $m $((t/1000. % 60))
+    elif [[ $t -lt $((24 * 60 * 60 * 1000)) ]]; then
+      printf "%.0fh %.0fm %.3fs" $h $m $((t/1000. % 60))
+    else
+      printf "%.0fd %.0fh %.0fm %.3fs" $d $h $m $((t/1000. % 60))
+    fi
+}
+
+_get_git_dir() {
+  local indicator="🅖 "
+  if ! git diff --exit-code --name-only --quiet; then
+    indicator="%%F{1}$indicator%%f"
+  elif git status -sb | grep ahead 2>&1 >/dev/null; then
+    indicator="%%F{3}$indicator%%f"
+  fi
+
+  if [[ -d .git ]]; then
+    printf "${indicator}`basename $PWD`"
+  else
+    local gitdir="$(dirname $(git rev-parse --git-dir))"
+    local gitbasedir="$(basename $gitdir)"
+    printf "${indicator}$(echo $PWD | sed -e "s|^$gitdir|$gitbasedir|")"
+  fi
+}
+
+add-zsh-hook preexec () {
+  _zsh_command_timer=$(($(print -P %D{%s%6.})/1000))
+}
+
+add-zsh-hook precmd () {
+  if [[ -d .git ]] || git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    psvar[2]="`_get_git_dir`"
+  else
+    psvar[2]="%~"
+  fi
+
+  if [ $_zsh_command_timer ]; then
+    local now=$(($(print -P %D{%s%6.})/1000))
+    psvar[4]="$(_format_runtime_ms $(($now-$_zsh_command_timer)))"
+    unset _zsh_command_timer
+  else
+    psvar[4]=""
+  fi
+
+  psvar[5]="$(date '+%H:%m %b%d')"
+
+  local zero='%([BSUbfksu]|([FK]|){*})'
+  local leftside="%F{87}%b∂%b%f%1v ${psvar[2]} "
+  local leftsidelen=${#${(S%%)leftside//$~zero/}}
+  local rightside='%F{238}%4v %5v%f'
+  local rightsidelen=${#${(S%%)rightside//$~zero/}}
+  local spacecount=$(($COLUMNS - $leftsidelen - $rightsidelen))
+  psvar[3]="${(l:${spacecount}:: :)}"
+
+}
+
+# psvar[1] -- host name
+# psvar[2] -- directory (or source control info)
+# psvar[3] -- spaces between left and right side
+# psvar[4] -- duration of last command
+# psvar[5] -- current date
+_set_ps1() {
+  if which scutil >/dev/null; then
+    psvar[1]=`scutil --get ComputerName`
+    [[ $psvar[1] = aaronstacy-macbookpro2 ]] && psvar[1]=ǝɯoɥ
+  else
+    psvar[1]=`hostname`
+    [[ $psvar[1] = aaronstacy-goobuntu.aus.corp.google.com ]] && psvar[1]=w̼o͋r᷌k᷿
+  fi
+
+  setopt prompt_subst # expand variables
+
+  PROMPT='
+%F{87}%B∂%b%f%1v $psvar[2] %3v%F{238}%4v %5v%f
+%(?.%F{87}.%F{160})§%f '
+}
+_set_ps1
+unset _format_runtime_ms _get_git_dir _set_ps1
+
+
