@@ -29,6 +29,7 @@ BREW_PREFIX="`which brew &>/dev/null && brew --prefix`"
 
 # WORTHLESS python
 [ -d /usr/local/share/python ] && export PATH="$PATH:/usr/local/share/python"
+[ -d $HOME/Library/Python/3.7/bin ] && export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 
 [ -f $BREW_PREFIX/etc/profile.d/z.sh ] && . $BREW_PREFIX/etc/profile.d/z.sh
 
@@ -70,6 +71,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # knitting
 export PATH="$HOME/.yarn/bin:$PATH"
+
+[ -d $HOME/code/finances/bin ] && export PATH="$PATH:$HOME/code/finances/bin"
 
 ### the arbitrary and entirely personal aliases ###
 alias l='ls '
@@ -184,7 +187,6 @@ if locale | grep -i utf-8 &>/dev/null; then unycodes=1; fi
 pimpmyps1 $color $unycodes
 
 
-
 # this often screws things up
 export MANPAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
@@ -263,6 +265,8 @@ if ! which ip &>/dev/null; then
 fi
 
 [ -f ~/code/amz/etc/env ] && . ~/code/amz/etc/env
+
+[ -e ~/code/google-scripts/etc/env ] && . ~/code/google-scripts/etc/env
 
 # set tab width to 4 (useful when you're running "cat" on a file), but it makes
 # things all screwy when you ssh somewhere
