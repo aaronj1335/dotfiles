@@ -24,6 +24,7 @@ set expandtab
 
 inoremap <TAB> <C-P>
 "inoremap <TAB> <C-X><C-O>
+au Filetype beancount inoremap <TAB> <C-X><C-O>
 
 " Press space to clear search highlighting and any message already displayed.
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
