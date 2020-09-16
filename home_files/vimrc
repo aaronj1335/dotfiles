@@ -386,12 +386,12 @@ au BufWriteCmd *.clj w | silent! Require
 
 set rtp+=~/.fzf
 
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'sso://user/mcdermottm/vim-csearch'
-call plug#end()
-
 if filereadable('/usr/share/vim/google/google.vim')
+  call plug#begin('~/.vim/plugged')
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'sso://user/mcdermottm/vim-csearch'
+  call plug#end()
+
   source /usr/share/vim/google/google.vim
   " Glug youcompleteme-google
   " Glug grok
