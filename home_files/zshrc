@@ -101,6 +101,7 @@ add-zsh-hook precmd () {
   local rightside='%F{238}%4v %5v%f'
   local rightsidelen=${#${(S%%)rightside//$~zero/}}
   local spacecount=$(($COLUMNS - $leftsidelen - $rightsidelen))
+  [[ "${psvar[1]}" = "w̼o͋r᷌k᷿" ]] && spacecount=$(($spacecount + 4)) # account for diacritics
   psvar[3]="${(l:${spacecount}:: :)}"
 
 }
