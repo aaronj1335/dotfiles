@@ -29,11 +29,18 @@ maybe.() { [ -e "$1" ] && . $1 }
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+maybe. ~/code/google-scripts/etc/zshenv
+
 export PAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 export MANPAGER="$PAGER"
 
 bindkey -e
 bindkey "^[[3~" delete-char # fix the delete key?
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
 
 autoload -Uz add-zsh-hook
 
@@ -128,5 +135,4 @@ _set_ps1() {
 }
 _set_ps1
 unset _format_runtime_ms _get_git_dir _set_ps1
-
 
