@@ -1,9 +1,9 @@
 export CLICOLOR="true"
 
 if which lsd >/dev/null; then
-  alias ls="lsd --icon never --date relative"
+  alias ls="lsd --icon never --date relative -tr"
 else
-  alias ls="ls --color=auto"
+  alias ls="ls --color=auto -tr"
 fi
 alias ll="ls -l"
 
