@@ -7,7 +7,7 @@ else
 fi
 alias ll="ls -l"
 
-zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _correct _approximate
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' glob 1
 zstyle ':completion:*' insert-unambiguous true
