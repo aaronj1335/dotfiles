@@ -1,4 +1,24 @@
-export CLICOLOR="true"
+bindkey -e
+bindkey "^[[3~" delete-char # fix the delete key?
+
+set -k # treat comments in interactive shells as... comments
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+maybe.() { [ -e "$1" ] && . $1 }
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+maybe. ~/code/google-scripts/etc/zshenv
+
+export PAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+export MANPAGER="$PAGER"
+
+[ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
 if which lsd >/dev/null; then
   alias ls="lsd --icon never --date relative -tr"
@@ -23,26 +43,6 @@ zstyle :compinstall filename '/Users/aaronstacy/.zshrc'
 
 autoload -Uz compinit
 compinit
-
-maybe.() { [ -e "$1" ] && . $1 }
-
-# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-maybe. ~/code/google-scripts/etc/zshenv
-
-[ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
-
-export PAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
-export MANPAGER="$PAGER"
-
-bindkey -e
-bindkey "^[[3~" delete-char # fix the delete key?
-
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
 
 autoload -Uz add-zsh-hook
 
