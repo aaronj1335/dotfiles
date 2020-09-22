@@ -31,6 +31,8 @@ maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 maybe. ~/code/google-scripts/etc/zshenv
 
+[ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
+
 export PAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 export MANPAGER="$PAGER"
 
