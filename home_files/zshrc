@@ -81,13 +81,28 @@ _get_git_dir() {
   fi
 }
 
-add-zsh-hook preexec () {
+_get_g4_dir() {
+  local indicator="🅒 "
+  if g4 p | grep -e '[^[:space:]]' 2>&1 >/dev/null; then
+    indicator="%%F{1}$indicator%%f"
+  fi
+
+  if pwd | grep /google/src/cloud/$USER 2>&1 >/dev/null; then
+    local g4g4d="`g4 g4d`"
+    local client="$(basename $(dirname $g4g4d))"
+    printf "${indicator}$(echo $PWD | sed -e "s|^$g4g4d|$client|")"
+  fi
+}
+
+add-zsh-hook preexec() {
   _zsh_command_timer=$(($(print -P %D{%s%6.})/1000))
 }
 
-add-zsh-hook precmd () {
-  if [[ -d .git ]] || git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+add-zsh-hook precmd() {
+  if [[ -d .git ]] || git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     psvar[2]="`_get_git_dir`"
+  elif echo $PWD | grep -e "^/google/src/cloud/$USER" 2>&1 >/dev/null; then
+    psvar[2]="`_get_g4_dir`"
   else
     psvar[2]="%~"
   fi
@@ -108,7 +123,7 @@ add-zsh-hook precmd () {
   local rightside='%F{238}%4v %5v%f'
   local rightsidelen=${#${(S%%)rightside//$~zero/}}
   local spacecount=$(($COLUMNS - $leftsidelen - $rightsidelen))
-  [[ "${psvar[1]}" = "w̼o͋r᷌k᷿" ]] && spacecount=$(($spacecount + 4)) # account for diacritics
+  [[ "${psvar[1]}" = w̼o͋r᷌k᷿ ]] && spacecount=$(($spacecount + 4)) # account for diacritics
   psvar[3]="${(l:${spacecount}:: :)}"
 
 }
@@ -134,5 +149,5 @@ _set_ps1() {
 %(?.%F{87}.%F{160})§%f '
 }
 _set_ps1
-unset _format_runtime_ms _get_git_dir _set_ps1
+unset _format_runtime_ms _get_git_dir _get_g4_dir _set_ps1
 
