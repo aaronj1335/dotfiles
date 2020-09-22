@@ -3,6 +3,8 @@ bindkey "^[[3~" delete-char # fix the delete key?
 
 set -k # treat comments in interactive shells as... comments
 
+setopt complete_aliases
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
