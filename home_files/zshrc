@@ -10,6 +10,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
+# treat different path segments as different words, kinda like bash
+export WORDCHARS=${WORDCHARS//\//}
+
 maybe.() { [ -e "$1" ] && . $1 }
 
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
