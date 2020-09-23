@@ -24,7 +24,7 @@
     email = aaronstacy@google.com
 
 [core]
-    pager = cat
+    pager = diff-so-fancy
     excludesfile = ~/.gitignore_global
     quotepath = false
     editor = vim

@@ -25,10 +25,14 @@ export MANPAGER="$PAGER"
 
 [ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
+# for nice git diffs:
+# git clone https://github.com/so-fancy/diff-so-fancy.git ~/code/diff-so-fancy
+[ -e ~/code/diff-so-fancy ] && export PATH="$PATH:$HOME/code/diff-so-fancy"
+
 if which lsd >/dev/null; then
   alias ls="lsd --date relative -tr"
 
-  # If a machine has icon fonts installed and you want lsd to use them, run:
+  # if a machine has icon fonts installed and you want lsd to use them, run:
   # echo 'export LC_HAS_ICON_FONT=yes' >> ~/.zshenv
   if [ -z "$LC_HAS_ICON_FONT" ]; then
     alias ls="${aliases[ls]} --icon never"
