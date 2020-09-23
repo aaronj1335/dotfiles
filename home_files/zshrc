@@ -26,7 +26,13 @@ export MANPAGER="$PAGER"
 [ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
 if which lsd >/dev/null; then
-  alias ls="lsd --icon never --date relative -tr"
+  alias ls="lsd --date relative -tr"
+
+  # If a machine has icon fonts installed and you want lsd to use them, run:
+  # echo 'export LC_HAS_ICON_FONT=yes' >> ~/.zshenv
+  if ! [ -z "$LC_HAS_ICON_FONT" ]; then
+    alias ls="${aliases[ls]} --icon never"
+  fi
 else
   alias ls="ls --color=auto -tr"
 fi
