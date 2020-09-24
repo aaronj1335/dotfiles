@@ -18,6 +18,9 @@ maybe.() { [ -e "$1" ] && . $1 }
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
+maybe. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
 maybe. ~/code/google-scripts/etc/zshenv
 
 export PAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
