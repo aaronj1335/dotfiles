@@ -134,30 +134,30 @@ add-zsh-hook precmd() {
 
   if [ $_zsh_command_timer ]; then
     local now=$(($(print -P %D{%s%6.})/1000))
-    psvar[4]="$(_format_runtime_ms $(($now-$_zsh_command_timer)))"
+    psvar[5]="$(_format_runtime_ms $(($now-$_zsh_command_timer)))"
     unset _zsh_command_timer
   else
-    psvar[4]=""
+    psvar[5]=""
   fi
 
-  psvar[5]="$(date '+%H:%m %b%d')"
+  psvar[6]="$(date '+%H:%M %b%d')"
 
   local zero='%([BSUbfksu]|([FK]|){*})'
   local leftside="%F{87}%b∂%b%f%1v ${psvar[2]} "
   local leftsidelen=${#${(S%%)leftside//$~zero/}}
-  local rightside='%F{238}%4v %5v%f'
+  local rightside='%F{238}%5v %6v%f'
   local rightsidelen=${#${(S%%)rightside//$~zero/}}
   local spacecount=$(($COLUMNS - $leftsidelen - $rightsidelen))
   [[ "${psvar[1]}" = w̼o͋r᷌k᷿ ]] && spacecount=$(($spacecount + 4)) # account for diacritics
-  psvar[3]="${(l:${spacecount}:: :)}"
+  psvar[4]="${(l:${spacecount}:: :)}"
 
 }
 
 # psvar[1] -- host name
 # psvar[2] -- directory (or source control info)
-# psvar[3] -- spaces between left and right side
-# psvar[4] -- duration of last command
-# psvar[5] -- current date
+# psvar[4] -- spaces between left and right side
+# psvar[5] -- duration of last command
+# psvar[6] -- current date
 _set_ps1() {
   if which scutil >/dev/null; then
     psvar[1]=`scutil --get ComputerName`
@@ -170,7 +170,7 @@ _set_ps1() {
   setopt prompt_subst # expand variables
 
   PROMPT='
-%F{87}%B∂%b%f%1v $psvar[2] %3v%F{238}%4v %5v%f
+%F{87}%B∂%b%f%1v $psvar[2] %4v%F{238}%5v %6v%f
 %(?.%F{87}.%F{160})§%f '
 }
 _set_ps1
