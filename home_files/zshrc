@@ -133,7 +133,7 @@ add-zsh-hook precmd() {
   fi
 
   if [ -e ~/.gcertstatus_expired ]; then
-    psvar[3]=" %%f{1}⊘%%f "
+    psvar[3]="%F{1}⃠%f"
   else
     psvar[3]=""
   fi
@@ -149,7 +149,7 @@ add-zsh-hook precmd() {
   psvar[6]="$(date '+%H:%M %b%d')"
 
   local zero='%([BSUbfksu]|([FK]|){*})'
-  local leftside="%F{87}%b∂%b%f%1v ${psvar[2]}${psvar[3]} "
+  local leftside="%F{87}%b∂%b%f%1v ${psvar[2]} ${psvar[3]} "
   local leftsidelen=${#${(S%%)leftside//$~zero/}}
   local rightside='%F{238}%5v %6v%f'
   local rightsidelen=${#${(S%%)rightside//$~zero/}}
@@ -177,7 +177,7 @@ _set_ps1() {
   setopt prompt_subst # expand variables
 
   PROMPT='
-%F{87}%B∂%b%f%1v $psvar[2]$psvar[3] %4v%F{238}%5v %6v%f
+%F{87}%B∂%b%f%1v $psvar[2] $psvar[3] %4v%F{238}%5v %6v%f
 %(?.%F{87}.%F{160})§%f '
 }
 _set_ps1
