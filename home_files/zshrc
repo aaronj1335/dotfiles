@@ -132,6 +132,12 @@ add-zsh-hook precmd() {
     psvar[2]="%~"
   fi
 
+  if [ -e ~/.gcertstatus_expired ]; then
+    psvar[3]=" %%f{1}⊘%%f "
+  else
+    psvar[3]=""
+  fi
+
   if [ $_zsh_command_timer ]; then
     local now=$(($(print -P %D{%s%6.})/1000))
     psvar[5]="$(_format_runtime_ms $(($now-$_zsh_command_timer)))"
@@ -143,7 +149,7 @@ add-zsh-hook precmd() {
   psvar[6]="$(date '+%H:%M %b%d')"
 
   local zero='%([BSUbfksu]|([FK]|){*})'
-  local leftside="%F{87}%b∂%b%f%1v ${psvar[2]} "
+  local leftside="%F{87}%b∂%b%f%1v ${psvar[2]}${psvar[3]} "
   local leftsidelen=${#${(S%%)leftside//$~zero/}}
   local rightside='%F{238}%5v %6v%f'
   local rightsidelen=${#${(S%%)rightside//$~zero/}}
@@ -155,6 +161,7 @@ add-zsh-hook precmd() {
 
 # psvar[1] -- host name
 # psvar[2] -- directory (or source control info)
+# psvar[3] -- auth state
 # psvar[4] -- spaces between left and right side
 # psvar[5] -- duration of last command
 # psvar[6] -- current date
@@ -170,7 +177,7 @@ _set_ps1() {
   setopt prompt_subst # expand variables
 
   PROMPT='
-%F{87}%B∂%b%f%1v $psvar[2] %4v%F{238}%5v %6v%f
+%F{87}%B∂%b%f%1v $psvar[2]$psvar[3] %4v%F{238}%5v %6v%f
 %(?.%F{87}.%F{160})§%f '
 }
 _set_ps1
