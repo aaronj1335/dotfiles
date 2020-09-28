@@ -19,7 +19,10 @@ maybe.() { [ -e "$1" ] && . $1 }
 maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
-maybe. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+if [ -e ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
+  . ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+  fast-theme -q clean
+fi
 
 maybe. ~/code/google-scripts/etc/zshenv
 
