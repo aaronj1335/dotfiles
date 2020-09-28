@@ -73,23 +73,23 @@ compinit
 autoload -Uz add-zsh-hook
 
 _format_runtime_ms() {
-    local t="$1."
-    local d=$((t/1000/60/60/24))
-    local h=$((t/1000/60/60%24))
-    local m=$((t/1000/60%60))
-    local M=$((t%1000))
+  local t="$1."
+  local d=$((t/1000/60/60/24))
+  local h=$((t/1000/60/60%24))
+  local m=$((t/1000/60%60))
+  local M=$((t%1000))
 
-    if [[ $t -lt 1000 ]]; then
-      printf "%.0fms" $M
-    elif [[ $t -lt $((60 * 1000)) ]]; then
-      printf "%.3fs" $((t/1000.))
-    elif [[ $t -lt $((60 * 60 * 1000)) ]]; then
-      printf "%.0fm %.3fs" $m $((t/1000. % 60))
-    elif [[ $t -lt $((24 * 60 * 60 * 1000)) ]]; then
-      printf "%.0fh %.0fm %.3fs" $h $m $((t/1000. % 60))
-    else
-      printf "%.0fd %.0fh %.0fm %.3fs" $d $h $m $((t/1000. % 60))
-    fi
+  if [[ $t -lt 1000 ]]; then
+    printf "%.0fms" $M
+  elif [[ $t -lt $((60 * 1000)) ]]; then
+    printf "%.3fs" $((t/1000.))
+  elif [[ $t -lt $((60 * 60 * 1000)) ]]; then
+    printf "%.0fm %.3fs" $m $((t/1000. % 60))
+  elif [[ $t -lt $((24 * 60 * 60 * 1000)) ]]; then
+    printf "%.0fh %.0fm %.3fs" $h $m $((t/1000. % 60))
+  else
+    printf "%.0fd %.0fh %.0fm %.3fs" $d $h $m $((t/1000. % 60))
+  fi
 }
 
 _get_git_dir() {
@@ -161,7 +161,6 @@ add-zsh-hook precmd() {
   local spacecount=$(($COLUMNS - $leftsidelen - $rightsidelen))
   [[ "${psvar[1]}" = w̼o͋r᷌k᷿ ]] && spacecount=$(($spacecount + 4)) # account for diacritics
   psvar[4]="${(l:${spacecount}:: :)}"
-
 }
 
 # psvar[1] -- host name
