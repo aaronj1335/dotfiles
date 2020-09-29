@@ -70,6 +70,8 @@ zstyle :compinstall filename '/Users/aaronstacy/.zshrc'
 autoload -Uz compinit
 compinit
 
+compdef -d javap # otherwise tab completing a file path freezes
+
 autoload -Uz add-zsh-hook
 
 _format_runtime_ms() {
