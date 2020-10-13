@@ -3,8 +3,6 @@ bindkey "^[[3~" delete-char # fix the delete key?
 
 set -k # treat comments in interactive shells as... comments
 
-setopt complete_aliases
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -15,17 +13,6 @@ export WORDCHARS=${WORDCHARS//\//}
 
 maybe.() { [ -e "$1" ] && . $1 }
 
-# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
-if [ -e ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
-  . ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-  fast-theme -q ~/bin/home_files/fast-zsh-syntax-theme.ini
-fi
-
-maybe. ~/code/google-scripts/etc/zshenv
-
 export PAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_session_dot_vim=1' -c 'set ft=man nomod nolist nowrap' -c 'map q :q<CR>' -c 'map <SPACE> <C-D>' -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 export MANPAGER="$PAGER"
 
@@ -35,10 +22,6 @@ if which mvim &>/dev/null; then
 fi
 
 [ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
-
-# for nice git diffs:
-# git clone https://github.com/so-fancy/diff-so-fancy.git ~/code/diff-so-fancy
-[ -e ~/code/diff-so-fancy ] && export PATH="$PATH:$HOME/code/diff-so-fancy"
 
 if which lsd >/dev/null; then
   alias ls="lsd --date relative -tr"
@@ -52,6 +35,8 @@ else
   alias ls="ls --color=auto -tr"
 fi
 alias ll="ls -l"
+
+setopt complete_aliases
 
 zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _correct _approximate
 zstyle ':completion:*' completions 1
@@ -71,6 +56,21 @@ autoload -Uz compinit
 compinit
 
 compdef -d javap # otherwise tab completing a file path freezes
+
+maybe. ~/code/google-scripts/etc/zshenv
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
+if [ -e ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
+  . ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+  fast-theme -q ~/bin/home_files/fast-zsh-syntax-theme.ini
+fi
+
+# for nice git diffs:
+# git clone https://github.com/so-fancy/diff-so-fancy.git ~/code/diff-so-fancy
+[ -e ~/code/diff-so-fancy ] && export PATH="$PATH:$HOME/code/diff-so-fancy"
 
 autoload -Uz add-zsh-hook
 
