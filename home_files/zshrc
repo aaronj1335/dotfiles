@@ -116,14 +116,14 @@ _get_git_dir() {
 
 _get_g4_dir() {
   local indicator="🅒 "
-  if g4 p | grep -e '[^[:space:]]' 2>&1 >/dev/null; then
+  if ( which g4 && g4 p | grep -e '[^[:space:]]' ) 2>&1 >/dev/null; then
     indicator="%%F{1}$indicator%%f"
   fi
 
-  if pwd | grep /google/src/cloud/$USER 2>&1 >/dev/null; then
-    local g4g4d="`g4 g4d`"
-    local client="$(basename $(dirname $g4g4d))"
-    printf "${indicator}$(echo $PWD | sed -e "s|^$g4g4d|$client|")"
+  local g4g4d="`pwd | grep -oE /google/src/cloud/$USER/\[^\/\]+`"
+  if [ ! -z "$g4g4d" ]; then
+    local client="$(basename $g4g4d)"
+    printf "${indicator}$(echo $PWD | sed -e "s|^$g4g4d/google3|$client|")"
   fi
 }
 
