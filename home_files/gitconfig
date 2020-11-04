@@ -22,7 +22,7 @@
 
 [alias]
     lg = log --graph --decorate --pretty=oneline --abbrev-commit
-    lga = !git status -sb && echo "" && git log -n20 --graph --decorate --pretty=oneline --abbrev-commit --all
+    lga = !git status -sb && echo "" && git log -n40 --graph --decorate --pretty=oneline --abbrev-commit --all
     st = status -sb
     stat = status -sb
 
