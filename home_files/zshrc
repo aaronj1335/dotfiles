@@ -55,12 +55,13 @@ zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/Users/aaronstacy/.zshrc'
 
+# source before compinit since this modifies $fpath
+maybe. ~/code/google-scripts/etc/zshenv
+
 autoload -Uz compinit
 compinit
 
 compdef -d javap # otherwise tab completing a file path freezes
-
-maybe. ~/code/google-scripts/etc/zshenv
 
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
