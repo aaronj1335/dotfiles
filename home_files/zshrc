@@ -165,7 +165,8 @@ add-zsh-hook precmd() {
   local rightside='%F{238}%5v %6v%f'
   local rightsidelen=${#${(S%%)rightside//$~zero/}}
   local spacecount=$(($COLUMNS - $leftsidelen - $rightsidelen))
-  [[ "${psvar[1]}" = w̼o͋r᷌k᷿ ]] && spacecount=$(($spacecount + 4)) # account for diacritics
+  # account for diacritics
+  [[ "${psvar[1]}" = w̼o͋r᷌k᷿ ]] && spacecount=$(($spacecount + 4))
   psvar[4]="${(l:${spacecount}:: :)}"
 }
 
@@ -182,6 +183,7 @@ _set_ps1() {
   else
     psvar[1]=`hostname`
     [[ $psvar[1] = aaronstacy-goobuntu.aus.corp.google.com ]] && psvar[1]=w̼o͋r᷌k᷿
+    [[ $psvar[1] = aaronstacy.c.googlers.com ]] && psvar[1]=w̼o͋r᷌k᷿
   fi
 
   setopt prompt_subst # expand variables
