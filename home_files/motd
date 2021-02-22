@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# `sudo crontab -e` and add something like:
+# * * * * * cp /usr/local/google/home/aaronstacy/bin/home_files/motd /etc/update-motd.d/00-header
+
 cat <<- 'MOTD'
                                                  
                      (                           
