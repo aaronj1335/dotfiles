@@ -119,7 +119,7 @@ _get_git_dir() {
 
 _get_g4_dir() {
   local indicator="🅒 "
-  if ( which g4 && g4 p | grep -e '[^[:space:]]' ) 2>&1 >/dev/null; then
+  if ( which g4 && g4 p 2>/dev/null | grep -e '[^[:space:]]' ) 2>&1 >/dev/null; then
     indicator="%%F{1}$indicator%%f"
   fi
 
