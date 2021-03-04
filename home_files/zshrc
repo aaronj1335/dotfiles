@@ -144,7 +144,8 @@ add-zsh-hook precmd() {
   fi
 
   # Something like this in the crontab should keep this up to date:
-  # * * * * * if /usr/local/bin/gcertstatus -nocheck_ssh -quiet; then rm -f ~/.gcertstatus_expired; touch ~/.gcertstatus_valid; else rm -f ~/.gcertstatus_valid; touch ~/.gcertstatus_expired; fi
+  # (make sure the path to gcertstatus is correct)
+  # * * * * * if /usr/bin/gcertstatus -nocheck_ssh -quiet; then rm -f ~/.gcertstatus_expired; touch ~/.gcertstatus_valid; else rm -f ~/.gcertstatus_valid; touch ~/.gcertstatus_expired; fi
   if [ -e ~/.gcertstatus_expired ]; then
     psvar[3]="%F{1}⃠%f"
   else
