@@ -123,8 +123,6 @@ let mapleader = ","
 "   set colorcolumn=80
 " end
 
-nnoremap <tab> %
-vnoremap <tab> %
 nnoremap j gj
 nnoremap k gk
 
