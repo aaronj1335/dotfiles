@@ -18,7 +18,7 @@ export VIMPAGER="/bin/sh -c \"unset MANPAGER;col -b -x | view --cmd 'let g:no_se
 # I like vim as a pager, but it doesn't handle colors, and modern terminals'
 # scrolling is better than less-style paging.
 export PAGER=cat
-export MANPAGER="$PAGER"
+export MANPAGER="$VIMPAGER"
 
 export EDITOR=vim
 if which mvim &>/dev/null; then
