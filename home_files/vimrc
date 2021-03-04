@@ -175,6 +175,8 @@ endfunction
 au Filetype markdown,text nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
 au Filetype markdown,ghmarkdown,tex,gitcommit setlocal spell
 
+au Filetype beancount nnoremap <leader>m :update<cr>:make!<cr>
+
 function! OpenTray(...)
   if len(a:000) > 0
     execute 'vsplit ' . a:000[0]
@@ -329,17 +331,6 @@ augroup END
 " read local ./.project.vim for project-specific settings
 if filereadable(".project.vim")
   source .project.vim
-endif
-
-" i like to use <leader>r as a generic shortcut for running a build, whatever
-" that is. this makes a shortcut to map <leader>r to run whatever command is in
-" g:cmd variable
-if !exists("*Build")
-  function Build()
-    execute g:cmd
-  endfunction
-
-  nnoremap <leader>r :call Build()<cr>
 endif
 
 function! MakeSesh()
