@@ -1,0 +1,10 @@
+[ui]
+interface = text
+interface.chunkselector = curses
+interface.histedit = text
+
+[alias]
+diff = !HGPLAIN=1 $HG diff --pager=on --config pager.pager=diff-so-fancy $@
+
+[google]
+presubmit.default-rev=.
