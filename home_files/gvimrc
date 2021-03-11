@@ -14,7 +14,8 @@ hi StatusLineNC guifg=#211714 guibg=#E6E1DC
 
 
 if has("mac")
-  set guifont=Menlo:h13
+  set guifont=JetBrainsMonoNerdFontCompleteM-Regular:h13
+  set macligatures
   noremap <D-[> gT
   noremap <D-]> gt
 " noremap <D-P> <Nop>
