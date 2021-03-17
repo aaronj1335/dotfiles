@@ -175,6 +175,7 @@ add-zsh-hook precmd() {
   # account for diacritics
   [[ "${psvar[1]}" = w̼o͋r᷌k᷿ ]] && spacecount=$(($spacecount + 4))
   [[ "${psvar[1]}" = c͔̐lͣo⃮̼u̷̧̲ᷙd ]] && spacecount=$(($spacecount + 9))
+  [[ "${psvar[1]}" = stace🤖 ]] && spacecount=$(($spacecount - 1))
   psvar[4]="${(l:${spacecount}:: :)}"
 }
 
@@ -194,6 +195,7 @@ _set_ps1() {
     psvar[1]=`hostname`
     [[ $psvar[1] = aaronstacy-goobuntu.aus.corp.google.com ]] && psvar[1]=w̼o͋r᷌k᷿
     [[ $psvar[1] = aaronstacy.c.googlers.com ]] && psvar[1]=c͔̐lͣo⃮̼u̷̧̲ᷙd
+    [[ $psvar[1] = stacebot.c.googlers.com ]] && psvar[1]=stace🤖
   fi
 
   setopt prompt_subst # expand variables
