@@ -30,8 +30,8 @@ fi
 home_files_dir=`cd $home_files_dir; pwd`
 
 # the special cases
-remove_references "$HOME/.ssh/config"
-cp $home_files_dir/ssh_config $HOME/.ssh/config
+# remove_references "$HOME/.ssh/config"
+# cp $home_files_dir/ssh_config $HOME/.ssh/config
 
 remove_references "$HOME/.matplotlibrc"
 
