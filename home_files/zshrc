@@ -1,5 +1,7 @@
 bindkey -e
 bindkey "^[[3~" delete-char # fix the delete key?
+bindkey '^[[1;9C' forward-word # fix alt-left
+bindkey '^[[1;9D' backward-word # fix alt-right
 
 set -k # treat comments in interactive shells as... comments
 
@@ -186,6 +188,8 @@ _set_ps1() {
   if which scutil >/dev/null; then
     psvar[1]=`scutil --get ComputerName`
     [[ $psvar[1] = aaronstacy-macbookpro2 ]] && psvar[1]=ǝɯoɥ
+    [[ $psvar[1] = aaronstacy-macbookpro3 ]] && psvar[1]=ǝɯoɥ
+    [[ $psvar[1] = aaronstacy-macbookpro7 ]] && psvar[1]=ǝɯoɥ
   else
     psvar[1]=`hostname`
     [[ $psvar[1] = aaronstacy-goobuntu.aus.corp.google.com ]] && psvar[1]=w̼o͋r᷌k᷿
