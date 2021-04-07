@@ -109,8 +109,13 @@ end
 
 set mouse=n
 set modelines=0 " apparently this is a security hole?
-set scrolloff=2
 set ttyfast
+set scrolloff=3
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 
 nnoremap / /\v
 vnoremap / /\v
