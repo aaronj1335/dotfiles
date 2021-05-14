@@ -180,7 +180,7 @@ endfunction
 au Filetype markdown,text nnoremap <leader>m :silent call<space>MarkdownPreview()<cr>
 au Filetype markdown,ghmarkdown,tex,gitcommit setlocal spell
 
-au Filetype beancount nnoremap <leader>m :update<cr>:make!<cr>
+au Filetype beancount nnoremap <leader>m :update<cr>:make<cr>
 
 function! OpenTray(...)
   if len(a:000) > 0
