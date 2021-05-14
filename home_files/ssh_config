@@ -1,0 +1,4 @@
+Match host *
+  ControlMaster auto
+  ControlPath ~/.ssh/ctrl-%C
+  ControlPersist yes
