@@ -47,3 +47,7 @@ if has("gui_macvim")
 elseif has("unix")
   map <C-o> :CtrlP<cr>
 endif
+
+" Make commenting work like most IDE's.
+nmap <D-/> gcc
+xmap <D-/> gc
