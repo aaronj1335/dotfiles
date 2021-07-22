@@ -60,3 +60,5 @@
     pull-request-by-default = false
 [http]
 	cookiefile = /Users/aaronstacy/.gitcookies
+[init]
+	defaultBranch = main
