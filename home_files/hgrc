@@ -8,3 +8,6 @@ diff = !HGPLAIN=1 $HG diff --pager=on --config pager.pager=diff-so-fancy $@
 
 [google]
 presubmit.default-rev=.
+
+[trainingwheels]
+prevent-push-dirty=false
