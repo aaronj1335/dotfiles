@@ -1,0 +1,15 @@
+#!/bin/bash
+set -eu
+
+# When in tmux, we have to tell tmux that we want the following escape sequence
+# sent to the client literally.
+if [[ -n "${TMUX:-}" ]]; then
+  printf '\ePtmux;\e'
+fi
+
+printf '\e]9;%s\a' "$@"
+
+# When in tmux, tell tmux we are done literally sending escape sequences.
+if [[ -n "${TMUX:-}" ]]; then
+  printf '\e\\'
+fi
