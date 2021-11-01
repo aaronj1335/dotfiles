@@ -15,6 +15,12 @@
   "editor.tabSize": 2,
   "explorer.confirmDelete": false,
   "files.autoSave": "afterDelay",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
   "nextcode.build.foreground": "onError",
   "scm.inputFontSize": 16,
   "terminal.integrated.fontSize": 14,
@@ -35,9 +41,12 @@
   "workbench.editor.showTabs": true,
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": false,
+  "[beancount]": {
+    "outline.showConstants": false
+  },
   "[python]": {
     "editor.rulers": [
       80
     ]
-  },
+  }
 }
