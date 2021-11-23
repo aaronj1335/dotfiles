@@ -82,6 +82,9 @@ fi
 # git clone https://github.com/so-fancy/diff-so-fancy.git ~/code/diff-so-fancy
 [ -e ~/code/diff-so-fancy ] && export PATH="$PATH:$HOME/code/diff-so-fancy"
 
+# curl -L https://iterm2.com/shell_integration/zsh > ~/.iterm2_shell_integration.zsh
+maybe. ~/.iterm2_shell_integration.zsh
+
 autoload -Uz add-zsh-hook
 
 _format_runtime_ms() {
