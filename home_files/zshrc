@@ -136,6 +136,7 @@ _get_g4_dir() {
 
 add-zsh-hook preexec() {
   _zsh_command_timer=$(($(print -P %D{%s%6.})/1000))
+  _zsh_command="$*"
 }
 
 add-zsh-hook precmd() {
@@ -158,7 +159,18 @@ add-zsh-hook precmd() {
 
   if [ $_zsh_command_timer ]; then
     local now=$(($(print -P %D{%s%6.})/1000))
+
+    # First set the variable for the duration of the last command.
     psvar[5]="$(_format_runtime_ms $(($now-$_zsh_command_timer)))"
+
+    # Also make a notification sound if it was a blaze command that took > 20 seconds.
+    if [ "$_zsh_command" ] && [ -e ~/bin/notify ]; then
+      if [[ $(($now - $_zsh_command_timer)) > 20000 && $_zsh_command =~ blaze ]]; then
+        ~/bin/notify
+      fi
+      unset _zsh_command
+    fi
+
     unset _zsh_command_timer
   else
     psvar[5]=""
