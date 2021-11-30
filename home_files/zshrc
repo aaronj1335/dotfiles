@@ -168,7 +168,7 @@ add-zsh-hook precmd() {
 
     # Also make a notification sound if it was a blaze command that took > 20 seconds.
     if [ "$_zsh_command" ] && [ -e ~/bin/notify ]; then
-      if [[ $(($now - $_zsh_command_timer)) > 20000 && $_zsh_command =~ blaze ]]; then
+      if [[ $(($now - $_zsh_command_timer)) -gt 20000 && $_zsh_command =~ blaze ]]; then
         ~/bin/notify
       fi
       unset _zsh_command
