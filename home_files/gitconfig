@@ -25,7 +25,7 @@
     lga = !git status -sb && echo "" && git log -n40 --graph --decorate --pretty=oneline --abbrev-commit --all
     st = status -sb
     stat = status -sb
-	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
+    recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 
 [user]
     name = Aaron Stacy
@@ -36,15 +36,8 @@
     excludesfile = ~/.gitignore_global
     quotepath = false
     editor = vim
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
 [difftool "Kaleidoscope"]
-    cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
-[difftool]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
     prompt = false
 [diff]
     tool = Kaleidoscope
@@ -59,6 +52,13 @@
     append-cr-url = true
     pull-request-by-default = false
 [http]
-	cookiefile = /Users/aaronstacy/.gitcookies
+    cookiefile = /Users/aaronstacy/.gitcookies
 [init]
-	defaultBranch = main
+    defaultBranch = main
+[merge]
+    tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
+[mergetool]
+    prompt = false
