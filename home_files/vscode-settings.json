@@ -11,7 +11,6 @@
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.renderWhitespace": "none",
-  "editor.renderIndentGuides": false,
   "editor.tabSize": 2,
   "explorer.confirmDelete": false,
   "files.autoSave": "afterDelay",
@@ -21,7 +20,10 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false,
   "nextcode.build.foreground": "onError",
+  "outline.showVariables": false,
   "scm.inputFontSize": 16,
   "terminal.integrated.fontSize": 14,
   "vim.enableNeovim": true,
@@ -40,7 +42,6 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.showTabs": true,
   "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": false,
   "[beancount]": {
     "outline.showConstants": false
   },
@@ -48,5 +49,10 @@
     "editor.rulers": [
       80
     ]
-  }
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "csv-preview.numberFormat": "g4",
+  "jupyter.askForKernelRestart": false,
+  "editor.bracketPairColorization.enabled": false,
 }
