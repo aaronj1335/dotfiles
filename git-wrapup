@@ -12,7 +12,7 @@ wrap up the feature branch that you're working on.
 
 if <branch> is not given, then use the current branch.
 
-fail if <branch> is 'master' or 'production'. because those probably aren't
+fail if <branch> is 'main' or 'production'. because those probably aren't
 features ;)
 
 # implementation details
@@ -50,11 +50,11 @@ if [ ! "$branch" ]; then
 fi
 
 if [ "$branch" = "$current_branch" ]; then
-  git checkout master
+  git checkout main
 fi
 
-if [ "$branch" = master ] || [ "$branch" = production ]; then
-  echo ERROR: dont run this on master or production
+if [ "$branch" = main ] || [ "$branch" = production ]; then
+  echo ERROR: dont run this on main or production
   exit 1
 fi
 
