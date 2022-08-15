@@ -70,12 +70,14 @@ gitconfig="$(git rev-parse --show-toplevel)/.git/config"
 if [ "$remote" ]; then
   # delete the remote tracking branch and remove it from the list of fetched
   # branches for this remote
-  git branch -dr $remote
+  git branch -dr $remote \
+    || rm .git/config/$remote
   perl -pi -e "s|^.*$remote.*\$||" "$gitconfig"
   perl -pi -e 's/^\n//' "$gitconfig"
 else
   # we control this branch, so delete it on the remote
-  git push origin --delete $branch
+  git push origin --delete $branch \
+    || rm .git/config/$remote
 fi
 
 git branch -D $branch
