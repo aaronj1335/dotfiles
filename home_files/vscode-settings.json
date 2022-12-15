@@ -15,6 +15,7 @@
   "explorer.confirmDelete": false,
   "files.autoSave": "afterDelay",
   "files.exclude": {
+    "**/__pycache__": true,
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
@@ -49,6 +50,9 @@
     "editor.rulers": [
       80
     ]
+  },
+  "[html]": {
+    "editor.formatOnSave": false
   },
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
