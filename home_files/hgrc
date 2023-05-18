@@ -11,3 +11,10 @@ presubmit.default-rev=.
 
 [trainingwheels]
 prevent-push-dirty=false
+
+[extensions]
+hgext.extdiff=
+
+[extdiff]
+cmd.difftool = bash
+opts.difftool = -c 'for f in `find $1 -type f`; do ksdiff --partial-changeset --relative-path ${f#$1/} -- ${0}${f#$1} $f; done'
