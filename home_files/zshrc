@@ -32,6 +32,7 @@ export HGEDITOR="$EDITOR"
 
 [ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
+# brew install lsd
 if which lsd >/dev/null; then
   alias ls="lsd --date relative -tr"
 
@@ -221,4 +222,3 @@ _set_ps1() {
 }
 _set_ps1
 unset _format_runtime_ms _get_git_dir _get_g4_dir _set_ps1
-
