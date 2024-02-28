@@ -3,14 +3,19 @@
   "cSpell.userWords": [
     "Ashly"
   ],
+  "csv-preview.numberFormat": "g4",
+  "editor.bracketPairColorization.enabled": false,
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.formatOnSave": true,
+  "editor.guides.indentation": false,
   "editor.lineNumbers": "off",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.renderWhitespace": "none",
+  "editor.smoothScrolling": true,
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "explorer.confirmDelete": false,
   "files.autoSave": "afterDelay",
@@ -23,10 +28,12 @@
   },
   "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.enabled": false,
+  "jupyter.askForKernelRestart": false,
   "nextcode.build.foreground": "onError",
   "outline.showVariables": false,
   "scm.inputFontSize": 16,
   "terminal.integrated.fontSize": 14,
+  "terminal.integrated.smoothScrolling": true,
   "vim.enableNeovim": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -38,10 +45,15 @@
       ]
     }
   ],
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.customTitleBarVisibility": "never",
+  "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Dainty – Nord (chroma 1, lightness 1)",
   "workbench.editor.enablePreview": false,
   "workbench.editor.showTabs": "multiple",
+  "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": false,
   "[beancount]": {
     "outline.showConstants": false
   },
@@ -53,17 +65,5 @@
   },
   "[html]": {
     "editor.formatOnSave": false
-  },
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "csv-preview.numberFormat": "g4",
-  "jupyter.askForKernelRestart": false,
-  "editor.bracketPairColorization.enabled": false,
-  "editor.guides.indentation": false,
-  "window.customTitleBarVisibility": "never",
-  "workbench.list.smoothScrolling": true,
-  "editor.smoothScrolling": true,
-  "terminal.integrated.smoothScrolling": true,
-  "workbench.statusBar.visible": false,
-  "workbench.activityBar.location": "hidden",
+  }
 }
