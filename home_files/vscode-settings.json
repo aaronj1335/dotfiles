@@ -38,10 +38,9 @@
       ]
     }
   ],
-  "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Smyck",
+  "workbench.colorTheme": "Dainty – Nord (chroma 1, lightness 1)",
   "workbench.editor.enablePreview": false,
-  "workbench.editor.showTabs": true,
+  "workbench.editor.showTabs": "multiple",
   "workbench.startupEditor": "none",
   "[beancount]": {
     "outline.showConstants": false
@@ -60,5 +59,11 @@
   "csv-preview.numberFormat": "g4",
   "jupyter.askForKernelRestart": false,
   "editor.bracketPairColorization.enabled": false,
+  "editor.guides.indentation": false,
+  "window.customTitleBarVisibility": "never",
+  "workbench.list.smoothScrolling": true,
+  "editor.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
   "workbench.statusBar.visible": false,
+  "workbench.activityBar.location": "hidden",
 }
