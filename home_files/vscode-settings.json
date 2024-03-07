@@ -46,6 +46,7 @@
     }
   ],
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.commandCenter": false,
   "window.customTitleBarVisibility": "never",
   "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Dainty – Nord (chroma 1, lightness 1)",
