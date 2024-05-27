@@ -16,5 +16,12 @@ prevent-push-dirty=false
 hgext.extdiff=
 
 [extdiff]
-cmd.difftool = bash
-opts.difftool = -c 'for f in `find $1 -type f`; do ksdiff --partial-changeset --relative-path ${f#$1/} -- ${0}${f#$1} $f; done'
+cmd.difftool = ksdiff
+opts.difftool = --changeset --filelist
+
+[ui]
+merge = Kaleidoscope
+
+[merge-tools]
+Kaleidoscope.executable = /usr/local/bin/ksdiff
+Kaleidoscope.args = --merge --output $output --base $base -- $local $other
