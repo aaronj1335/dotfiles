@@ -4,6 +4,7 @@
     "Ashly"
   ],
   "csv-preview.numberFormat": "g4",
+  "debug.onTaskErrors": "showErrors",
   "editor.bracketPairColorization.enabled": false,
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
@@ -14,6 +15,7 @@
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.renderWhitespace": "none",
+  "editor.showFoldingControls": "never",
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -30,11 +32,14 @@
   "gitlens.codeLens.enabled": false,
   "jupyter.askForKernelRestart": false,
   "nextcode.build.foreground": "onError",
+  "notebook.showFoldingControls": "never",
   "outline.showVariables": false,
   "scm.inputFontSize": 16,
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.smoothScrolling": true,
+  "testing.automaticallyOpenPeekView": "never",
   "vim.enableNeovim": true,
+  "vim.hlsearch": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
@@ -48,6 +53,7 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": false,
   "window.customTitleBarVisibility": "never",
+  "window.density.editorTabHeight": "compact",
   "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Dainty – Nord (chroma 1, lightness 1)",
   "workbench.editor.enablePreview": false,
@@ -59,9 +65,11 @@
     "outline.showConstants": false
   },
   "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.rulers": [
-      80
+      88
     ],
+    "editor.formatOnSave": false,
     "editor.formatOnType": true
   },
   "[html]": {
