@@ -34,6 +34,7 @@
   "nextcode.build.foreground": "onError",
   "notebook.showFoldingControls": "never",
   "outline.showVariables": false,
+  "python.analysis.typeCheckingMode": "standard",
   "scm.inputFontSize": 16,
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.smoothScrolling": true,
