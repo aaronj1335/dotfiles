@@ -6,7 +6,7 @@
   "csv-preview.numberFormat": "g4",
   "debug.onTaskErrors": "showErrors",
   "editor.bracketPairColorization.enabled": false,
-  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.formatOnSave": true,
@@ -39,6 +39,7 @@
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.smoothScrolling": true,
   "testing.automaticallyOpenPeekView": "never",
+  "trailing-spaces.highlightCurrentLine": false,
   "vim.enableNeovim": true,
   "vim.hlsearch": true,
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -77,3 +78,4 @@
     "editor.formatOnSave": false
   }
 }
+
