@@ -21,7 +21,7 @@
     untracked = cyan
 
 [alias]
-    lg = log --graph --decorate --pretty=oneline --abbrev-commit
+    lg = log --graph --decorate --abbrev-commit --pretty=format:"%<(8)%h%<(15)%al%<(11)%as%s"
     lga = !git status -sb && echo "" && git log -n40 --graph --decorate --pretty=oneline --abbrev-commit --all
     st = status -sb
     stat = status -sb
