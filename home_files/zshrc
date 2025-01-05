@@ -74,8 +74,8 @@ compdef -d javap # otherwise tab completing a file path freezes
 maybe. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
-if [ -e ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
-  . ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+if [ -e ~/.zsh/fast-syntax-highlighting/F-Sy-H.plugin.zsh ]; then
+  . ~/.zsh/fast-syntax-highlighting/F-Sy-H.plugin.zsh
   fast-theme -q ~/bin/home_files/fast-zsh-syntax-theme.ini
 fi
 
