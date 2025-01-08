@@ -20,6 +20,9 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "explorer.confirmDelete": false,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
   "files.autoSave": "afterDelay",
   "files.exclude": {
     "**/__pycache__": true,
@@ -62,7 +65,6 @@
   "workbench.editor.showTabs": "multiple",
   "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": false,
   "[beancount]": {
     "outline.showConstants": false
   },
@@ -78,4 +80,3 @@
     "editor.formatOnSave": false
   }
 }
-
