@@ -13,9 +13,9 @@ function symlink_farm {
 
   for f in $symlinks; do
     relpath=${f#$src/}
-    mkdir -p $dest/`dirname $relpath`
-    [ -f $dest/$relpath ] && rm $dest/$relpath
-    ln -s $f $dest/$relpath
+    mkdir -p "$dest/`dirname $relpath`"
+    [ -f "$dest/$relpath" ] && rm "$dest/$relpath"
+    ln -s $f "$dest/$relpath"
   done
 }
 
@@ -64,3 +64,10 @@ fi
 for d in $intellij_dirs; do
   symlink_farm $home_files_dir/intellij $d
 done
+
+if [ "`uname`" = Darwin ]; then
+  vscode_dir="$HOME/Library/Application Support/Code/User"
+  if [ -d "$vscode_dir" ]; then
+    symlink_farm $home_files_dir/vscode "$vscode_dir"
+  fi
+fi

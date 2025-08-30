@@ -1,7 +1,8 @@
 {
   "breadcrumbs.enabled": false,
   "cSpell.userWords": [
-    "Ashly"
+    "Ashly",
+    "Seales"
   ],
   "csv-preview.numberFormat": "g4",
   "debug.onTaskErrors": "showErrors",
@@ -55,6 +56,9 @@
       ]
     }
   ],
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1,
+  },
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": false,
   "window.customTitleBarVisibility": "never",
@@ -78,5 +82,16 @@
   },
   "[html]": {
     "editor.formatOnSave": false
-  }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "lldb.suppressUpdateNotifications": true,
+  "python.analysis.aiCodeActions": {},
+  "monkeyC.developerKeyPath": "/Users/aaronstacy/code/ham/developer_key",
+  "window.confirmSaveUntitledWorkspace": false,
+  "git.openRepositoryInParentFolders": "always",
+  "git.blame.editorDecoration.enabled": false,
+  "update.showReleaseNotes": false,
+  "security.promptForLocalFileProtocolHandling": false,
 }
