@@ -8,5 +8,9 @@
   {
     "key": "shift+cmd+e",
     "command": "workbench.action.focusActiveEditorGroup"
-  }
+  },
+  {
+    "key": "ctrl+cmd+n",
+    "command": "notifications.clearAll"
+  },
 ]
