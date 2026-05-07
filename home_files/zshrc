@@ -36,7 +36,9 @@ export HGEDITOR="$EDITOR"
 if which lsd >/dev/null; then
   alias ls="lsd --date relative -tr"
 
-  # if a machine has icon fonts installed and you want lsd to use them, run:
+  # if a machine has icon fonts installed:
+  # brew install font-hack-nerd-font
+  # and you want lsd to use them, run:
   # echo 'export LC_HAS_ICON_FONT=yes' >> ~/.zshenv
   if [ -z "$LC_HAS_ICON_FONT" ]; then
     alias ls="${aliases[ls]} --icon never"
