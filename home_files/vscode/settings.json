@@ -5,6 +5,7 @@
     "Seales"
   ],
   "csv-preview.numberFormat": "g4",
+  "debugpy.debugJustMyCode": false,
   "debug.onTaskErrors": "showErrors",
   "editor.bracketPairColorization.enabled": false,
   "editor.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
