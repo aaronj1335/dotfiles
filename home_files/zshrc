@@ -25,9 +25,6 @@ export PAGER=cat
 export MANPAGER="$VIMPAGER"
 
 export EDITOR=vim
-if which mvim &>/dev/null; then
-  export VISUAL="mvim -f"
-fi
 export HGEDITOR="$EDITOR"
 
 [ -e ~/.pythonrc ] && export PYTHONSTARTUP="$HOME/.pythonrc"
