@@ -16,7 +16,7 @@
   "editor.lineNumbers": "off",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
-  "editor.renderWhitespace": "none",
+  "editor.renderWhitespace": "trailing",
   "editor.showFoldingControls": "never",
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "first",
@@ -33,6 +33,7 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
+  "files.trimTrailingWhitespace": true,
   "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.enabled": false,
   "jupyter.askForKernelRestart": false,
@@ -57,9 +58,6 @@
       ]
     }
   ],
-  "extensions.experimental.affinity": {
-    "vscodevim.vim": 1,
-  },
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": false,
   "window.customTitleBarVisibility": "never",
@@ -93,6 +91,5 @@
   "window.confirmSaveUntitledWorkspace": false,
   "git.openRepositoryInParentFolders": "always",
   "git.blame.editorDecoration.enabled": false,
-  "update.showReleaseNotes": false,
-  "security.promptForLocalFileProtocolHandling": false,
+  "update.showReleaseNotes": false
 }
